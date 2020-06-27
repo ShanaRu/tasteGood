@@ -29,4 +29,39 @@ public interface MenuDao {
     @Insert("Insert into menu(menuName,menuCover,menuDetail,tip,uploadTime,userId,collection,classification) values(#{menuName},#{menuCover},#{menuDetail},#{tip},#{uploadTime},#{userId},#{collection},#{classification})")
     @Options(useGeneratedKeys=true,keyProperty="menuId",keyColumn="menuId")
     public int saveMenu(Menu menu);
+
+    //根据用户id查询所有菜谱
+    @Select("select * from menu where userId=#{userId}")
+    @Results(id="userMenu",value = {
+            @Result(id=true,property = "menuId",column = "menuId"),
+            @Result(property = "menuName",column = "menuName"),
+            @Result(property = "menuCover",column = "menuCover"),
+            @Result(property = "menuDetail",column = "menuDetail"),
+            @Result(property = "tip",column = "tip"),
+            @Result(property = "uploadTime",column = "uploadTime"),
+            @Result(property = "userId",column = "userId"),
+            @Result(property = "collection",column = "collection"),
+            @Result(property = "classification",column = "classification"),
+            @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
+            @Result(column = "menuId",property = "Step",many = @Many(select = "com.dao.StepDao.findStepById"))
+    })
+    public List<Menu> findAllMenuByUserId(int userId);
+
+    //根据菜谱id查询所有菜谱
+    @Select("select * from menu where menuId=#{menuId}")
+    @Results(id="oneMenu",value = {
+            @Result(id=true,property = "menuId",column = "menuId"),
+            @Result(property = "menuName",column = "menuName"),
+            @Result(property = "menuCover",column = "menuCover"),
+            @Result(property = "menuDetail",column = "menuDetail"),
+            @Result(property = "tip",column = "tip"),
+            @Result(property = "uploadTime",column = "uploadTime"),
+            @Result(property = "userId",column = "userId"),
+            @Result(property = "collection",column = "collection"),
+            @Result(property = "classification",column = "classification"),
+            @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
+            @Result(column = "menuId",property = "Step",many = @Many(select = "com.dao.StepDao.findStepById"))
+    })
+    public Menu findMenuByMenuId(int menuId);
+
 }

@@ -48,4 +48,16 @@ public class MenuServiceImpl implements MenuService {
         stepDao.saveStep(step);
         System.out.println("业务层完成");
     }
+
+    @Override
+    public List<Menu> findAllMenuByUserId(int userId) {
+        List<Menu> menus=menuDao.findAllMenuByUserId(userId);
+        return menus;
+    }
+
+    @Override
+    public Menu findMenuByMenuId(int menuId) {
+        Menu menu=menuDao.findMenuByMenuId(menuId);
+        return menu;
+    }
 }

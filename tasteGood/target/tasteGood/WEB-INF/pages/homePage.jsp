@@ -71,8 +71,6 @@
     </div>
 
     <%--    底部--%>
-    <div style="background: #c2c2c2;height: 50px">
-        <p style="line-height: 50px;text-align: center">@Copyright</p>
-    </div>
+    <%@include file="footer.jsp"%>
 </body>
 </html>

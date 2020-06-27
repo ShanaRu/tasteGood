@@ -8,8 +8,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/menu")
@@ -31,7 +34,7 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/saveMenu")
-    public @ResponseBody String saveMenu(@RequestBody String jsonData, HttpServletResponse response, HttpServletRequest request)throws IOException {
+    public @ResponseBody void saveMenu(@RequestBody String jsonData, HttpServletResponse response, HttpServletRequest request)throws IOException {
         System.out.println("数据传到控制层了");
         JSONObject menuData = new JSONObject(jsonData);//拿到的数据
         String menuName=menuData.getString("menuName");
@@ -61,8 +64,9 @@ public class MenuController {
         saveIngredients(newId,ingredientsArray);
         System.out.println("开始执行步骤");
         saveStep(newId,stepArray);
+        System.out.println("写完了跳转主页");
+//        response.sendRedirect(request.getContextPath()+"/userInfo/homePage");
         response.sendRedirect(request.getContextPath()+"/userInfo/homePage");
-        return  "";
     }
 
     @RequestMapping("/saveIngredients")
@@ -98,6 +102,33 @@ public class MenuController {
             menuService.saveStep(oneStep);
             System.out.println(oneStep);
         }
+    }
+
+    @RequestMapping("/userMenu")
+    public String userMenu(Model model, HttpServletRequest request, HttpServletResponse response){
+//        HttpSession session=request.getSession();
+//        System.out.println(session.getAttribute("userName"));
+//        System.out.println(session.getAttribute("userId"));
+//        int uid=(int)session.getAttribute("userId");
+//        System.out.println(uid);
+//        List<Menu> menus=menuService.findAllMenuByUserId(uid);
+        List<Menu> menus=menuService.findAllMenuByUserId(3);
+        for (Menu menu:menus){
+            System.out.println(menu);
+            System.out.println(menu.getIngredients());
+            System.out.println(menu.getStep());
+        }
+        model.addAttribute("userMenus",menus);
+        return "userMenu";
+    }
+
+    //根据menuId查询菜谱
+    @RequestMapping("/showMenu")
+    public String showMenu(@RequestParam("menuId")int menuId,Model model){
+//        System.out.println(menuId);
+        Menu menu=menuService.findMenuByMenuId(menuId);
+        model.addAttribute("menu",menu);
+        return "showMenu";
     }
 
 }

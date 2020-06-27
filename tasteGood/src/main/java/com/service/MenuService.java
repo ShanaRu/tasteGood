@@ -18,4 +18,10 @@ public interface MenuService {
 
     //保存菜单步骤
     public void saveStep(Step step);
+
+    //根据用户id查询所有菜谱
+    public List<Menu> findAllMenuByUserId(int userId);
+
+    //根据菜谱id查询菜谱信息
+    public Menu findMenuByMenuId(int menuId);
 }

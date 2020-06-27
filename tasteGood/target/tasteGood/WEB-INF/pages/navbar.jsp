@@ -66,12 +66,12 @@
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" >我的主页</a></dd>
                         <dd><a href="javascript:;" >个人信息</a></dd>
-                        <dd><a href="javascript:;" >我的菜谱</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/menu/userMenu" >我的菜谱</a></dd>
                         <dd><a href="javascript:;" >我的收藏</a></dd>
-                        <dd><a href="javascript:;" >退出</a></dd>
+<%--                        <dd><a href="javascript:;" >退出</a></dd>--%>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="">退出</a></li>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/">退出</a></li>
             </ul>
         </div>
     </div>
