@@ -1,0 +1,7 @@
+com\domain\UserInfo.class
+com\dao\UserInfoDao.class
+com\service\Impl\UserInfoServiceImpl.class
+com\service\UserInfoService.class
+com\controller\UserInfoController.class
+com\controller\ImagesController.class
+com\controller\IndexController.class

@@ -1,0 +1,97 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Shana
+  Date: 2020/6/21
+  Time: 15:49
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+<head>
+    <title>登录</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/layui/layui.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<%--    <script type="text/javascript">--%>
+<%--        //一般直接写在一个js文件中--%>
+<%--        layui.use(['layer', 'form'], function(){--%>
+<%--            var layer = layui.layer,form = layui.form;--%>
+<%--            layer.msg('Hello World');--%>
+<%--        });--%>
+<%--    </script>--%>
+    <script type="text/javascript">
+        layui.use('form', function(){
+            var  form=layui.form;
+            //监听提交
+            // form.on('submit(formDemo)', function(data){
+            //     layer.msg(JSON.stringify(data.field));
+            //     return false;
+            // });
+            //自定义验证规则
+            form.verify({
+                username: [
+                    /^[\S]{1,12}$/
+                    ,'用户名必须1到12位，且不能出现空格'
+                ],
+                password: [
+                    /^[\S]{3,12}$/
+                    ,'密码必须3到12位，且不能出现空格'
+                ]
+            });
+            //监听提交
+            form.on('submit(registerForm)', function(data){
+                $.ajax({
+                    url:'${pageContext.request.contextPath}/userInfo/userSignIn',
+                    data:data.field,
+                    dataType:'text',
+                    type:'post',
+                    // async: false,
+                    success:function (data) {
+                        if (data === '1'){
+                            location.href = "${pageContext.request.contextPath}/userInfo/homePage";//跳转主页
+                        }else{
+                            layer.msg('登录名或密码错误');
+                        }
+                    },
+                    error:function () {
+                        layer.msg('提交失败');
+                    }
+                })
+                return false;
+            });
+        });
+    </script>
+</head>
+<body style="padding: 20px;">
+<%--    <a href="userInfo/findAllUser">测试</a>--%>
+<%--    <h1>登录页面</h1>--%>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>登录</legend>
+    </fieldset>
+    <form class="layui-form layui-form-pane" action="userInfo/userSignIn" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户昵称</label>
+            <div class="layui-input-inline">
+                <input type="username" name="userName" required  lay-verify="username" placeholder="请输入用户昵称" autocomplete="off" class="layui-input">
+            </div>
+            <i class="layui-icon layui-icon-username" style="font-size: 30px; color: #1E9FFF;"></i>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户密码</label>
+            <div class="layui-input-inline">
+                <input type="password" name="userPassword" required lay-verify="password" placeholder="请输入密码" autocomplete="off" class="layui-input" id="user_password">
+            </div>
+            <i class="layui-icon layui-icon-password" style="font-size: 30px; color: #1E9FFF;"></i>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="registerForm">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+    <a href="userInfo/registerForm" class="layui-btn">注册</a>
+</body>
+</html>
