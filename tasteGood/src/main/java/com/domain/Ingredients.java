@@ -1,15 +1,15 @@
 package com.domain;
 
 public class Ingredients {
-    private int menuId;
+    private Integer menuId;
     private String ingredient;
     private String dosage;
 
-    public int getMenuId() {
+    public Integer getMenuId() {
         return menuId;
     }
 
-    public void setMenuId(int menuId) {
+    public void setMenuId(Integer menuId) {
         this.menuId = menuId;
     }
 

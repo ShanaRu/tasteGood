@@ -15,6 +15,7 @@
     <script type="text/javascript">
 
         var num=1;//全局变量
+        // var example=new Object();
 
         layui.use('upload', function(){
             var $ = layui.jquery
@@ -41,9 +42,9 @@
                         var demoText = $('#picText');
                         // demoText.html('<span style="color: #4cae4c;">上传成功</span>');
                         //将后台获取的图片地址传到前台存入隐藏控件中，随着表单一起提交
-                        console.log("图片地址："+res.src);
+                        // console.log("图片地址："+res.src);
                         document.getElementById("menuCover").value = res.src;
-                        console.log(document.getElementById("menuCover").value);
+                        // console.log(document.getElementById("menuCover").value);
                         return layer.msg('上传成功');
                     }
                 },
@@ -62,10 +63,10 @@
 
         layui.use('form', function(){
             var form = layui.form;
-            // var $=layui.jquery;
+            var $=layui.jquery;
             //监听提交
             // form.on('submit(formMenu)', function(data){
-            //     layer.msg(JSON.stringify(data.field));
+            //
             //     return false;
             // });
         });
@@ -171,7 +172,7 @@
                         //将后台获取的图片地址传到前台存入隐藏控件中，随着表单一起提交
                         // console.log("图片地址："+data.src);
                         document.getElementById("stepChar"+number).value = data.src;
-                        console.log(document.getElementById("stepChar"+number).value);
+                        // console.log(document.getElementById("stepChar"+number).value);
                         return layer.msg('上传成功');
                     }
                 },
@@ -272,7 +273,7 @@
             for (let i=0;i<dosage2.childNodes.length;i++){
                 array1[i].dosage=dosage2.childNodes[i].value;
             }
-            console.log(array1);
+            // console.log(array1);
 
             var step1=document.getElementById("stepBox1");
             var step2=document.getElementById("stepBox2");
@@ -285,7 +286,7 @@
                 }
 
             }
-            console.log(array2);
+            // console.log(array2);
             var count=0;
             for (let i=0;i<step2.childNodes.length;i++){
                 if(i%2==0){//双数
@@ -301,19 +302,27 @@
             example.uploadTime=new Date();
             example.ingredients=array1;
             example.steps=array2;
-            console.log(example);
-            console.log(JSON.stringify(example));//js对象转换成json
+            // console.log(example);
+            // console.log(JSON.stringify(example));//js对象转换成json
             $.ajax({
                 url:"${pageContext.request.contextPath}/menu/saveMenu",
                 contentType:"application/json;charset=UTF-8",
                 data:JSON.stringify(example),
                 dataType:"json",
                 type: "post",
-                processData: false,
+                // async:false,
                 success:function (data) {
                     alert(data);
                     console.log(data);
-                    alert(data.menuName);
+                    location.href = "${pageContext.request.contextPath}/userInfo/homePage";//跳转主页
+                    // var jdata=$.parseJSON(data);
+                    // if(jdata.menuDetail=="123"){
+                    //     lay.msg("失败")
+                    // }else{
+                    //     lay.msg("chengg");
+                    // }
+                    // var demo=JSON.parse(data);
+                    // alert(data.menuName);
                 }
             });
         }
@@ -326,8 +335,8 @@
     <div style="margin:20px 100px 20px 100px;min-height: 500px">
         <div class="layui-row layui-col-space30">
             <div class="layui-col-md9" style="min-height: 480px">
-
-                <form class="layui-form" method="post">
+                    <div>
+<%--                <form class="layui-form" method="post">--%>
                     <div class="layui-row layui-col-space10">
                         <div class="layui-col-md7">
                             <div class="layui-form-item">
@@ -381,7 +390,7 @@
                             </div>
 <%--                            <div class="layui-row layui-col-space10">--%>
 <%--                                <div class="layui-col-md8">--%>
-<%--                                    <textarea style="height: 162px" name="step" placeholder="请输入步骤描述" class="layui-textarea" required lay-verify="required" rows="7"></textarea>--%>
+<%--                                    <textarea style="height: 162px" name="steps" placeholder="请输入步骤描述" class="layui-textarea" required lay-verify="required" rows="7"></textarea>--%>
 <%--                                    <input type="text" value=""  id="stepChar" name="stepChar" style="display: none;"><!--隐藏标签-->--%>
 <%--                                    <button type="button" class="layui-btn" id="uploadStep">上传菜谱封面</button>--%>
 <%--                                </div>--%>
@@ -400,11 +409,13 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit lay-filter="formMenu" onclick="commit()">立即提交</button>
-                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+<%--                            <button class="layui-btn" lay-submit lay-filter="formMenu" onclick="commit()">立即提交</button>--%>
+                                <button class="layui-btn" onclick="commit()">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
                     </div>
-                </form>
+<%--                </form>--%>
+                    </div>
             </div>
             <div class="layui-col-md3" style="min-height: 480px">
                 <p>展示</p>

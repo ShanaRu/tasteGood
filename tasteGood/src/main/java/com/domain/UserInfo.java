@@ -4,18 +4,18 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class UserInfo implements Serializable {
-    private int userId;
+    private Integer userId;
     private String userName;
     private String userPassword;
     private String userIntroduce;
     private char userSex;
     private String userPhoto;
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

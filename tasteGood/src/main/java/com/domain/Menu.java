@@ -4,17 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 public class Menu {
-    private int menuId;
+    private Integer menuId;
     private String menuName;
     private String menuCover;
     private String menuDetail;
     private String tip;
     private Date uploadTime;
-    private int collection;
+    private Integer collection;
     private String classification;
-    private int userId;
+    private Integer userId;
     private List<Ingredients> Ingredients;
-    private List<Step> Step;
+    private List<Steps> Steps;
 
     public List<com.domain.Ingredients> getIngredients() {
         return Ingredients;
@@ -24,20 +24,36 @@ public class Menu {
         Ingredients = ingredients;
     }
 
-    public List<com.domain.Step> getStep() {
-        return Step;
+    public List<Steps> getSteps() {
+        return Steps;
     }
 
-    public void setStep(List<com.domain.Step> step) {
-        Step = step;
+    public void setSteps(List<Steps> steps) {
+        Steps = steps;
     }
 
-    public int getMenuId() {
+    public Integer getMenuId() {
         return menuId;
     }
 
-    public void setMenuId(int menuId) {
+    public void setMenuId(Integer menuId) {
         this.menuId = menuId;
+    }
+
+    public Integer getCollection() {
+        return collection;
+    }
+
+    public void setCollection(Integer collection) {
+        this.collection = collection;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getMenuName() {
@@ -80,14 +96,6 @@ public class Menu {
         this.uploadTime = uploadTime;
     }
 
-    public int getCollection() {
-        return collection;
-    }
-
-    public void setCollection(int collection) {
-        this.collection = collection;
-    }
-
     public String getClassification() {
         return classification;
     }
@@ -96,13 +104,7 @@ public class Menu {
         this.classification = classification;
     }
 
-    public int getUserId() {
-        return userId;
-    }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     @Override
     public String toString() {
@@ -117,7 +119,7 @@ public class Menu {
                 ", classification='" + classification + '\'' +
                 ", userId=" + userId +
                 ", Ingredients=" + Ingredients +
-                ", Step=" + Step +
+                ", Step=" + Steps +
                 '}';
     }
 }

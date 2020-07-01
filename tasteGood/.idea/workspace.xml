@@ -7,38 +7,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fa8a827-0182-4482-97b8-5b420d8f8bf4" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/showMenu.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userMenu.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/controller/WorkController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dao/WorksDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/domain/Update.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/domain/Works.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/service/Impl/WorksServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/service/WorksService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/addWork.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/MenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dao/MenuDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dao/MenuDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dao/StepDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dao/StepsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/Ingredients.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/Ingredients.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/Steps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/UserInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/Impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/Impl/MenuServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/MenuService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/addMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/addMenu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/common.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/homePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/homePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/navbar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/picture/53kelian.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/picture/59ku.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/picture/60zhemo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/picture/a6339bb74fd740c9904c370bb552dc7c_04fadai.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/showMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/showMenu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userMenu.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/MenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/UserInfoController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/dao/MenuDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dao/MenuDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dao/StepDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/Ingredients.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/Ingredients.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/Step.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/UserInfo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/service/Impl/MenuServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/Impl/MenuServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/service/MenuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/MenuService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/controller/MenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/controller/UserInfoController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/dao/MenuDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/dao/MenuDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/dao/StepDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/domain/Ingredients.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/domain/Ingredients.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/domain/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/domain/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/domain/Step.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/domain/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/domain/UserInfo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/Impl/MenuServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/Impl/MenuServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/MenuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/MenuService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/addMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/addMenu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/common.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/homePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/homePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/navbar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tasteGood/picture/53kelian.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tasteGood/picture/59ku.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tasteGood/picture/60zhemo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tasteGood/picture/a6339bb74fd740c9904c370bb552dc7c_04fadai.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,10 +60,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Jspx File" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -77,7 +89,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/spring学习资料/springmvc/ssm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -223,12 +235,42 @@
       <workItem from="1593064223332" duration="19431000" />
       <workItem from="1593140998041" duration="806000" />
       <workItem from="1593145552992" duration="28308000" />
-      <workItem from="1593238975172" duration="14949000" />
+      <workItem from="1593238975172" duration="15348000" />
+      <workItem from="1593261697796" duration="672000" />
+      <workItem from="1593312957419" duration="10117000" />
+      <workItem from="1593331187551" duration="1710000" />
+      <workItem from="1593348843612" duration="1077000" />
+      <workItem from="1593350945553" duration="16655000" />
     </task>
+    <task id="LOCAL-00001" summary="second">
+      <created>1593260355547</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1593260355547</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="second" />
+    <option name="LAST_COMMIT_MESSAGE" value="second" />
   </component>
   <component name="WindowStateProjectService">
     <state x="371" y="96" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1592921729645">
@@ -239,66 +281,70 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1592574204257" />
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1593252502237">
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1593366645327">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1593252502237" />
-    <state x="263" y="0" key="CommitChangelistDialog2" timestamp="1593260233004">
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1593366645327" />
+    <state x="355" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1593320700785">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="263" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593260233004" />
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1593249200857">
+    <state x="355" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1593320700785" />
+    <state x="263" y="0" key="CommitChangelistDialog2" timestamp="1593609501256">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1593249200857" />
-    <state width="1039" height="2" key="GridCell.Tab.0.bottom" timestamp="1593259941218">
+    <state x="263" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593609501256" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1593356142827">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="2" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1593259941218" />
-    <state width="1039" height="2" key="GridCell.Tab.0.center" timestamp="1593259941217">
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1593356142827" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1593367645810">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="2" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1593259941217" />
-    <state width="1039" height="2" key="GridCell.Tab.0.left" timestamp="1593259941217">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1593367645810" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1593367645809">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="2" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1593259941217" />
-    <state width="1039" height="2" key="GridCell.Tab.0.right" timestamp="1593259941217">
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1593367645809" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1593367645809">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="2" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1593259941217" />
-    <state width="1039" height="2" key="GridCell.Tab.1.bottom" timestamp="1593259941218">
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1593367645809" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1593367645810">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="2" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1593259941218" />
-    <state width="1039" height="2" key="GridCell.Tab.1.center" timestamp="1593259941218">
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1593367645810" />
+    <state width="1039" height="291" key="GridCell.Tab.1.bottom" timestamp="1593367645802">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="2" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1593259941218" />
-    <state width="1039" height="2" key="GridCell.Tab.1.left" timestamp="1593259941218">
+    <state width="1039" height="291" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1593367645802" />
+    <state width="1039" height="291" key="GridCell.Tab.1.center" timestamp="1593367645802">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="2" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1593259941218" />
-    <state width="1039" height="2" key="GridCell.Tab.1.right" timestamp="1593259941218">
+    <state width="1039" height="291" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1593367645802" />
+    <state width="1039" height="291" key="GridCell.Tab.1.left" timestamp="1593367645802">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="2" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1593259941218" />
-    <state width="1039" height="2" key="GridCell.Tab.2.bottom" timestamp="1593259941219">
+    <state width="1039" height="291" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1593367645802" />
+    <state width="1039" height="291" key="GridCell.Tab.1.right" timestamp="1593367645802">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="2" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1593259941219" />
-    <state width="1039" height="2" key="GridCell.Tab.2.center" timestamp="1593259941218">
+    <state width="1039" height="291" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1593367645802" />
+    <state width="1039" height="291" key="GridCell.Tab.2.bottom" timestamp="1593367645803">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="2" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1593259941218" />
-    <state width="1039" height="2" key="GridCell.Tab.2.left" timestamp="1593259941218">
+    <state width="1039" height="291" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1593367645803" />
+    <state width="1039" height="291" key="GridCell.Tab.2.center" timestamp="1593367645803">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="2" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1593259941218" />
-    <state width="1039" height="2" key="GridCell.Tab.2.right" timestamp="1593259941219">
+    <state width="1039" height="291" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1593367645803" />
+    <state width="1039" height="291" key="GridCell.Tab.2.left" timestamp="1593367645803">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="2" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1593259941219" />
+    <state width="1039" height="291" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1593367645803" />
+    <state width="1039" height="291" key="GridCell.Tab.2.right" timestamp="1593367645803">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1039" height="291" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1593367645803" />
     <state width="1039" height="372" key="GridCell.Tab.3.bottom" timestamp="1592906384226">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -319,22 +365,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1592710049016" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1593176737769">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1593322410193">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1593176737769" />
-    <state x="340" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1593140996310">
+    <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1593322410193" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1593260459947">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="340" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1593140996310" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1593260459947" />
+    <state x="340" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1593350945578">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="340" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1593350945578" />
+    <state x="241" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1593316005498">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="241" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680@0.0.1280.680" timestamp="1593316005498" />
     <state x="195" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1592905924847">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="195" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1592905924847" />
-    <state x="297" y="151" key="run.anything.popup" timestamp="1593239608908">
+    <state x="297" y="151" key="run.anything.popup" timestamp="1593331796949">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1593239608908" />
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1593331796949" />
     <state x="303" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1593252184148">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

@@ -21,7 +21,7 @@ public interface MenuDao {
             @Result(property = "collection",column = "collection"),
             @Result(property = "classification",column = "classification"),
             @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
-            @Result(column = "menuId",property = "Step",many = @Many(select = "com.dao.StepDao.findStepById"))
+            @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
     })
     public List<Menu> findAllMenu();
 
@@ -43,7 +43,7 @@ public interface MenuDao {
             @Result(property = "collection",column = "collection"),
             @Result(property = "classification",column = "classification"),
             @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
-            @Result(column = "menuId",property = "Step",many = @Many(select = "com.dao.StepDao.findStepById"))
+            @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
     })
     public List<Menu> findAllMenuByUserId(int userId);
 
@@ -60,7 +60,7 @@ public interface MenuDao {
             @Result(property = "collection",column = "collection"),
             @Result(property = "classification",column = "classification"),
             @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
-            @Result(column = "menuId",property = "Step",many = @Many(select = "com.dao.StepDao.findStepById"))
+            @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
     })
     public Menu findMenuByMenuId(int menuId);
 

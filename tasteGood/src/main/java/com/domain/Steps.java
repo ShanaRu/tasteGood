@@ -1,15 +1,15 @@
 package com.domain;
 
-public class Step {
-    private int menuId;
+public class Steps {
+    private Integer menuId;
     private String step;
     private String stepChar;
 
-    public int getMenuId() {
+    public Integer getMenuId() {
         return menuId;
     }
 
-    public void setMenuId(int menuId) {
+    public void setMenuId(Integer menuId) {
         this.menuId = menuId;
     }
 
@@ -31,7 +31,7 @@ public class Step {
 
     @Override
     public String toString() {
-        return "step{" +
+        return "Steps{" +
                 "menuId=" + menuId +
                 ", step='" + step + '\'' +
                 ", stepChar='" + stepChar + '\'' +
