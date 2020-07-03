@@ -8,7 +8,7 @@ public class UserInfo implements Serializable {
     private String userName;
     private String userPassword;
     private String userIntroduce;
-    private char userSex;
+    private Integer userSex;
     private String userPhoto;
 
     public Integer getUserId() {
@@ -43,11 +43,11 @@ public class UserInfo implements Serializable {
         this.userIntroduce = userIntroduce;
     }
 
-    public char getUserSex() {
+    public Integer getUserSex() {
         return userSex;
     }
 
-    public void setUserSex(char userSex) {
+    public void setUserSex(Integer userSex) {
         this.userSex = userSex;
     }
 

@@ -36,7 +36,7 @@
                 <li class="layui-nav-item layui-this"><a href="${pageContext.request.contextPath}/userInfo/homePage" class="myCss">首页</a></li>
                 <li class="layui-nav-item"><a href="" class="myCss" >菜谱</a></li>
                 <li class="layui-nav-item"><a href="" class="myCss" >菜单系列</a></li>
-                <li class="layui-nav-item"><a href="" class="myCss">作品</a></li>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/work/showWorks" class="myCss">作品</a></li>
                 <li class="layui-nav-item">
                     <form action="" method="post" class="layui-form">
                         <label class="layui-form-label myCss" style="">搜索</label>
@@ -65,8 +65,9 @@
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" >我的主页</a></dd>
-                        <dd><a href="javascript:;" >个人信息</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/userInfo/modifyUserInfo" >个人信息</a></dd>
                         <dd><a href="${pageContext.request.contextPath}/menu/userMenu" >我的菜谱</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/work/userWorks" >我的作品</a></dd>
                         <dd><a href="javascript:;" >我的收藏</a></dd>
 <%--                        <dd><a href="javascript:;" >退出</a></dd>--%>
                     </dl>

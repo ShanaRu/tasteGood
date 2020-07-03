@@ -54,7 +54,7 @@
 <%@include file="navbar.jsp"%>
     <div style="margin:20px 100px 20px 100px;min-height: 500px">
         <div class="layui-row layui-col-space30">
-            <div class="layui-col-md9" style="min-height: 480px">
+            <div class="layui-col-md9">
                 <form class="layui-form" method="post" action="${pageContext.request.contextPath}/work/saveWork">
                     <input type="text" name="menuId" value="${menuId}" style="display: none">
                     <input type="text" name="menuName" value="${menuName}" style="display: none">
@@ -84,7 +84,7 @@
                     </div>
                 </form>
             </div>
-            <div class="layui-col-md3" style="min-height: 480px">
+            <div class="layui-col-md3">
             </div>
         </div>
     </div>

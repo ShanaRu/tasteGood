@@ -1,5 +1,7 @@
 package com.domain;
 
+import java.util.Date;
+
 public class Works {
     private String menuName;
     private Integer menuId;
@@ -7,6 +9,24 @@ public class Works {
     private String summary;
     private String workPhoto;
     private Integer likes;
+    private Integer userId;
+    private Date workTime;
+
+    public Date getWorkTime() {
+        return workTime;
+    }
+
+    public void setWorkTime(Date workTime) {
+        this.workTime = workTime;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public String getMenuName() {
         return menuName;
@@ -65,6 +85,8 @@ public class Works {
                 ", summary='" + summary + '\'' +
                 ", workPhoto='" + workPhoto + '\'' +
                 ", likes=" + likes +
+                ", userId=" + userId +
+                ", workTime=" + workTime +
                 '}';
     }
 }

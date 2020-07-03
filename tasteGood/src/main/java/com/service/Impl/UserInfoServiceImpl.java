@@ -35,4 +35,25 @@ public class UserInfoServiceImpl implements UserInfoService {
         UserInfo userInfo=userInfoDao.findUser(userName);
         return userInfo;
     }
+
+    @Override
+    public UserInfo findUserById(Integer userId) {
+        UserInfo userInfo=userInfoDao.findUserById(userId);
+        return userInfo;
+    }
+
+    @Override
+    public void updateUserInfo(String userName,Integer userSex,String userIntroduce,Integer userId) {
+        userInfoDao.updateUserInfo(userName,userSex,userIntroduce,userId);
+    }
+
+    @Override
+    public void updatePassword(String userPassword, Integer userId) {
+        userInfoDao.updatePassword(userPassword,userId);
+    }
+
+    @Override
+    public void updateUserPhoto(String userPhoto, Integer userId) {
+        userInfoDao.updateUserPhoto(userPhoto,userId);
+    }
 }

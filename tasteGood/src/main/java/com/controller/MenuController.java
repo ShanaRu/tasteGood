@@ -3,7 +3,6 @@ package com.controller;
 import com.domain.Ingredients;
 import com.domain.Menu;
 import com.domain.Steps;
-import com.domain.Update;
 import com.service.MenuService;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,11 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/menu")
@@ -38,24 +34,24 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/saveMenu")
-    public @ResponseBody Update saveMenu(@RequestBody String jsonData, HttpServletResponse response, HttpServletRequest request)throws IOException {
-        System.out.println("数据传到控制层了");
-        JSONObject menuData = new JSONObject(jsonData);//拿到的数据
+    public @ResponseBody String saveMenu(@RequestBody String jsonData, HttpServletResponse response, HttpServletRequest request)throws IOException {
+        JSONObject menuData = new JSONObject(jsonData);//从前端拿到的数据
         String menuName=menuData.getString("menuName");
         String menuCover=menuData.getString("menuCover");
         String menuDetail=menuData.getString("menuDetail");
         String time=menuData.getString("uploadTime");
-        Date uploadTime=new Date();
+        Date uploadTime=new Date();//当前时间
         String tip=menuData.getString("tip");
         JSONArray ingredientsArray=menuData.getJSONArray("ingredients");
         JSONArray stepsArray=menuData.getJSONArray("steps");
+        //放入Menu对象中
         Menu menu=new Menu();
         menu.setMenuCover(menuCover);
         menu.setMenuDetail(menuDetail);
         menu.setTip(tip);
         menu.setUploadTime(uploadTime);
         menu.setMenuName(menuName);
-        HttpSession session=request.getSession();
+        HttpSession session=request.getSession();//获取用户id
         Integer uid=(Integer)session.getAttribute("userId");
         menu.setUserId(uid);
         menu.setClassification("汤");
@@ -64,19 +60,7 @@ public class MenuController {
         saveIngredients(newId,ingredientsArray);
         saveSteps(newId,stepsArray);
         System.out.println("写完了跳转主页");
-        Update update=new Update();
-        update.setResult("success");
-        update.setCode(200);
-        return update;
-
-//        response.sendRedirect(request.getContextPath()+"/userInfo/homePage");
-//        JSONObject json =new JSONObject();
-//        json.put("result"," success");
-//        response.setCharacterEncoding("utf-8");
-//        response.setContentType("application/json;charset=utf-8");
-//        response.getWriter().print(json.toString());
-
-
+        return "200";
     }
 
     @RequestMapping("/saveIngredients")
@@ -124,11 +108,11 @@ public class MenuController {
 //        System.out.println(uid);
         List<Menu> menus=menuService.findAllMenuByUserId(uid);
 //        List<Menu> menus=menuService.findAllMenuByUserId(3);
-        for (Menu menu:menus){
-            System.out.println(menu);
-            System.out.println(menu.getIngredients());
-            System.out.println(menu.getSteps());
-        }
+//        for (Menu menu:menus){
+//            System.out.println(menu);
+//            System.out.println(menu.getIngredients());
+//            System.out.println(menu.getSteps());
+//        }
         model.addAttribute("userMenus",menus);
         return "userMenu";
     }

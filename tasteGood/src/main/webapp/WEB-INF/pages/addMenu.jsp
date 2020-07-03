@@ -13,9 +13,13 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/layui/layui.js"></script>
     <script type="text/javascript">
-
+        window.onload=function () {
+            addDosage();
+            addDosage();
+            addStep();
+            addStep();
+        }
         var num=1;//全局变量
-        // var example=new Object();
 
         layui.use('upload', function(){
             var $ = layui.jquery
@@ -44,7 +48,6 @@
                         //将后台获取的图片地址传到前台存入隐藏控件中，随着表单一起提交
                         // console.log("图片地址："+res.src);
                         document.getElementById("menuCover").value = res.src;
-                        // console.log(document.getElementById("menuCover").value);
                         return layer.msg('上传成功');
                     }
                 },
@@ -60,7 +63,6 @@
             });
         });
 
-
         layui.use('form', function(){
             var form = layui.form;
             var $=layui.jquery;
@@ -70,13 +72,6 @@
             //     return false;
             // });
         });
-
-        window.onload=function () {
-            addDosage();
-            addDosage();
-            addStep();
-            addStep();
-        }
         function addDosage()
         {
             var input1=document.createElement("input");
@@ -105,7 +100,6 @@
             var tr1=document.getElementById("dosageBox1");
             if(tr1.hasChildNodes()){//是否有子节点
                 var node1=tr1.childNodes;//子节点数量
-                // console.log(node1.length);
                 if(node1.length===1){
                     layer.msg('不可再删');
                 }else{
@@ -117,7 +111,6 @@
             var tr2=document.getElementById("dosageBox2");
             if(tr2.hasChildNodes()){//是否有子节点
                 var node2=tr2.childNodes;//子节点数量
-                // console.log(node2.length);
                 if(node2.length===1){
                     // layer.msg('不可再删');
                 }else{
@@ -128,14 +121,10 @@
         }
 
         function uploadPhoto(number) {
-            // console.log("目前是"+number);
             var photo=document.getElementById("uploadStep"+number).value;
-            // console.log(photo);
-
             var str=$("#uploadStep"+number).val();
             var arr=str.split('\\');//注split可以用字符或字符串分割
             var myPhoto=arr[arr.length-1];//这就是要取得的图片名称
-            // console.log(myPhoto);
 
             //预览效果
             var file = document.getElementById("uploadStep"+number).files[0];
@@ -167,12 +156,7 @@
                     }
                     //上传成功
                     if(data.code == 0){
-                        // var demoText = $('#picText');
-                        // // demoText.html('<span style="color: #4cae4c;">上传成功</span>');
-                        //将后台获取的图片地址传到前台存入隐藏控件中，随着表单一起提交
-                        // console.log("图片地址："+data.src);
                         document.getElementById("stepChar"+number).value = data.src;
-                        // console.log(document.getElementById("stepChar"+number).value);
                         return layer.msg('上传成功');
                     }
                 },
@@ -193,39 +177,23 @@
             input3.setAttribute("style","height: 162px");
             document.getElementById("stepBox1").appendChild(input3);
 
-            // var button=document.createElement("input");
-            // button.setAttribute("type","button");
-            // button.setAttribute("class","layui-btn");
-            // // button.setAttribute("value","上传步骤图");
-            // button.innerText="上传步骤图"
-            // button.setAttribute("id","uploadStep"+num);
-            // // button.setAttribute("onclick","uploadPhoto("+num+")");
-            // button.setAttribute("onclick","uploadPhoto("+num+")");
-            // // input4.setAttribute("name",""+num);
-            // document.getElementById("stepBox1").appendChild(button);
             var button=document.createElement("input");
             button.setAttribute("type","file");
             button.setAttribute("class","layui-btn");
-            // button.setAttribute("value","上传步骤图");
             button.setAttribute("id","uploadStep"+num);
-            // button.setAttribute("onclick","uploadPhoto("+num+")");
             button.setAttribute("onchange","uploadPhoto("+num+")");
-            // input4.setAttribute("name",""+num);
             document.getElementById("stepBox1").appendChild(button);
 
             var input4=document.createElement("input");//隐藏标签
             input4.setAttribute("type","text");
-            // input4.setAttribute("value","");
             input4.setAttribute("id","stepChar"+num);
             input4.setAttribute("style","display: none;");
-            // input4.setAttribute("name",""+num);
             document.getElementById("stepBox2").appendChild(input4);
 
             var img=document.createElement("img");
             img.setAttribute("style","width: 220px;height: 200px;");
             img.setAttribute("class","layui-upload-img");
             img.setAttribute("id","showStepChar"+num);
-            // input4.setAttribute("name",""+num);
             document.getElementById("stepBox2").appendChild(img);
 
             num++;
@@ -247,16 +215,13 @@
             var tr3=document.getElementById("stepBox2");
             if(tr3.hasChildNodes()){//是否有子节点
                 var node3=tr3.childNodes;//子节点数量
-                // console.log(node3.length);
                 if(node3.length===2){
                     // layer.msg('不可再删');
-                    // alert("1");
                 }else{
                     var last3=tr3.lastChild;
                     tr3.removeChild(last3);
                     var last4=tr3.lastChild;
                     tr3.removeChild(last4);
-                    // alert("2");
                 }
             }
             num--;
@@ -273,7 +238,6 @@
             for (let i=0;i<dosage2.childNodes.length;i++){
                 array1[i].dosage=dosage2.childNodes[i].value;
             }
-            // console.log(array1);
 
             var step1=document.getElementById("stepBox1");
             var step2=document.getElementById("stepBox2");
@@ -286,7 +250,6 @@
                 }
 
             }
-            // console.log(array2);
             var count=0;
             for (let i=0;i<step2.childNodes.length;i++){
                 if(i%2==0){//双数
@@ -302,8 +265,6 @@
             example.uploadTime=new Date();
             example.ingredients=array1;
             example.steps=array2;
-            // console.log(example);
-            // console.log(JSON.stringify(example));//js对象转换成json
             $.ajax({
                 url:"${pageContext.request.contextPath}/menu/saveMenu",
                 contentType:"application/json;charset=UTF-8",
@@ -312,17 +273,14 @@
                 type: "post",
                 // async:false,
                 success:function (data) {
-                    alert(data);
-                    console.log(data);
-                    location.href = "${pageContext.request.contextPath}/userInfo/homePage";//跳转主页
-                    // var jdata=$.parseJSON(data);
-                    // if(jdata.menuDetail=="123"){
-                    //     lay.msg("失败")
-                    // }else{
-                    //     lay.msg("chengg");
-                    // }
-                    // var demo=JSON.parse(data);
-                    // alert(data.menuName);
+                    if(data=="200"){
+                        location.href = "${pageContext.request.contextPath}/userInfo/homePage";//跳转主页
+                    }else{
+                        layer.msg('提交失败');
+                    }
+                },
+                error:function (data) {
+                    layer.msg('提交失败');
                 }
             });
         }
@@ -335,7 +293,7 @@
     <div style="margin:20px 100px 20px 100px;min-height: 500px">
         <div class="layui-row layui-col-space30">
             <div class="layui-col-md9" style="min-height: 480px">
-                    <div>
+                <div>
 <%--                <form class="layui-form" method="post">--%>
                     <div class="layui-row layui-col-space10">
                         <div class="layui-col-md7">
@@ -343,7 +301,6 @@
                                 <label class="layui-form-label">菜谱名称</label>
                                 <div class="layui-input-block">
                                         <textarea name="menuName" id="menuName" placeholder="请输入菜谱名称" class="layui-textarea" required  lay-verify="required"></textarea>
-<%--                                        <input type="text" name="menuName" required  lay-verify="required" placeholder="请输入菜谱名称" autocomplete="off" class="layui-input">--%>
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -388,16 +345,6 @@
                                 <div class="layui-col-md8" id="stepBox1"></div>
                                 <div class="layui-col-md4" id="stepBox2"></div>
                             </div>
-<%--                            <div class="layui-row layui-col-space10">--%>
-<%--                                <div class="layui-col-md8">--%>
-<%--                                    <textarea style="height: 162px" name="steps" placeholder="请输入步骤描述" class="layui-textarea" required lay-verify="required" rows="7"></textarea>--%>
-<%--                                    <input type="text" value=""  id="stepChar" name="stepChar" style="display: none;"><!--隐藏标签-->--%>
-<%--                                    <button type="button" class="layui-btn" id="uploadStep">上传菜谱封面</button>--%>
-<%--                                </div>--%>
-<%--                                <div class="layui-col-md4">--%>
-<%--                                    <img class="layui-upload-img " id="showStepChar" style="width: 220px;height: 200px;">--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
                         </div>
                     </div>
 
@@ -409,33 +356,17 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-<%--                            <button class="layui-btn" lay-submit lay-filter="formMenu" onclick="commit()">立即提交</button>--%>
                                 <button class="layui-btn" onclick="commit()">立即提交</button>
                                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
                     </div>
 <%--                </form>--%>
-                    </div>
+                </div>
             </div>
             <div class="layui-col-md3" style="min-height: 480px">
                 <p>展示</p>
             </div>
         </div>
-
-<%--        <h2>菜谱</h2>--%>
-<%--        <form action="account/save" method="post" id="menu">--%>
-<%--            <label>菜名</label><input type="text" name="menuName" id="menuName"><br>--%>
-<%--            <input type="file" name="menuCover" id="menuCover"><br>--%>
-<%--            <textarea cols="100" rows="5" name="menuDetail" id="menuDetail"></textarea><br>--%>
-<%--            <input type="button" value="添加用量" onclick="addDosage()">--%>
-<%--            <input type="button" value="删除用量" onclick="delDosage()">--%>
-<%--            <div id="dosageBox"></div><br>--%>
-<%--            <input type="button" value="添加步骤" onclick="addStep()">--%>
-<%--            <input type="button" value="删除步骤" onclick="delStep()">--%>
-<%--            <div id="stepBox"></div><br>--%>
-<%--            <textarea cols="100" rows="5" name="tip" id="tip"></textarea><br>--%>
-<%--            <input type="button" value="保存" onclick="show()"/><br>--%>
-<%--        </form>--%>
     </div>
 
     <%--    底部--%>
