@@ -25,6 +25,7 @@
                     <img src="${pageContext.request.contextPath}/${menu.menuCover}" style="width: 660px;height: 400px;">
 <%--                </div>--%>
                 <p>${menu.collection}收藏</p>
+                <p>${menu.classification}</p>
                 <p>${menu.menuDetail}</p>
                 <c:forEach items="${menu.ingredients}" var="ingredient">
                     <div class="layui-col-md6">

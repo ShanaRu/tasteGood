@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.domain.UserInfo;
+import com.domain.UserRole;
 import com.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -24,8 +25,6 @@ public class UserInfoController {
     @RequestMapping("/findAllUser")
     public String  findAllUser(){
         List<UserInfo> userInfos=userInfoService.findAllUser();
-        System.out.println("打印出来");
-        System.out.println(userInfos);
         return "register";
     }
 
@@ -36,22 +35,17 @@ public class UserInfoController {
         System.out.println(userName);
         UserInfo userInfo=userInfoService.findUser(userName);//根据userName查找用户信息
         if(userInfo==null){//不存在用户
-//            System.out.println("没有该用户");
             return "0";
         }else{//存在用户
             String password=userInfo.getUserPassword();
             if(password.equals(userPassword)){
-//            response.sendRedirect(request.getContextPath()+"/userInfo/findAllUser");
-//                System.out.println("对的");
-
                 //创建获取session对象
                 HttpSession session = request.getSession();
                 //保存session中数据
                 session.setAttribute("userName", userInfo.getUserName());
                 session.setAttribute("userId",userInfo.getUserId());
                 return "1";
-            }else {
-//                System.out.println("错的");
+            }else {//存在错误
                 return "0";
             }
         }
@@ -72,8 +66,12 @@ public class UserInfoController {
     //保存用户信息
     @RequestMapping("/saveUseInfo")
     public void saveUseInfo(UserInfo userInfo, HttpServletRequest request, HttpServletResponse response) throws Exception{
-        userInfoService.saveUserInfo(userInfo);
-        System.out.println(userInfo);
+        //返回新增userId
+        Integer userId=userInfoService.saveUserInfo(userInfo);
+        UserRole userRole=new UserRole();
+        userRole.setRoleId(2);//roleId都是2
+        userRole.setUserId(userId);
+        userInfoService.addUserRole(userRole);
         response.sendRedirect(request.getContextPath()+"/");//回到登录页面
 
     }
@@ -91,6 +89,7 @@ public class UserInfoController {
 
     }
 
+    //跳到修改账号信息页面
     @RequestMapping("/modifyUserInfo")
     public String modifyUserInfo(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception{
         HttpSession session=request.getSession();

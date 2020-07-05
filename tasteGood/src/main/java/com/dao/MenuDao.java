@@ -64,4 +64,12 @@ public interface MenuDao {
     })
     public Menu findMenuByMenuId(int menuId);
 
+
+    //保存菜单信息
+    @Update("Update menu set menuName=#{menuName},menuCover=#{menuCover},menuDetail=#{menuDetail},tip=#{tip},uploadTime=#{uploadTime},collection=#{collection},classification=#{classification} where menuId=#{menuId}")
+    public void updateMenu(Menu menu);
+
+    //删除菜谱
+    @Delete("Delete from menu where menuId=#{menuId}")
+    public void deleteMenu(Integer menuId);
 }

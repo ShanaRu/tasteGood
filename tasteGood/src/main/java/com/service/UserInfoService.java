@@ -1,6 +1,7 @@
 package com.service;
 
 import com.domain.UserInfo;
+import com.domain.UserRole;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 import org.omg.PortableInterceptor.INACTIVE;
@@ -13,7 +14,7 @@ public interface UserInfoService {
     public List<UserInfo> findAllUser();
 
     //保存用户信息
-    public void saveUserInfo(UserInfo userInfo);
+    public Integer saveUserInfo(UserInfo userInfo);
 
     //根据userName查找用户信息
     public UserInfo findUser(String userName);
@@ -32,5 +33,8 @@ public interface UserInfoService {
 
     //更新头像
     public void updateUserPhoto(String userPhoto,Integer userId);
+
+    //添加用户的角色
+    public void addUserRole(UserRole userRole);
 
 }

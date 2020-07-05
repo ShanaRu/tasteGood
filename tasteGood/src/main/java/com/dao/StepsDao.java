@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.domain.Steps;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -14,4 +15,7 @@ public interface StepsDao {
 
     @Select("select * from steps where menuId=#{menuId}")
     List<Steps> findStepsById(int menuId);
+
+    @Delete("delete from steps where menuId=#{menuId}")
+    public void deleteStepsById(int menuId);
 }

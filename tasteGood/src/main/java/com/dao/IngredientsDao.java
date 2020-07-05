@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.domain.Ingredients;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -14,4 +15,7 @@ public interface IngredientsDao {
 
     @Select("select * from ingredients where menuId=#{menuId}")
     List<Ingredients> findIngredientsById(int menuId);
+
+    @Delete("delete from ingredients where menuId=#{menuId}")
+    public void deleteIngredientsById(int menuId);
 }

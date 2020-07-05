@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/layui/layui.js"></script>
     <script type="text/javascript">
-        window.onload=function () {
+        $(document).ready(function () {
             addDosage();
             addDosage();
             addStep();
             addStep();
-        }
+        });
         var num=1;//全局变量
 
         layui.use('upload', function(){
@@ -261,6 +261,12 @@
             example.menuName=document.getElementById("menuName").value;
             example.menuCover=document.getElementById("menuCover").value;
             example.menuDetail=document.getElementById("menuDetail").value;
+            var isAutoSend = document.getElementsByName('classification');
+            for (var i = 0; i < isAutoSend.length; i++) {
+                if (isAutoSend[i].checked == true) {
+                    example.classification=isAutoSend[i].value;
+                }
+            }
             example.tip=document.getElementById("tip").value;
             example.uploadTime=new Date();
             example.ingredients=array1;
@@ -293,8 +299,8 @@
     <div style="margin:20px 100px 20px 100px;min-height: 500px">
         <div class="layui-row layui-col-space30">
             <div class="layui-col-md9" style="min-height: 480px">
-                <div>
-<%--                <form class="layui-form" method="post">--%>
+                <div class="layui-form">
+<%--                <form class="layui-form">--%>
                     <div class="layui-row layui-col-space10">
                         <div class="layui-col-md7">
                             <div class="layui-form-item">
@@ -315,6 +321,19 @@
                             <div class="layui-form-item">
                                 <img class="layui-upload-img " id="showPic" style="width: 320px;height: 300px;">
                             </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">菜谱分类</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="classification" value="家常菜" title="家常菜" checked>
+                            <input type="radio" name="classification" value="地方特色菜" title="地方特色菜">
+                            <input type="radio" name="classification" value="甜点/面食" title="甜点/面食">
+                            <input type="radio" name="classification" value="快餐" title="快餐">
+                            <input type="radio" name="classification" value="中式" title="中式">
+                            <input type="radio" name="classification" value="西式" title="西式">
+                            <input type="radio" name="classification" value="日韩料理" title="日韩料理">
+                            <input type="radio" name="classification" value="其他" title="其他">
                         </div>
                     </div>
                     <div class="layui-form-item layui-form-text">
@@ -347,7 +366,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="layui-form-item layui-form-text">
                         <label class="layui-form-label">小提示</label>
                         <div class="layui-input-block">

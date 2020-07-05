@@ -22,31 +22,24 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<Menu> findAllMenu() {
-        System.out.println("业务层查找执行");
         return menuDao.findAllMenu();
     }
 
     @Override
     public Integer saveMenu(Menu menu) {
-        System.out.println("业务层保存执行");
         Integer i=menuDao.saveMenu(menu);
         Integer newId=menu.getMenuId();
-//        System.out.println("业务层的menu的i"+i);
-//        System.out.println("业务层的id"+menu.getMenuId());
         return newId;
     }
 
     @Override
     public void saveIngredients(Ingredients ingredients) {
-        System.out.println("业务层执行保存菜单食材");
         ingredientsDao.saveIngredients(ingredients);
     }
 
     @Override
     public void saveSteps(Steps steps) {
-        System.out.println("业务层执行保存菜单步骤");
         stepsDao.saveSteps(steps);
-        System.out.println("业务层完成");
     }
 
     @Override
@@ -60,4 +53,36 @@ public class MenuServiceImpl implements MenuService {
         Menu menu=menuDao.findMenuByMenuId(menuId);
         return menu;
     }
+
+    @Override
+    public void deleteIngredients(Integer menuId) {
+        ingredientsDao.deleteIngredientsById(menuId);
+    }
+
+    @Override
+    public void deleteSteps(Integer menuId) {
+        stepsDao.deleteStepsById(menuId);
+    }
+
+    @Override
+    public void updateMenu(Menu menu) {
+        menuDao.updateMenu(menu);
+    }
+
+    @Override
+    public List<Ingredients> findIngredientsByMenuId(Integer menuId) {
+        return ingredientsDao.findIngredientsById(menuId);
+    }
+
+    @Override
+    public List<Steps> findStepsByMenuId(Integer menuId) {
+        return stepsDao.findStepsById(menuId);
+    }
+
+    @Override
+    public void deleteMenu(Integer menuId) {
+        menuDao.deleteMenu(menuId);
+    }
+
+
 }

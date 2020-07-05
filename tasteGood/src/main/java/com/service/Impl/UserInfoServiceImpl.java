@@ -1,6 +1,8 @@
 package com.service.Impl;
 import com.dao.UserInfoDao;
+import com.dao.UserRoleDao;
 import com.domain.UserInfo;
+import com.domain.UserRole;
 import com.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired
     private UserInfoDao userInfoDao;
+    @Autowired
+    private UserRoleDao userRoleDao;
 
     @Override
     public List<UserInfo> findAllUser() {
@@ -19,9 +23,10 @@ public class UserInfoServiceImpl implements UserInfoService {
         return userInfos;
     }
 
-    public void saveUserInfo(UserInfo userInfo){
-        System.out.println("业务层");
-        userInfoDao.saveUserInfo(userInfo);
+    public Integer saveUserInfo(UserInfo userInfo){
+        int i=userInfoDao.saveUserInfo(userInfo);
+        Integer userId=userInfo.getUserId();
+        return userId;
     }
 
     @Override
@@ -55,5 +60,10 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public void updateUserPhoto(String userPhoto, Integer userId) {
         userInfoDao.updateUserPhoto(userPhoto,userId);
+    }
+
+    @Override
+    public void addUserRole(UserRole userRole) {
+        userRoleDao.addUserRole(userRole);
     }
 }

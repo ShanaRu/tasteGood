@@ -42,6 +42,7 @@ public class MenuController {
         String time=menuData.getString("uploadTime");
         Date uploadTime=new Date();//当前时间
         String tip=menuData.getString("tip");
+        String classification=menuData.getString("classification");
         JSONArray ingredientsArray=menuData.getJSONArray("ingredients");
         JSONArray stepsArray=menuData.getJSONArray("steps");
         //放入Menu对象中
@@ -49,23 +50,21 @@ public class MenuController {
         menu.setMenuCover(menuCover);
         menu.setMenuDetail(menuDetail);
         menu.setTip(tip);
+        menu.setClassification(classification);
         menu.setUploadTime(uploadTime);
         menu.setMenuName(menuName);
         HttpSession session=request.getSession();//获取用户id
         Integer uid=(Integer)session.getAttribute("userId");
         menu.setUserId(uid);
-        menu.setClassification("汤");
         menu.setCollection(0);
         Integer newId=menuService.saveMenu(menu);//拿到的新增id
         saveIngredients(newId,ingredientsArray);
         saveSteps(newId,stepsArray);
-        System.out.println("写完了跳转主页");
         return "200";
     }
 
     @RequestMapping("/saveIngredients")
     public void saveIngredients(Integer newId,JSONArray ingredientsArray){
-        System.out.println("执行了菜单材料");
         JSONObject ingredientsObject;
         Ingredients oneIngredient =new Ingredients();
         for (int i = 0; i < ingredientsArray.length(); i++) {
@@ -76,14 +75,12 @@ public class MenuController {
             oneIngredient.setDosage(dosage);
             oneIngredient.setMenuId(newId);
             menuService.saveIngredients(oneIngredient);
-            System.out.println(oneIngredient);
         }
 
     }
 
     @RequestMapping("/saveSteps")
     public void saveSteps(Integer newId,JSONArray stepsArray){
-        System.out.println("执行了菜单步骤");
         JSONObject stepsObject;
         Steps oneSteps =new Steps();
         for (int i = 0; i < stepsArray.length(); i++){
@@ -94,7 +91,6 @@ public class MenuController {
             oneSteps.setStepChar(stepChar);
             oneSteps.setMenuId(newId);
             menuService.saveSteps(oneSteps);
-            System.out.println(oneSteps);
         }
     }
 
@@ -102,12 +98,8 @@ public class MenuController {
     @RequestMapping("/userMenu")
     public String userMenu(Model model, HttpServletRequest request, HttpServletResponse response){
         HttpSession session=request.getSession();
-//        System.out.println(session.getAttribute("userName"));
-//        System.out.println(session.getAttribute("userId"));
         Integer uid=(int)session.getAttribute("userId");
-//        System.out.println(uid);
         List<Menu> menus=menuService.findAllMenuByUserId(uid);
-//        List<Menu> menus=menuService.findAllMenuByUserId(3);
 //        for (Menu menu:menus){
 //            System.out.println(menu);
 //            System.out.println(menu.getIngredients());
@@ -120,10 +112,65 @@ public class MenuController {
     //根据menuId查询菜谱
     @RequestMapping("/showMenu")
     public String showMenu(@RequestParam("menuId")Integer menuId,Model model){
-//        System.out.println(menuId);
         Menu menu=menuService.findMenuByMenuId(menuId);
         model.addAttribute("menu",menu);
         return "showMenu";
     }
 
+    //跳到修改菜谱页面
+    @RequestMapping("/modifyMenu")
+    public String modifyMenu(@RequestParam("menuId")Integer menuId,Model model){
+        Menu menu=menuService.findMenuByMenuId(menuId);
+        model.addAttribute("menu",menu);
+        System.out.println(menu);
+        return "modifyMenu";
+    }
+
+    //更新菜谱信息
+    @RequestMapping("/updateMenu")
+    @ResponseBody
+    public String updateMenu(@RequestBody String updateData){
+        //从前端拿到的数据
+        JSONObject updateMenu = new JSONObject(updateData);
+        String menuName=updateMenu.getString("menuName");
+        String menuCover=updateMenu.getString("menuCover");
+        String menuDetail=updateMenu.getString("menuDetail");
+        String time=updateMenu.getString("uploadTime");
+        Date uploadTime=new Date();//当前时间
+        String tip=updateMenu.getString("tip");
+        String classification=updateMenu.getString("classification");
+        Integer menuId=updateMenu.getInt("menuId");
+        Integer userId=updateMenu.getInt("userId");
+        Integer collection=updateMenu.getInt("collection");
+        JSONArray ingredientsArray=updateMenu.getJSONArray("ingredients");
+        JSONArray stepsArray=updateMenu.getJSONArray("steps");
+        //先删掉子表数据
+        menuService.deleteIngredients(menuId);
+        menuService.deleteSteps(menuId);
+        //放入Menu对象中
+        Menu menu=new Menu();
+        menu.setMenuName(menuName);
+        menu.setMenuCover(menuCover);
+        menu.setMenuDetail(menuDetail);
+        menu.setClassification(classification);
+        menu.setCollection(collection);
+        menu.setTip(tip);
+        menu.setUploadTime(uploadTime);
+        menu.setMenuId(menuId);
+//        HttpSession session=request.getSession();//获取用户id
+//        Integer uid=(Integer)session.getAttribute("userId");
+        menu.setUserId(userId);
+        menuService.updateMenu(menu);//更新菜单
+        saveIngredients(menuId,ingredientsArray);
+        saveSteps(menuId,stepsArray);
+        return "200";
+    }
+
+    //删除菜谱
+    @RequestMapping("/deleteMenu")
+    @ResponseBody
+    public String deleteMenu(@RequestParam("menuId") Integer menuId){
+        menuService.deleteMenu(menuId);
+        return "200";
+    }
 }

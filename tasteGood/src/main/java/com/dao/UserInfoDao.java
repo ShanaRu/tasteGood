@@ -1,10 +1,7 @@
 package com.dao;
 
 import com.domain.UserInfo;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,7 +15,8 @@ public interface UserInfoDao {
 
     //插入一行用户信息
     @Insert("Insert into userInfo(userName,userPassword,userIntroduce,userSex,userPhoto) values(#{userName},#{userPassword},#{userIntroduce},#{userSex},#{userPhoto})")
-    public void saveUserInfo(UserInfo userInfo);
+    @Options(useGeneratedKeys=true,keyProperty="userId",keyColumn="userId")
+    public int saveUserInfo(UserInfo userInfo);
 
     //根据userName查找用户信息
     @Select("select * from userInfo where userName=#{userName}")

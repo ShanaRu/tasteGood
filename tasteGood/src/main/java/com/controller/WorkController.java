@@ -26,7 +26,6 @@ public class WorkController {
 
     @RequestMapping("/addWork")
     public String addWork(@RequestParam("menuId")Integer menuId, @RequestParam("menuName")String menuName,Model model){
-//        System.out.println("进来了");
         model.addAttribute("menuId",menuId);
         model.addAttribute("menuName",menuName);
         return "addWork";
@@ -42,7 +41,6 @@ public class WorkController {
         Date time=new Date();
         works.setWorkTime(time);
         worksService.saveWorks(works);
-        System.out.println("跳回主页");
         response.sendRedirect(request.getContextPath()+"/userInfo/homePage");
     }
 
@@ -79,10 +77,7 @@ public class WorkController {
     @RequestMapping("/getWork")
     @ResponseBody
     public Works getWork(@RequestParam("workId") Integer workId){
-//        Integer wid=Integer.parseInt(workId);
-//        System.out.println("workId说"+workId);
         Works work=worksService.findWorksByWorkId(workId);
-//        System.out.println(work);
         return work;
     }
 

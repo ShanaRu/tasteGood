@@ -24,4 +24,23 @@ public interface MenuService {
 
     //根据菜谱id查询菜谱信息
     public Menu findMenuByMenuId(Integer menuId);
+
+    //删除菜单食材
+    public void deleteIngredients(Integer menuId);
+
+    //删除菜单步骤
+    public void deleteSteps(Integer menuId);
+
+    //更新菜谱
+    public void updateMenu(Menu menu);
+
+    //根据菜谱id获取全部Ingredients
+    public List<Ingredients> findIngredientsByMenuId(Integer menuId);
+
+    //根据菜谱id获取全部Steps
+    public List<Steps> findStepsByMenuId(Integer menuId);
+
+    //删除菜谱
+    public void deleteMenu(Integer menuId);
+
 }
