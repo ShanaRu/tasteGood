@@ -72,4 +72,21 @@ public interface MenuDao {
     //删除菜谱
     @Delete("Delete from menu where menuId=#{menuId}")
     public void deleteMenu(Integer menuId);
+
+    //模糊查询菜谱名
+    @Select("select * from menu where menuName LIKE '%${value}%'")
+    @Results(id="searchMenu",value = {
+            @Result(id=true,property = "menuId",column = "menuId"),
+            @Result(property = "menuName",column = "menuName"),
+            @Result(property = "menuCover",column = "menuCover"),
+            @Result(property = "menuDetail",column = "menuDetail"),
+            @Result(property = "tip",column = "tip"),
+            @Result(property = "uploadTime",column = "uploadTime"),
+            @Result(property = "userId",column = "userId"),
+            @Result(property = "collection",column = "collection"),
+            @Result(property = "classification",column = "classification"),
+            @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
+            @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
+    })
+    public List<Menu> searchMenu(String menuName);
 }

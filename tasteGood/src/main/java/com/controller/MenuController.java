@@ -173,4 +173,11 @@ public class MenuController {
         menuService.deleteMenu(menuId);
         return "200";
     }
+
+    @RequestMapping("/searchMenu")
+    public String searchMenu(@RequestParam("searchMenuName") String searchMenuName,Model model){
+        List<Menu> menus=menuService.searchMenu(searchMenuName);
+        model.addAttribute("menus",menus);
+        return "searchMenu";
+    }
 }

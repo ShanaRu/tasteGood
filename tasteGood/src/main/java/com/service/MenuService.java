@@ -43,4 +43,7 @@ public interface MenuService {
     //删除菜谱
     public void deleteMenu(Integer menuId);
 
+    //模糊查询菜谱名
+    public List<Menu> searchMenu(String menuName);
+
 }

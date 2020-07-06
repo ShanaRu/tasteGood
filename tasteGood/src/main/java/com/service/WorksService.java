@@ -20,4 +20,10 @@ public interface WorksService {
 
     //按照时间顺序显示所有作品
     public List<Works> showWorks();
+
+    //删除作品
+    public void deleteWork(Integer workId);
+
+    //点赞+1
+    public void addLikes(Integer workId,Integer likes);
 }

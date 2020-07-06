@@ -21,6 +21,16 @@
                 layer.msg(elem.text());
             });
         });
+
+        layui.use('form', function(){
+            var form = layui.form;
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+                layer.msg(JSON.stringify(data.field));
+                console.log(data.field);
+                return false;
+            });
+        });
     </script>
     <style type="text/css">
         .myCss{
@@ -33,31 +43,25 @@
             <div class="layui-logo layui-bg-green" style="padding-left: 1%"><a href="${pageContext.request.contextPath}/userInfo/homePage" style="font-size: 27px;color: #ffe152">味食荟</a></div>
             <!-- 头部区域（可配合layui已有的水平导航） -->
             <ul class="layui-nav layui-layout-left layui-bg-green">
-                <li class="layui-nav-item layui-this"><a href="${pageContext.request.contextPath}/userInfo/homePage" class="myCss">首页</a></li>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/userInfo/homePage" class="myCss">首页</a></li>
                 <li class="layui-nav-item"><a href="" class="myCss" >菜谱</a></li>
                 <li class="layui-nav-item"><a href="" class="myCss" >菜单系列</a></li>
                 <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/work/showWorks" class="myCss">作品</a></li>
                 <li class="layui-nav-item">
-                    <form action="" method="post" class="layui-form">
-                        <label class="layui-form-label myCss" style="">搜索</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="searchMenuName" placeholder="请输入菜谱名称" autocomplete="off" class="layui-input myCss">
+                    <form action="${pageContext.request.contextPath}/menu/searchMenu" method="post" class="layui-form">
+                        <div class="layui-form-item" style="margin: 8px 0px 7px 30px">
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input type="text" name="searchMenuName" placeholder="请输入菜谱名称" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-input-inline">
+                                    <button class="layui-btn layui-btn-primary" lay-sumbit lay-filter="formDemo" style="padding-left: 8px;padding-right: 8px"><i class="layui-icon layui-icon-search"></i>搜索菜谱</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </li>
             </ul>
-<%--            <ul class="layui-nav layui-layout-right layui-bg-green" style="padding-right: 5%;height: 60px">--%>
-<%--                <li class="layui-nav-item">--%>
-<%--                    <a href="" ><img src="//t.cn/RCzsdCq" class="layui-nav-img" alt="*" target="useriframe"></a>--%>
-<%--                    <dl class="layui-nav-child">--%>
-<%--                        <dd><a href="javascript:;" >我的主页</a></dd>--%>
-<%--                        <dd><a href="javascript:;" >个人信息</a></dd>--%>
-<%--                        <dd><a href="javascript:;" >我的菜谱</a></dd>--%>
-<%--                        <dd><a href="javascript:;" >我的收藏</a></dd>--%>
-<%--                        <dd><a href="javascript:;" >退出</a></dd>--%>
-<%--                    </dl>--%>
-<%--                </li>--%>
-<%--            </ul>--%>
             <ul class="layui-nav layui-layout-right layui-bg-green" style="padding-right: 5%">
                 <li class="layui-nav-item">
                     <a href="javascript:;">

@@ -30,7 +30,8 @@
                             if(data=="200"){
                                 layer.msg('删除成功', {icon: 1,offset:'220px'},);
                                 <%--location.href = "${pageContext.request.contextPath}/menu/userMenu";--%>
-                                window.setTimeout("window.location='${pageContext.request.contextPath}/menu/userMenu'",2000);//延迟2秒跳转
+                                <%--window.setTimeout("window.location='${pageContext.request.contextPath}/menu/userMenu'",2000);//延迟2秒跳转--%>
+                                window.setTimeout("window.location.reload();",1500);//延迟2秒跳转
                             }else{
                                 layer.msg('无法删除', {icon: 5,offset:'220px'},);
                             }
@@ -68,7 +69,6 @@
                     <p>${userMenu.collection}收藏</p>
                     <a href="${pageContext.request.contextPath}/menu/modifyMenu?menuId=${userMenu.menuId}" class="layui-btn">修改</a>
                     <button class="layui-btn" onclick="deleteMenu(${userMenu.menuId})">删除</button>
-<%--                    <a href="${pageContext.request.contextPath}/menu/deleteMenu?menuId=${userMenu.menuId}" class="layui-btn">删除</a>--%>
                 </div>
             </div>
 

@@ -30,7 +30,8 @@
                             if(data=="200"){
                                 layer.msg('删除成功', {icon: 1,offset:'220px'},);
                                 <%--location.href = "${pageContext.request.contextPath}/menu/userMenu";--%>
-                                window.setTimeout("window.location='${pageContext.request.contextPath}/menu/userMenu'",2000);//延迟2秒跳转
+                                <%--window.setTimeout("window.location='${pageContext.request.contextPath}/menu/userMenu'",2000);//延迟2秒跳转--%>
+                                window.setTimeout("window.location.reload();",1500);//延迟2秒跳转
                             }else{
                                 layer.msg('无法删除', {icon: 5,offset:'220px'},);
                             }
@@ -45,49 +46,7 @@
                 });
 
             });
-
-            <%--layui.use('layer', function(){--%>
-            <%--    var layer = layui.layer;--%>
-            <%--    layer.confirm('确定要删除该菜谱吗？', {--%>
-            <%--        btn: ['确定','取消'] //按钮--%>
-            <%--    }, function(){--%>
-            <%--        $.ajax({--%>
-            <%--            url:"${pageContext.request.contextPath}/menu/deleteMenu",--%>
-            <%--            data:"menuId="+menuId,--%>
-            <%--            datatype:"text",--%>
-            <%--            type:"post",--%>
-            <%--            success:function (data) {--%>
-            <%--                if(data=="200"){--%>
-            <%--                    layer.msg('删除成功', {icon: 1});--%>
-            <%--                }else{--%>
-            <%--                    layer.msg('无法删除', {icon: 5});--%>
-            <%--                }--%>
-            <%--            },--%>
-            <%--            error:function (data) {--%>
-            <%--                layer.msg('无法删除', {icon: 5});--%>
-            <%--            }--%>
-            <%--        });--%>
-
-            <%--    }, function(){--%>
-            <%--        layer.msg('无法删除', {icon: 5});--%>
-            <%--        // layer.msg('也可以这样', {--%>
-            <%--        //     time: 20000, //20s后自动关闭--%>
-            <%--        //     btn: ['明白了', '知道了']--%>
-            <%--        // });--%>
-            <%--    });--%>
-            <%--});--%>
-
-
-
-
         }
-        //
-        // layui.use(['layer', 'form'], function(){
-        //     var layer = layui.layer
-        //         ,form = layui.form;
-        //
-        //     layer.msg('Hello World');
-        // });
     </script>
 </head>
 <body>
@@ -110,7 +69,6 @@
                     <p>${userMenu.collection}收藏</p>
                     <a href="${pageContext.request.contextPath}/menu/modifyMenu?menuId=${userMenu.menuId}" class="layui-btn">修改</a>
                     <button class="layui-btn" onclick="deleteMenu(${userMenu.menuId})">删除</button>
-<%--                    <a href="${pageContext.request.contextPath}/menu/deleteMenu?menuId=${userMenu.menuId}" class="layui-btn">删除</a>--%>
                 </div>
             </div>
 

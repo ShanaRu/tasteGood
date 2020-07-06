@@ -89,4 +89,21 @@ public class WorkController {
         return "showWorks";
     }
 
+    //删除作品
+    @RequestMapping("/deleteWork")
+    @ResponseBody
+    public String deleteWork(@RequestParam("workId") Integer workId){
+        worksService.deleteWork(workId);
+        return "200";
+    }
+
+    //点赞+1
+    @RequestMapping("/addLikes")
+    @ResponseBody
+    public String addLikes(@RequestParam("workId") Integer workId){
+        Works work=worksService.findWorksByWorkId(workId);
+        Integer likes=work.getLikes()+1;
+        worksService.addLikes(workId,likes);
+        return "200";
+    }
 }

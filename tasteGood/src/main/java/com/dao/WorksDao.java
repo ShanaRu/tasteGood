@@ -1,10 +1,7 @@
 package com.dao;
 
 import com.domain.Works;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -26,5 +23,11 @@ public interface WorksDao {
 
     @Select("select * from works order by workTime desc")
     public List<Works> showWorks();
+
+    @Delete("delete from works where workId=#{workId}")
+    public void deleteWork(Integer workId);
+
+    @Update("update works set likes=#{likes} where workId=#{workId}")
+    public void addLikes(@Param("workId") Integer workId,@Param("likes")Integer likes);
 
 }

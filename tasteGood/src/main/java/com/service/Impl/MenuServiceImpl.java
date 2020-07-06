@@ -84,5 +84,8 @@ public class MenuServiceImpl implements MenuService {
         menuDao.deleteMenu(menuId);
     }
 
-
+    @Override
+    public List<Menu> searchMenu(String menuName) {
+        return menuDao.searchMenu(menuName);
+    }
 }

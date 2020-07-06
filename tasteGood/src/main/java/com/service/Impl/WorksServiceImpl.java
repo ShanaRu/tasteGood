@@ -44,5 +44,13 @@ public class WorksServiceImpl implements WorksService {
         return works;
     }
 
+    @Override
+    public void deleteWork(Integer workId) {
+        worksDao.deleteWork(workId);
+    }
 
+    @Override
+    public void addLikes(Integer workId, Integer likes) {
+        worksDao.addLikes(workId,likes);
+    }
 }
