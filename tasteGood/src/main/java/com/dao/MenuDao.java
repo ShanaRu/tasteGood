@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.domain.Collection;
 import com.domain.Menu;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -23,12 +24,12 @@ public interface MenuDao {
             @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
             @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
     })
-    public List<Menu> findAllMenu();
+    List<Menu> findAllMenu();
 
     //保存菜单信息
     @Insert("Insert into menu(menuName,menuCover,menuDetail,tip,uploadTime,userId,collection,classification) values(#{menuName},#{menuCover},#{menuDetail},#{tip},#{uploadTime},#{userId},#{collection},#{classification})")
     @Options(useGeneratedKeys=true,keyProperty="menuId",keyColumn="menuId")
-    public int saveMenu(Menu menu);
+    int saveMenu(Menu menu);
 
     //根据用户id查询所有菜谱
     @Select("select * from menu where userId=#{userId}")
@@ -45,7 +46,7 @@ public interface MenuDao {
             @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
             @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
     })
-    public List<Menu> findAllMenuByUserId(int userId);
+    List<Menu> findAllMenuByUserId(int userId);
 
     //根据菜谱id查询所有菜谱
     @Select("select * from menu where menuId=#{menuId}")
@@ -62,16 +63,16 @@ public interface MenuDao {
             @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
             @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
     })
-    public Menu findMenuByMenuId(int menuId);
+    Menu findMenuByMenuId(int menuId);
 
 
     //保存菜单信息
     @Update("Update menu set menuName=#{menuName},menuCover=#{menuCover},menuDetail=#{menuDetail},tip=#{tip},uploadTime=#{uploadTime},collection=#{collection},classification=#{classification} where menuId=#{menuId}")
-    public void updateMenu(Menu menu);
+    void updateMenu(Menu menu);
 
     //删除菜谱
     @Delete("Delete from menu where menuId=#{menuId}")
-    public void deleteMenu(Integer menuId);
+    void deleteMenu(Integer menuId);
 
     //模糊查询菜谱名
     @Select("select * from menu where menuName LIKE '%${value}%'")
@@ -88,5 +89,29 @@ public interface MenuDao {
             @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
             @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
     })
-    public List<Menu> searchMenu(String menuName);
+    List<Menu> searchMenu(String menuName);
+
+    @Select("select * from menu where classification=#{classification}")
+    @Results(id="searchClassification",value = {
+            @Result(id=true,property = "menuId",column = "menuId"),
+            @Result(property = "menuName",column = "menuName"),
+            @Result(property = "menuCover",column = "menuCover"),
+            @Result(property = "menuDetail",column = "menuDetail"),
+            @Result(property = "tip",column = "tip"),
+            @Result(property = "uploadTime",column = "uploadTime"),
+            @Result(property = "userId",column = "userId"),
+            @Result(property = "collection",column = "collection"),
+            @Result(property = "classification",column = "classification"),
+            @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
+            @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
+    })
+    List<Menu> searchClassification(String classification);
+
+    //获取collection信息
+    @Select("select collection from menu where menuId=#{menuId}")
+    Integer getCollection(Integer menuId);
+
+    //保存菜单信息
+    @Update("Update menu set collection=#{collection} where menuId=#{menuId}")
+    void updateCollection(@Param("menuId") Integer menuId,@Param("collection") Integer collection);
 }

@@ -18,6 +18,12 @@
 <body>
     <%@include file="navbar.jsp"%>
     <div style="margin:20px 100px 20px 100px;min-height: 500px">
+        <div style="height: 35px">
+            <span class="layui-breadcrumb">
+                <a href="${pageContext.request.contextPath}/userInfo/homePage">首页</a>
+                <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${menu.menuId}"><cite>${menu.menuName}</cite></a>
+            </span>
+        </div>
         <div class="layui-row layui-col-space30">
             <div class="layui-col-md8">
                 <h1 style="font-size: 30px">${menu.menuName}</h1>

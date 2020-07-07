@@ -248,7 +248,6 @@
                     object2.step=step1.childNodes[i].value;
                     array2.push(object2);
                 }
-
             }
             var count=0;
             for (let i=0;i<step2.childNodes.length;i++){
@@ -290,13 +289,18 @@
                 }
             });
         }
-
     </script>
 
 </head>
 <body>
     <%@include file="navbar.jsp"%>
     <div style="margin:20px 100px 20px 100px;min-height: 500px">
+        <div>
+            <span class="layui-breadcrumb">
+                <a href="${pageContext.request.contextPath}/userInfo/homePage">首页</a>
+                <a href="${pageContext.request.contextPath}/menu/addMenu"><cite>添加菜谱</cite></a>
+            </span>
+        </div>
         <div class="layui-row layui-col-space30">
             <div class="layui-col-md9" style="min-height: 480px">
                 <div class="layui-form">

@@ -323,6 +323,12 @@
 <body>
 <%@include file="navbar.jsp"%>
 <div style="margin:20px 100px 20px 100px;min-height: 500px">
+    <div style="height: 35px">
+        <span class="layui-breadcrumb">
+            <a href="${pageContext.request.contextPath}/userInfo/homePage">首页</a>
+            <a href="${pageContext.request.contextPath}/menu/modifyMenu?menuId=${menu.menuId}"><cite>修改菜谱</cite></a>
+        </span>
+    </div>
     <div class="layui-row layui-col-space30">
         <div class="layui-col-md9" style="min-height: 480px">
             <div class="layui-form">

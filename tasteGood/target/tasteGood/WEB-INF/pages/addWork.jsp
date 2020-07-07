@@ -53,6 +53,12 @@
 </div>
 <%@include file="navbar.jsp"%>
     <div style="margin:20px 100px 20px 100px;min-height: 500px">
+        <div>
+            <span class="layui-breadcrumb">
+                <a href="${pageContext.request.contextPath}/userInfo/homePage">首页</a>
+                <a href="${pageContext.request.contextPath}/work/addWork"><cite>添加作品</cite></a>
+            </span>
+        </div>
         <div class="layui-row layui-col-space30">
             <div class="layui-col-md9">
                 <form class="layui-form" method="post" action="${pageContext.request.contextPath}/work/saveWork">

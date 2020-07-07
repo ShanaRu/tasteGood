@@ -124,8 +124,12 @@
 <body>
     <%@include file="navbar.jsp"%>
         <div style="margin:20px 100px 20px 100px;min-height: 500px" class="layui-row layui-col-space10">
-<%--            <input type="text" name="summary" style="display: none" id="showSummary">&lt;%&ndash;隐藏标签&ndash;%&gt;--%>
-<%--            <input type="text" name="workPhoto" style="display: none" id="showPic">&lt;%&ndash;隐藏标签&ndash;%&gt;--%>
+            <div>
+            <span class="layui-breadcrumb">
+                <a href="${pageContext.request.contextPath}/userInfo/homePage">首页</a>
+                <a href="${pageContext.request.contextPath}/work/userWorks"><cite>我的作品</cite></a>
+            </span>
+            </div>
             <c:forEach items="${userWorks}" var="works">
                 <div style="padding: 15px;margin-bottom: 20px" class="layui-col-md6">
                     <div class="layui-col-md6">

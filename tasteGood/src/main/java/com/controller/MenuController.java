@@ -1,12 +1,15 @@
 package com.controller;
 
+import com.domain.Collection;
 import com.domain.Ingredients;
 import com.domain.Menu;
 import com.domain.Steps;
 import com.service.MenuService;
+import com.sun.deploy.net.HttpResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -94,6 +97,7 @@ public class MenuController {
         }
     }
 
+
     //根据userid查询菜谱
     @RequestMapping("/userMenu")
     public String userMenu(Model model, HttpServletRequest request, HttpServletResponse response){
@@ -174,10 +178,21 @@ public class MenuController {
         return "200";
     }
 
+    //根据名称查找菜谱
     @RequestMapping("/searchMenu")
     public String searchMenu(@RequestParam("searchMenuName") String searchMenuName,Model model){
         List<Menu> menus=menuService.searchMenu(searchMenuName);
         model.addAttribute("menus",menus);
         return "searchMenu";
     }
+
+    //根据菜谱查找菜谱
+    @RequestMapping("/searchClassification")
+    public String searchClassification(@RequestParam("classification") String classification,Model model){
+        List<Menu> menus=menuService.searchClassification(classification);
+        model.addAttribute("menus",menus);
+        return "classificationMenu";
+    }
+
+
 }

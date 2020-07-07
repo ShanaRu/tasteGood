@@ -88,6 +88,12 @@
 <body>
     <%@include file="navbar.jsp"%>
     <div style="margin:20px 100px 20px 100px;min-height: 500px" class="layui-row layui-col-space10">
+        <div>
+            <span class="layui-breadcrumb">
+                <a href="${pageContext.request.contextPath}/userInfo/homePage">首页</a>
+                <a href="${pageContext.request.contextPath}/work/showWorks"><cite>作品区</cite></a>
+            </span>
+        </div>
         <c:forEach items="${works}" var="work">
             <div class="layui-col-md4">
                 <div>
