@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface WorksDao {
     @Insert("insert into works(menuName,menuId,workId,summary,workPhoto,likes,userId,workTime) values(#{menuName},#{menuId},#{workId},#{summary},#{workPhoto},#{likes},#{userId},#{workTime})")
-    public void saveWorks(Works works);
+    void saveWorks(Works works);
 
     @Select("select * from works where userId=#{userId}")
     List<Works> findWorksByUserId(Integer userId);
@@ -19,15 +19,21 @@ public interface WorksDao {
     Works findWorksByWorkId(Integer workId);
 
     @Update("update works set summary=#{summary},workPhoto=#{workPhoto},workTime=#{workTime} where workId=#{workId}")
-    public void updateWork(@Param("workPhoto") String workPhoto, @Param("summary") String summary, @Param("workId") Integer workId, @Param("workTime") Date workTime);
+    void updateWork(@Param("workPhoto") String workPhoto, @Param("summary") String summary, @Param("workId") Integer workId, @Param("workTime") Date workTime);
 
     @Select("select * from works order by workTime desc")
-    public List<Works> showWorks();
+    List<Works> showWorks();
 
     @Delete("delete from works where workId=#{workId}")
-    public void deleteWork(Integer workId);
+    void deleteWork(Integer workId);
 
     @Update("update works set likes=#{likes} where workId=#{workId}")
-    public void addLikes(@Param("workId") Integer workId,@Param("likes")Integer likes);
+    void addLikes(@Param("workId") Integer workId,@Param("likes")Integer likes);
+
+    @Select("select * from works order by likes desc")
+    List<Works> getPopularWorks();
+
+    @Select("select count(*) totalWork from works where userId=#{userId} group by userId")
+    Integer countWorksById(Integer userId);
 
 }

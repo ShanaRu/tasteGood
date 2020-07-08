@@ -54,5 +54,13 @@ public class CollectionServiceImpl implements CollectionService {
         return collectionDao.findCollectionById(collection);
     }
 
+    @Override
+    public List<Collection> getPopularCollection() {
+        return collectionDao.getPopularCollection().subList(0,7);
+    }
 
+    @Override
+    public Integer countCollectionsById(Integer userId) {
+        return collectionDao.countCollectionsById(userId);
+    }
 }

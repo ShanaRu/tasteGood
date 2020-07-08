@@ -25,4 +25,10 @@ public interface CollectionDao {
 
     @Select("select * from collections where menuId=#{menuId} and userId=#{userId}")
     Collection findCollectionById(Collection collection);
+
+    @Select("select sum(complete) complete,menuId from collections group by menuId order by sum(complete) desc")
+    List<Collection> getPopularCollection();
+
+    @Select("select count(*) totalCollection from collections where userId=#{userId} group by userId")
+    Integer countCollectionsById(Integer userId);
 }

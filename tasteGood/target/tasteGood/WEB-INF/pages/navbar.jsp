@@ -26,8 +26,8 @@
             var form = layui.form;
             //监听提交
             form.on('submit(formDemo)', function(data){
-                layer.msg(JSON.stringify(data.field));
-                console.log(data.field);
+                // layer.msg(JSON.stringify(data.field));
+                // console.log(data.field);
                 return false;
             });
         });
@@ -49,7 +49,7 @@
                 <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/work/showWorks" class="myCss">作品</a></li>
                 <li class="layui-nav-item">
                     <form action="${pageContext.request.contextPath}/menu/searchMenu" method="post" class="layui-form">
-                        <div class="layui-form-item" style="margin: 8px 0px 7px 30px">
+                        <div class="layui-form-item" style="margin: 8px 0 7px 30px">
                             <div class="layui-inline">
                                 <div class="layui-input-inline">
                                     <input type="text" name="searchMenuName" placeholder="请输入菜谱名称" autocomplete="off" class="layui-input">
@@ -64,11 +64,11 @@
             </ul>
             <ul class="layui-nav layui-layout-right layui-bg-green" style="padding-right: 5%">
                 <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    <a href="">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img" alt="*">
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" >我的主页</a></dd>
+                        <dd><a href="" >我的主页</a></dd>
                         <dd><a href="${pageContext.request.contextPath}/userInfo/modifyUserInfo" >个人信息</a></dd>
                         <dd><a href="${pageContext.request.contextPath}/menu/userMenu" >我的菜谱</a></dd>
                         <dd><a href="${pageContext.request.contextPath}/work/userWorks" >我的作品</a></dd>
@@ -76,7 +76,7 @@
 <%--                        <dd><a href="javascript:;" >退出</a></dd>--%>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/">退出</a></li>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/userInfo/exit">退出</a></li>
             </ul>
         </div>
     </div>

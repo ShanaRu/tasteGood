@@ -23,14 +23,12 @@ public class WorksServiceImpl implements WorksService {
 
     @Override
     public List<Works> findWorksByUserId(Integer userId) {
-        List<Works> works = worksDao.findWorksByUserId(userId);
-        return works;
+        return worksDao.findWorksByUserId(userId);
     }
 
     @Override
     public Works findWorksByWorkId(Integer workId) {
-        Works work=worksDao.findWorksByWorkId(workId);
-        return work;
+        return worksDao.findWorksByWorkId(workId);
     }
 
     @Override
@@ -40,8 +38,7 @@ public class WorksServiceImpl implements WorksService {
 
     @Override
     public List<Works> showWorks() {
-        List<Works> works=worksDao.showWorks();
-        return works;
+        return worksDao.showWorks();
     }
 
     @Override
@@ -52,5 +49,15 @@ public class WorksServiceImpl implements WorksService {
     @Override
     public void addLikes(Integer workId, Integer likes) {
         worksDao.addLikes(workId,likes);
+    }
+
+    @Override
+    public List<Works> getPopularWorks() {
+        return worksDao.getPopularWorks();
+    }
+
+    @Override
+    public Integer countWorksById(Integer userId) {
+        return worksDao.countWorksById(userId);
     }
 }

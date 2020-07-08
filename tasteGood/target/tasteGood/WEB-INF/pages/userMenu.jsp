@@ -27,7 +27,7 @@
                         datatype:"text",
                         type:"post",
                         success:function (data) {
-                            if(data=="200"){
+                            if(data==="200"){
                                 layer.msg('删除成功', {icon: 1,offset:'220px'},);
                                 <%--location.href = "${pageContext.request.contextPath}/menu/userMenu";--%>
                                 <%--window.setTimeout("window.location='${pageContext.request.contextPath}/menu/userMenu'",2000);//延迟2秒跳转--%>
@@ -36,7 +36,7 @@
                                 layer.msg('无法删除', {icon: 5,offset:'220px'},);
                             }
                         },
-                        error:function (data) {
+                        error:function () {
                             layer.msg('无法删除', {icon: 5,offset:'220px'},);
                         }
                     });
@@ -57,16 +57,16 @@
                     type:'post',
                     data:"menuId="+menuId,
                     success:function (data) {
-                        if(data=="200"){
+                        if(data==="200"){
                             layer.msg('收藏成功', {icon: 1,offset:'220px'},);
                             window.setTimeout("window.location.reload();",1500);//延迟2秒跳转
-                        }else if(data=="400"){
+                        }else if(data==="400"){
                             layer.msg('已经收藏过了', {icon: 5,offset:'220px'},);
                         }else {
                             layer.msg('收藏失败', {icon: 5,offset:'220px'},);
                         }
                     },
-                    error:function (data) {
+                    error:function () {
                         layer.msg('收藏失败', {icon: 5,offset:'220px'},);
                     }
                 });
@@ -86,8 +86,8 @@
         <c:forEach items="${userMenus}" var="userMenu">
             <div style="padding: 15px;margin-bottom: 20px" class="layui-col-md6">
                 <div class="layui-col-md6">
-                    <a href="${pageContext.request.contextPath}/menu/modifyMenu?menuId=${userMenu.menuId}" style="display: inline-block;line-height:0px;">
-                        <img src="${pageContext.request.contextPath}/${userMenu.menuCover}" style="width: 240px;height: 200px;vertical-align:bottom;">
+                    <a href="${pageContext.request.contextPath}/menu/modifyMenu?menuId=${userMenu.menuId}" style="display: inline-block;line-height:0;">
+                        <img src="${pageContext.request.contextPath}/${userMenu.menuCover}" style="width: 240px;height: 200px;vertical-align:bottom;" alt="*">
                     </a>
                 </div>
                 <div class="layui-col-md6">

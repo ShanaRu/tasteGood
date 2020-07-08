@@ -114,4 +114,25 @@ public interface MenuDao {
     //保存菜单信息
     @Update("Update menu set collection=#{collection} where menuId=#{menuId}")
     void updateCollection(@Param("menuId") Integer menuId,@Param("collection") Integer collection);
+
+    //按收藏数量排行
+    @Select("select * from menu order by collection desc")
+    @Results(id="searchCollection",value = {
+            @Result(id=true,property = "menuId",column = "menuId"),
+            @Result(property = "menuName",column = "menuName"),
+            @Result(property = "menuCover",column = "menuCover"),
+            @Result(property = "menuDetail",column = "menuDetail"),
+            @Result(property = "tip",column = "tip"),
+            @Result(property = "uploadTime",column = "uploadTime"),
+            @Result(property = "userId",column = "userId"),
+            @Result(property = "collection",column = "collection"),
+            @Result(property = "classification",column = "classification"),
+            @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
+            @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
+    })
+    List<Menu> getPopularMenus();
+
+    @Select("select count(*) totalMenu from menu where userId=#{userId} group by userId")
+    Integer countMenusById(Integer userId);
+
 }

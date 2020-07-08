@@ -28,7 +28,7 @@
             <div class="layui-col-md8">
                 <h1 style="font-size: 30px">${menu.menuName}</h1>
 <%--                <div style="text-align:center">--%>
-                    <img src="${pageContext.request.contextPath}/${menu.menuCover}" style="width: 660px;height: 400px;">
+                    <img src="${pageContext.request.contextPath}/${menu.menuCover}" style="width: 660px;height: 400px;" alt="*">
 <%--                </div>--%>
                 <p>${menu.collection}收藏</p>
                 <p>${menu.classification}</p>
@@ -46,7 +46,7 @@
                             ${s.step}
                     </div>
                     <div class="layui-col-md6">
-                        <img src="${pageContext.request.contextPath}/${s.stepChar}" style="width: 200px;height: 200px;">
+                        <img src="${pageContext.request.contextPath}/${s.stepChar}" style="width: 200px;height: 200px;" alt="*">
                     </div>
                 </c:forEach>
                 <p>${menu.tip}</p>

@@ -101,5 +101,15 @@ public class MenuServiceImpl implements MenuService {
     public void updateCollection(Integer menuId,Integer collection) {
         menuDao.updateCollection(menuId,collection);
     }
+
+    @Override
+    public List<Menu> getPopularMenus() {
+        return menuDao.getPopularMenus();
+    }
+
+    @Override
+    public Integer countMenusById(Integer userId) {
+        return menuDao.countMenusById(userId);
+    }
 }
 

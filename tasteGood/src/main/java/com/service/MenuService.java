@@ -56,4 +56,9 @@ public interface MenuService {
     //更新收藏数量
     void updateCollection(Integer menuId,Integer collection);
 
+    //按收藏排行
+    List<Menu> getPopularMenus();
+
+    //用户收藏数量
+    Integer countMenusById(Integer userId);
 }

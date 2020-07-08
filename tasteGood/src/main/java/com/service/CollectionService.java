@@ -7,20 +7,27 @@ import java.util.List;
 
 public interface CollectionService {
     //根据用户id查询收藏
-    public List<Collection> findCollectionsByUserId(Integer userId);
+    List<Collection> findCollectionsByUserId(Integer userId);
 
     //根据收藏的menuId查询菜谱
-    public List<Menu> showCollections(Integer userId);
+    List<Menu> showCollections(Integer userId);
 
     //更新complete
-    public void updateComplete(Collection collection);
+    void updateComplete(Collection collection);
 
     //删除收藏
-    public void deleteCollection(Collection collection);
+    void deleteCollection(Collection collection);
 
     //增加收藏
-    public void addCollection(Collection collection);
+    void addCollection(Collection collection);
 
     //查找收藏
-    public Collection findCollectionById(Collection collection);
+    Collection findCollectionById(Collection collection);
+
+    //按完成次数排行
+    List<Collection> getPopularCollection();
+
+    //用户收藏数量
+    Integer countCollectionsById(Integer userId);
+
 }

@@ -5,7 +5,7 @@
   Time: 15:08
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
     <script type="text/javascript">
         window.onload=function(){
             $(document).ready(function () {
@@ -25,7 +25,7 @@
         layui.use('form', function(){
             var form = layui.form;
             //监听提交
-            form.on('submit(formDemo)', function(data){
+            form.on('submit(formDemo)', function(){
                 // layer.msg(JSON.stringify(data.field));
                 // console.log(data.field);
                 return false;
@@ -76,7 +76,7 @@
 <%--                        <dd><a href="javascript:;" >退出</a></dd>--%>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/">退出</a></li>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/userInfo/exit">退出</a></li>
             </ul>
         </div>
     </div>

@@ -1,8 +1,10 @@
 package com.controller;
 
-import com.domain.UserInfo;
-import com.domain.UserRole;
+import com.domain.*;
+import com.service.CollectionService;
+import com.service.MenuService;
 import com.service.UserInfoService;
+import com.service.WorksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -20,6 +23,15 @@ public class UserInfoController {
 
     @Autowired
     private UserInfoService userInfoService;
+
+    @Autowired
+    private MenuService menuService;
+
+    @Autowired
+    private WorksService worksService;
+
+    @Autowired
+    private CollectionService collectionService;
 
     //查找所有用户
     @RequestMapping("/findAllUser")
@@ -30,7 +42,7 @@ public class UserInfoController {
 
     //用户登录
     @RequestMapping("/userSignIn")
-    public @ResponseBody String userSignIn(@RequestParam("userName")String userName, @RequestParam("userPassword")String userPassword, HttpServletResponse response, HttpServletRequest request) throws Exception{
+    public @ResponseBody String userSignIn(@RequestParam("userName")String userName, @RequestParam("userPassword")String userPassword, HttpServletRequest request){
         System.out.println(userPassword);
         System.out.println(userName);
         UserInfo userInfo=userInfoService.findUser(userName);//根据userName查找用户信息
@@ -59,7 +71,35 @@ public class UserInfoController {
 
     //跳转主页
     @RequestMapping("/homePage")
-    public String homPage(){
+    public String homPage(Model model,HttpServletRequest request){
+        List<Works> works=worksService.getPopularWorks();
+        model.addAttribute("works",works);
+        List<Menu> menus=new ArrayList<>();
+        List<Collection> collections=collectionService.getPopularCollection();
+        model.addAttribute("collections",collections);
+        for (Collection collection:collections){
+            menus.add(menuService.findMenuByMenuId(collection.getMenuId()));
+        }
+        model.addAttribute("menus",menus);
+        HttpSession session=request.getSession();
+        Integer uid=(Integer)session.getAttribute("userId");
+        UserInfo userInfo=userInfoService.findUserById(uid);
+        model.addAttribute("userInfo",userInfo);
+        Integer totalWork=worksService.countWorksById(uid);
+        if (totalWork==null){
+            totalWork=0;
+        }
+        model.addAttribute("totalWork",totalWork);
+        Integer totalCollection=collectionService.countCollectionsById(uid);
+        if (totalCollection==null){
+            totalCollection=0;
+        }
+        model.addAttribute("totalCollection",totalCollection);
+        Integer totalMenu=menuService.countMenusById(uid);
+        if (totalMenu==null){
+            totalMenu=0;
+        }
+        model.addAttribute("totalMenu",totalMenu);
         return "homePage";
     }
 
@@ -79,7 +119,7 @@ public class UserInfoController {
     //用户名是否重复
     @RequestMapping("/userNameIsExist")
     @ResponseBody
-    public String userNameIsExist(@RequestParam("userName") String userName,HttpServletRequest request,HttpServletResponse response) throws Exception{
+    public String userNameIsExist(@RequestParam("userName") String userName){
         UserInfo oneUser=userInfoService.findUserName(userName);
         if(oneUser==null){
             return "0";//不重复
@@ -91,7 +131,7 @@ public class UserInfoController {
 
     //跳到修改账号信息页面
     @RequestMapping("/modifyUserInfo")
-    public String modifyUserInfo(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public String modifyUserInfo(Model model,HttpServletRequest request){
         HttpSession session=request.getSession();
         Integer userId=(Integer)session.getAttribute("userId");
         UserInfo userInfo=userInfoService.findUserById(userId);
@@ -126,5 +166,13 @@ public class UserInfoController {
         Integer userId=userInfo.getUserId();
         userInfoService.updateUserPhoto(userPhoto,userId);
         response.sendRedirect(request.getContextPath()+"/userInfo/modifyUserInfo");
+    }
+
+    @RequestMapping("/exit")
+    public void exit(HttpServletRequest request, HttpServletResponse response)throws Exception{
+        HttpSession session=request.getSession();
+        session.removeAttribute("userId");
+        session.removeAttribute("userName");
+        response.sendRedirect(request.getContextPath()+"/");
     }
 }
