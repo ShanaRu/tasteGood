@@ -19,32 +19,27 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public List<UserInfo> findAllUser() {
-        List<UserInfo> userInfos=userInfoDao.findAllUser();
-        return userInfos;
+        return userInfoDao.findAllUser();
     }
 
     public Integer saveUserInfo(UserInfo userInfo){
         int i=userInfoDao.saveUserInfo(userInfo);
-        Integer userId=userInfo.getUserId();
-        return userId;
+        return userInfo.getUserId();
     }
 
     @Override
     public UserInfo findUser(String userName) {
-        UserInfo userInfo=userInfoDao.findUser(userName);
-        return userInfo;
+        return userInfoDao.findUser(userName);
     }
 
     @Override
     public UserInfo findUserName(String userName) {
-        UserInfo userInfo=userInfoDao.findUser(userName);
-        return userInfo;
+        return userInfoDao.findUser(userName);
     }
 
     @Override
     public UserInfo findUserById(Integer userId) {
-        UserInfo userInfo=userInfoDao.findUserById(userId);
-        return userInfo;
+        return userInfoDao.findUserById(userId);
     }
 
     @Override
@@ -65,5 +60,10 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public void addUserRole(UserRole userRole) {
         userRoleDao.addUserRole(userRole);
+    }
+
+    @Override
+    public UserInfo findUserNamePhoto(Integer userId) {
+        return userInfoDao.findUserNamePhoto(userId);
     }
 }

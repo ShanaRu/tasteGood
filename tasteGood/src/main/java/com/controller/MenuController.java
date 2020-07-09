@@ -1,10 +1,9 @@
 package com.controller;
 
-import com.domain.Collection;
-import com.domain.Ingredients;
-import com.domain.Menu;
-import com.domain.Steps;
+import com.domain.*;
+import com.service.LeaveMessageService;
 import com.service.MenuService;
+import com.service.UserInfoService;
 import com.sun.deploy.net.HttpResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,13 +31,19 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
 
+    @Autowired
+    private LeaveMessageService leaveMessageService;
+
+    @Autowired
+    private UserInfoService userInfoService;
+
     @RequestMapping("/addMenu")
     public String writeMenu(){
         return "addMenu";
     }
 
     @RequestMapping(value = "/saveMenu")
-    public @ResponseBody String saveMenu(@RequestBody String jsonData, HttpServletResponse response, HttpServletRequest request)throws IOException {
+    public @ResponseBody String saveMenu(@RequestBody String jsonData, HttpServletRequest request){
         JSONObject menuData = new JSONObject(jsonData);//从前端拿到的数据
         String menuName=menuData.getString("menuName");
         String menuCover=menuData.getString("menuCover");
@@ -118,6 +124,13 @@ public class MenuController {
     public String showMenu(@RequestParam("menuId")Integer menuId,Model model){
         Menu menu=menuService.findMenuByMenuId(menuId);
         model.addAttribute("menu",menu);
+        List<LeaveMessage> leaveMessages=leaveMessageService.getLeaveMessageByMenuId(menuId);
+        model.addAttribute("leaveMessages",leaveMessages);
+        List<UserInfo> userInfos=new ArrayList<>();
+        for (LeaveMessage leaveMessage:leaveMessages){
+            userInfos.add(userInfoService.findUserNamePhoto(leaveMessage.getUserId()));
+        }
+        model.addAttribute("userInfos",userInfos);
         return "showMenu";
     }
 

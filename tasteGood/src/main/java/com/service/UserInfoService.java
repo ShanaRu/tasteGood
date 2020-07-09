@@ -11,30 +11,33 @@ import java.util.List;
 public interface UserInfoService {
 
     //查找所有用户信息
-    public List<UserInfo> findAllUser();
+    List<UserInfo> findAllUser();
 
     //保存用户信息
-    public Integer saveUserInfo(UserInfo userInfo);
+    Integer saveUserInfo(UserInfo userInfo);
 
     //根据userName查找用户信息
-    public UserInfo findUser(String userName);
+    UserInfo findUser(String userName);
 
     //查找userName是否重复
-    public UserInfo findUserName(String userName);
+    UserInfo findUserName(String userName);
 
     //根据userId查找用户信息
-    public UserInfo findUserById(Integer userId);
+    UserInfo findUserById(Integer userId);
 
     //更新用户信息
-    public void updateUserInfo(String userName,Integer userSex,String userIntroduce,Integer userId);
+    void updateUserInfo(String userName,Integer userSex,String userIntroduce,Integer userId);
 
     //更新密码
-    public void updatePassword(String userPassword,Integer userId);
+    void updatePassword(String userPassword,Integer userId);
 
     //更新头像
-    public void updateUserPhoto(String userPhoto,Integer userId);
+    void updateUserPhoto(String userPhoto,Integer userId);
 
     //添加用户的角色
-    public void addUserRole(UserRole userRole);
+    void addUserRole(UserRole userRole);
+
+    //根据userId查找用户名字和头像
+    UserInfo findUserNamePhoto(Integer userId);
 
 }

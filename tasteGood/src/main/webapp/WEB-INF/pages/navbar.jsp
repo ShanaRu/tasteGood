@@ -73,7 +73,7 @@
                         <dd><a href="${pageContext.request.contextPath}/menu/userMenu" >我的菜谱</a></dd>
                         <dd><a href="${pageContext.request.contextPath}/work/userWorks" >我的作品</a></dd>
                         <dd><a href="${pageContext.request.contextPath}/collection/showCollections" >我的收藏</a></dd>
-<%--                        <dd><a href="javascript:;" >退出</a></dd>--%>
+                        <dd><a href="${pageContext.request.contextPath}/leaveMessage/showLeaveMessage" >我的留言</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/userInfo/exit">退出</a></li>
