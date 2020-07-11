@@ -1,6 +1,7 @@
 package com.service;
 
 import com.domain.Works;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 import java.util.List;
@@ -10,7 +11,7 @@ public interface WorksService {
     void saveWorks(Works works);
 
     //根据用户id查询作品
-    List<Works> findWorksByUserId(Integer userId);
+    List<Works> findWorksByUserId(Integer userId,Integer page,Integer size);
 
     //根据workId查询作品
     Works findWorksByWorkId(Integer workId);
@@ -19,7 +20,7 @@ public interface WorksService {
     void updateWork(String workPhoto, String summary, Integer workId, Date workTime);
 
     //按照时间顺序显示所有作品
-    List<Works> showWorks();
+    List<Works> showWorks(Integer page,Integer size);
 
     //删除作品
     void deleteWork(Integer workId);

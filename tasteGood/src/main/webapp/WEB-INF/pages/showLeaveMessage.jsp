@@ -41,32 +41,75 @@
 </head>
 <body>
     <%@include file="navbar.jsp"%>
-    <div style="margin:20px 100px 20px 100px;min-height: 500px">
-        <table class="layui-table">
-            <colgroup>
-                <col width="200">
-                <col width="200">
-                <col width="500">
-            </colgroup>
-            <thead>
-            <tr>
-                <th>留言时间</th>
-                <th>留言所在菜谱名称</th>
-                <th>留言内容</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${leaveMessages}" var="leaveMessage">
+    <div style="margin:20px 100px 20px 100px;min-height: 520px">
+        <div class="layui-col-md12">
+            <span class="layui-breadcrumb">
+                <a href="${pageContext.request.contextPath}/userInfo/homePage">首页</a>
+                <a href="${pageContext.request.contextPath}/leaveMessage/showLeaveMessage?page=1&size=6"><cite>我的留言</cite></a>
+            </span>
+        </div>
+        <div class="layui-col-md12">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="200">
+                    <col width="200">
+                    <col width="500">
+                </colgroup>
+                <thead>
                 <tr>
-                    <td>${leaveMessage.leaveTime}</td>
-                    <td><a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${leaveMessage.menuId}">${leaveMessage.menuName}</a></td>
-                    <td>${leaveMessage.leaveWord}</td>
-                    <td><button type="button" onclick="deleteLeave(${leaveMessage.leaveId})" class="layui-btn">删除留言</button></td>
+                    <th>留言时间</th>
+                    <th>留言所在菜谱名称</th>
+                    <th>留言内容</th>
+                    <th>操作</th>
                 </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${pageInfo.list}" var="leaveMessage">
+                    <tr>
+                        <td>${leaveMessage.leaveTime}</td>
+                        <td><a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${leaveMessage.menuId}">${leaveMessage.menuName}(点击查看详情)</a></td>
+                        <td>${leaveMessage.leaveWord}</td>
+                        <td><button type="button" onclick="deleteLeave(${leaveMessage.leaveId})" class="layui-btn">删除留言</button></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+        <div style="text-align: center" class="layui-col-md12">
+            <%--首页--%>
+            <a href="${pageContext.request.contextPath}/leaveMessage/showLeaveMessage?page=1&size=${pageInfo.pageSize}">
+                <button class="layui-btn layui-btn-primary layui-btn-sm">首页</button>
+            </a>
+            <%--上一页--%>
+            <c:if test="${pageInfo.hasPreviousPage}">
+                <a href="${pageContext.request.contextPath}/leaveMessage/showLeaveMessage?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">
+                    <button class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon layui-icon-prev"></i></button>
+                </a>
+            </c:if>
+            <%--中间页 pageInfo.navigatepageNums 所有页码的数组 pageInfo.pageNum 当前页数--%>
+            <c:forEach items="${pageInfo.navigatepageNums}" var="pageNum">
+                <c:if test="${pageNum == pageInfo.pageNum}">
+                    <a href="${pageContext.request.contextPath}/leaveMessage/showLeaveMessage?page=${pageNum}&size=${pageInfo.pageSize}">
+                        <button class="layui-btn layui-btn-sm">${pageNum}</button>
+                    </a>
+                </c:if>
+                <c:if test="${pageNum != pageInfo.pageNum}">
+                    <a href="${pageContext.request.contextPath}/leaveMessage/showLeaveMessage?page=${pageNum}&size=${pageInfo.pageSize}">
+                        <button class="layui-btn layui-btn-primary layui-btn-sm">${pageNum}</button>
+                    </a>
+                </c:if>
             </c:forEach>
-            </tbody>
-        </table>
+            <%--下一页--%>
+            <c:if test="${pageInfo.hasNextPage}">
+                <a href="${pageContext.request.contextPath}/leaveMessage/showLeaveMessage?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">
+                    <button class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon layui-icon-next"></i></button>
+                </a>
+            </c:if>
+            <%--尾页--%>
+            <a href="${pageContext.request.contextPath}/leaveMessage/showLeaveMessage?page=${pageInfo.pages}&size=${pageInfo.pageSize}">
+                <button class="layui-btn layui-btn-primary layui-btn-sm">尾页</button>
+            </a>
+        </div>
     </div>
     <%@include file="footer.jsp"%>
 </body>

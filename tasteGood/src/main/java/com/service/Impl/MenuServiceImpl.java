@@ -7,6 +7,7 @@ import com.domain.Collection;
 import com.domain.Ingredients;
 import com.domain.Menu;
 import com.domain.Steps;
+import com.github.pagehelper.PageHelper;
 import com.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +45,8 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public List<Menu> findAllMenuByUserId(Integer userId) {
+    public List<Menu> findAllMenuByUserId(Integer userId,Integer page,Integer size) {
+        PageHelper.startPage(page,size);
         return menuDao.findAllMenuByUserId(userId);
     }
 
@@ -84,11 +86,14 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public List<Menu> searchMenu(String menuName) {
+    public List<Menu> searchMenu(String menuName,Integer page,Integer size) {
+        PageHelper.startPage(page, size);
         return menuDao.searchMenu(menuName);
     }
 
-    public List<Menu> searchClassification(String classification){
+    public List<Menu> searchClassification(String classification,Integer page,Integer size){
+        //参数pageNum 是页码值   参数pageSize 代表是每页显示条数
+        PageHelper.startPage(page, size);
         return menuDao.searchClassification(classification);
     }
 

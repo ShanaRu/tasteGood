@@ -21,7 +21,7 @@ public interface MenuService {
     void saveSteps(Steps steps);
 
     //根据用户id查询所有菜谱
-    List<Menu> findAllMenuByUserId(Integer userId);
+    List<Menu> findAllMenuByUserId(Integer userId,Integer page,Integer size);
 
     //根据菜谱id查询菜谱信息
     Menu findMenuByMenuId(Integer menuId);
@@ -45,10 +45,10 @@ public interface MenuService {
     void deleteMenu(Integer menuId);
 
     //模糊查询菜谱名
-    List<Menu> searchMenu(String menuName);
+    List<Menu> searchMenu(String menuName,Integer page,Integer size);
 
     //根据分类找菜谱
-    List<Menu> searchClassification(String classification);
+    List<Menu> searchClassification(String classification,Integer page,Integer size);
 
     //查询收藏数量
     Integer getCollection(Integer menuId);

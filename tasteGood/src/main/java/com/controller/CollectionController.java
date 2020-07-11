@@ -2,6 +2,7 @@ package com.controller;
 
 import com.domain.Collection;
 import com.domain.Menu;
+import com.github.pagehelper.PageInfo;
 import com.service.CollectionService;
 import com.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +28,12 @@ public class CollectionController {
     private MenuService menuService;
 
     @RequestMapping("/showCollections")
-    public String showCollection(HttpServletRequest request, Model model){
+    public String showCollection(HttpServletRequest request, Model model,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
         HttpSession session=request.getSession();//获取用户id
         Integer uid=(Integer)session.getAttribute("userId");
-        List<Collection> collections=collectionService.findCollectionsByUserId(uid);//获取收藏表，显示complete
-        List<Menu> menus=collectionService.showCollections(uid);
-        model.addAttribute("collections",collections);
-        model.addAttribute("menus",menus);
+        List<Collection> collections=collectionService.findCollectionsByUserId(uid,page,size);//获取收藏表，显示complete
+        PageInfo<Collection> pageInfo=new PageInfo<>(collections);
+        model.addAttribute("pageInfo",pageInfo);
         return "showCollections";
     }
 

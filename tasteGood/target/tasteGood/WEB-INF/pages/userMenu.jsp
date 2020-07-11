@@ -72,18 +72,27 @@
                 });
             });
         }
+
+        function changePageSize() {
+            //获取下拉框的值
+            var pageSize = $("#changePageSize").val();
+
+            //向服务器发送请求，改变每页显示条数
+            location.href = "${pageContext.request.contextPath}/menu/userMenu?page=1&size="
+                + pageSize;
+        }
     </script>
 </head>
 <body>
     <%@include file="navbar.jsp"%>
     <div style="margin:20px 100px 20px 100px;min-height: 500px" class="layui-row layui-col-space10">
-        <div>
+        <div class="layui-col-md12">
             <span class="layui-breadcrumb">
                 <a href="${pageContext.request.contextPath}/userInfo/homePage">首页</a>
-                <a href="${pageContext.request.contextPath}/menu/userMenu"><cite>我的菜谱</cite></a>
+                <a href="${pageContext.request.contextPath}/menu/userMenu?page=1&size=6"><cite>我的菜谱</cite></a>
             </span>
         </div>
-        <c:forEach items="${userMenus}" var="userMenu">
+        <c:forEach items="${pageInfo.list}" var="userMenu">
             <div style="padding: 15px;margin-bottom: 20px" class="layui-col-md6">
                 <div class="layui-col-md6">
                     <a href="${pageContext.request.contextPath}/menu/modifyMenu?menuId=${userMenu.menuId}" style="display: inline-block;line-height:0;">
@@ -105,8 +114,52 @@
                     <button class="layui-btn" onclick="deleteMenu(${userMenu.menuId})">删除</button>
                 </div>
             </div>
-
         </c:forEach>
+        <div style="text-align: center" class="layui-col-md12">
+            <%--首页--%>
+            <a href="${pageContext.request.contextPath}/menu/userMenu?page=1&size=${pageInfo.pageSize}">
+                <button class="layui-btn layui-btn-primary layui-btn-sm">首页</button>
+            </a>
+            <%--上一页--%>
+            <c:if test="${pageInfo.hasPreviousPage}">
+                <a href="${pageContext.request.contextPath}/menu/userMenu?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">
+                    <button class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon layui-icon-prev"></i></button>
+                </a>
+            </c:if>
+            <%--中间页 pageInfo.navigatepageNums 所有页码的数组 pageInfo.pageNum 当前页数--%>
+            <c:forEach items="${pageInfo.navigatepageNums}" var="pageNum">
+                <c:if test="${pageNum == pageInfo.pageNum}">
+                    <a href="${pageContext.request.contextPath}/menu/userMenu?page=${pageNum}&size=${pageInfo.pageSize}">
+                        <button class="layui-btn layui-btn-sm">${pageNum}</button>
+                    </a>
+                </c:if>
+                <c:if test="${pageNum != pageInfo.pageNum}">
+                    <a href="${pageContext.request.contextPath}/menu/userMenu?page=${pageNum}&size=${pageInfo.pageSize}">
+                        <button class="layui-btn layui-btn-primary layui-btn-sm">${pageNum}</button>
+                    </a>
+                </c:if>
+            </c:forEach>
+            <%--下一页--%>
+            <c:if test="${pageInfo.hasNextPage}">
+                <a href="${pageContext.request.contextPath}/menu/userMenu?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">
+                    <button class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon layui-icon-next"></i></button>
+                </a>
+            </c:if>
+            <%--尾页--%>
+            <a href="${pageContext.request.contextPath}/menu/userMenu?page=${pageInfo.pages}&size=${pageInfo.pageSize}">
+                <button class="layui-btn layui-btn-primary layui-btn-sm">尾页</button>
+            </a>
+            <p style="display: inline-block;font-size: 12px;line-height: 30px">
+                每页
+                <select id="changePageSize" onchange="changePageSize()">
+                    <option value="">请选择</option>
+                    <option>6</option>
+                    <option>10</option>
+                    <option>14</option>
+                </select>
+                条
+            </p>
+        </div>
     </div>
     <%@include file="footer.jsp"%>
 </body>

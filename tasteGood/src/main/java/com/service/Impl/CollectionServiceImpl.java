@@ -4,6 +4,7 @@ import com.dao.CollectionDao;
 import com.dao.MenuDao;
 import com.domain.Collection;
 import com.domain.Menu;
+import com.github.pagehelper.PageHelper;
 import com.service.CollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,19 +20,9 @@ public class CollectionServiceImpl implements CollectionService {
     private CollectionDao collectionDao;
 
     @Override
-    public List<Collection> findCollectionsByUserId(Integer userId) {
+    public List<Collection> findCollectionsByUserId(Integer userId,Integer page,Integer size) {
+        PageHelper.startPage(page,size);
         return collectionDao.findCollectionsByUserId(userId);
-    }
-
-    @Override
-    public List<Menu> showCollections(Integer userId) {
-        List<Collection> collections=collectionDao.findCollectionsByUserId(userId);//查询收藏表
-        List<Menu> menus = new ArrayList<>();
-        for(Collection collection:collections){
-            int mid=collection.getMenuId();
-            menus.add(menuDao.findMenuByMenuId(mid));
-        }
-        return menus;
     }
 
     @Override

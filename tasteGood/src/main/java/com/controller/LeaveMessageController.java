@@ -1,12 +1,14 @@
 package com.controller;
 
 import com.domain.LeaveMessage;
+import com.github.pagehelper.PageInfo;
 import com.service.LeaveMessageService;
 import com.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,11 +38,12 @@ public class LeaveMessageController {
     }
 
     @RequestMapping("/showLeaveMessage")
-    public String showLeaveMessage(HttpServletRequest request, Model model){
+    public String showLeaveMessage(HttpServletRequest request, Model model, @RequestParam("page") Integer page, @RequestParam("size") Integer size){
         HttpSession session=request.getSession();
         Integer uid=(Integer) session.getAttribute("userId");
-        List<LeaveMessage> leaveMessages=leaveMessageService.getLeaveMessageByUserId(uid);
-        model.addAttribute("leaveMessages",leaveMessages);
+        List<LeaveMessage> leaveMessages=leaveMessageService.getLeaveMessageByUserId(uid,page,size);
+        PageInfo<LeaveMessage> pageInfo=new PageInfo<>(leaveMessages);
+        model.addAttribute("pageInfo",pageInfo);
         return "showLeaveMessage";
     }
 

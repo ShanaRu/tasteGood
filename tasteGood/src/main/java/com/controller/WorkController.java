@@ -2,6 +2,8 @@ package com.controller;
 
 import com.domain.Menu;
 import com.domain.Works;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.service.WorksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,11 +48,12 @@ public class WorkController {
 
     //根据用户id查询用户作品
     @RequestMapping("/userWorks")
-    public String userWorks(Model model,HttpServletRequest request,HttpServletResponse response){
+    public String userWorks(Model model,HttpServletRequest request,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
         HttpSession session=request.getSession();
         Integer uid=(int)session.getAttribute("userId");
-        List<Works> works=worksService.findWorksByUserId(uid);
-        model.addAttribute("userWorks",works);
+        List<Works> works=worksService.findWorksByUserId(uid,page,size);
+        PageInfo<Works> pageInfo=new PageInfo<>(works);
+        model.addAttribute("pageInfo",pageInfo);
         return "userWorks";
     }
 
@@ -77,15 +80,15 @@ public class WorkController {
     @RequestMapping("/getWork")
     @ResponseBody
     public Works getWork(@RequestParam("workId") Integer workId){
-        Works work=worksService.findWorksByWorkId(workId);
-        return work;
+        return worksService.findWorksByWorkId(workId);
     }
 
     //作品模块看作品
     @RequestMapping("/showWorks")
-    public String showWorks(Model model){
-        List<Works> works=worksService.showWorks();
-        model.addAttribute("works",works);
+    public String showWorks(Model model,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
+        List<Works> works=worksService.showWorks(page,size);
+        PageInfo<Works> pageInfo=new PageInfo<>(works);
+        model.addAttribute("pageInfo",pageInfo);
         return "showWorks";
     }
 

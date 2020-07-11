@@ -5,7 +5,7 @@
   Time: 15:08
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
     <script type="text/javascript">
         window.onload=function(){
             $(document).ready(function () {
@@ -44,14 +44,17 @@
             <!-- 头部区域（可配合layui已有的水平导航） -->
             <ul class="layui-nav layui-layout-left layui-bg-green">
                 <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/userInfo/homePage" class="myCss">首页</a></li>
-                <li class="layui-nav-item"><a href="" class="myCss" >菜谱</a></li>
-                <li class="layui-nav-item"><a href="" class="myCss" >菜单系列</a></li>
-                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/work/showWorks" class="myCss">作品</a></li>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=家常菜&page=1&size=6" class="myCss" >菜谱</a></li>
+            <%--                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/menu/menuModule#classificationMenu=2" class="myCss" >菜谱</a></li>--%>
+<%--                <li class="layui-nav-item"><a href="" class="myCss" >菜单系列</a></li>--%>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/work/showWorks?page=1&size=6" class="myCss">作品</a></li>
                 <li class="layui-nav-item">
                     <form action="${pageContext.request.contextPath}/menu/searchMenu" method="post" class="layui-form">
                         <div class="layui-form-item" style="margin: 8px 0 7px 30px">
                             <div class="layui-inline">
                                 <div class="layui-input-inline">
+                                    <input style="display: none" name="page" value="1">
+                                    <input style="display: none" name="size" value="6">
                                     <input type="text" name="searchMenuName" placeholder="请输入菜谱名称" autocomplete="off" class="layui-input">
                                 </div>
                                 <div class="layui-input-inline">
@@ -70,10 +73,10 @@
                     <dl class="layui-nav-child">
                         <dd><a href="" >我的主页</a></dd>
                         <dd><a href="${pageContext.request.contextPath}/userInfo/modifyUserInfo" >个人信息</a></dd>
-                        <dd><a href="${pageContext.request.contextPath}/menu/userMenu" >我的菜谱</a></dd>
-                        <dd><a href="${pageContext.request.contextPath}/work/userWorks" >我的作品</a></dd>
-                        <dd><a href="${pageContext.request.contextPath}/collection/showCollections" >我的收藏</a></dd>
-                        <dd><a href="${pageContext.request.contextPath}/leaveMessage/showLeaveMessage" >我的留言</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/menu/userMenu?page=1&size=6" >我的菜谱</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/work/userWorks?page=1&size=6" >我的作品</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/collection/showCollections?page=1&size=6" >我的收藏</a></dd>
+                        <dd><a href="${pageContext.request.contextPath}/leaveMessage/showLeaveMessage?page=1&size=6" >我的留言</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/userInfo/exit">退出</a></li>

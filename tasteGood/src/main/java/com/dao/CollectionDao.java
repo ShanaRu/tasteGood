@@ -1,10 +1,7 @@
 package com.dao;
 
 import com.domain.Collection;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,6 +9,12 @@ import java.util.List;
 public interface CollectionDao {
     //根据用户id查询所有收藏
     @Select("select * from collections where userId=#{userId}")
+    @Results(id="userCollection",value = {
+            @Result(id=true,property = "menuId",column = "menuId"),
+            @Result(id=true,property = "userId",column = "userId"),
+            @Result(property = "complete",column = "complete"),
+            @Result(column = "menuId",property = "menu",one = @One(select ="com.dao.MenuDao.findMenuByMenuId"))
+    })
     List<Collection> findCollectionsByUserId(Integer userId);
 
     @Update("update collections set complete=#{complete} where menuId=#{menuId} and userId=#{userId}")

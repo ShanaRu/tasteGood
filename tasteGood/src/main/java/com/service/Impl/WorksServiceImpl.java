@@ -2,6 +2,7 @@ package com.service.Impl;
 
 import com.dao.WorksDao;
 import com.domain.Works;
+import com.github.pagehelper.PageHelper;
 import com.service.WorksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,8 @@ public class WorksServiceImpl implements WorksService {
     }
 
     @Override
-    public List<Works> findWorksByUserId(Integer userId) {
+    public List<Works> findWorksByUserId(Integer userId,Integer page,Integer size) {
+        PageHelper.startPage(page,size);
         return worksDao.findWorksByUserId(userId);
     }
 
@@ -37,7 +39,8 @@ public class WorksServiceImpl implements WorksService {
     }
 
     @Override
-    public List<Works> showWorks() {
+    public List<Works> showWorks(Integer page,Integer size) {
+        PageHelper.startPage(page,size);
         return worksDao.showWorks();
     }
 

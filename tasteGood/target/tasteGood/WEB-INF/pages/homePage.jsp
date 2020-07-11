@@ -5,7 +5,7 @@
   Time: 16:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -101,14 +101,14 @@
     <div style="margin:20px 100px 20px 100px;min-height: 500px">
         <div class="layui-row layui-col-space30">
             <div class="layui-col-md2" style="min-height: 480px;">
-                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=家常菜"><h2>家常菜</h2></a></div>
-                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=地方特色菜"><h2>地方特色菜</h2></a></div>
-                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=甜点/面食"><h2>甜点/面食</h2></a></div>
-                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=快餐"><h2>快餐</h2></a></div>
-                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=中式"><h2>中式</h2></a></div>
-                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=西式"><h2>西式</h2></a></div>
-                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=日韩料理"><h2>日韩料理</h2></a></div>
-                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=其他"><h2>其他</h2></a></div>
+                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=家常菜&page=1&size=6"><h2>家常菜</h2></a></div>
+                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=地方特色菜&page=1&size=6"><h2>地方特色菜</h2></a></div>
+                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=甜点/面食&page=1&size=6"><h2>甜点/面食</h2></a></div>
+                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=快餐&page=1&size=6"><h2>快餐</h2></a></div>
+                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=中式&page=1&size=6"><h2>中式</h2></a></div>
+                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=西式&page=1&size=6"><h2>西式</h2></a></div>
+                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=日韩料理&page=1&size=6"><h2>日韩料理</h2></a></div>
+                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=其他&page=1&size=6"><h2>其他</h2></a></div>
             </div>
             <div class="layui-col-md7">
                 <div class="layui-row">

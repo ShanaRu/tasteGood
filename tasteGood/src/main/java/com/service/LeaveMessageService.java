@@ -9,7 +9,7 @@ public interface LeaveMessageService {
 
     List<LeaveMessage> getLeaveMessageByMenuId(Integer menuId);
 
-    List<LeaveMessage> getLeaveMessageByUserId(Integer userId);
+    List<LeaveMessage> getLeaveMessageByUserId(Integer userId,Integer page,Integer size);
 
     void deleteLeaveMessage(Integer leaveId);
 }

@@ -1,10 +1,12 @@
 package com.controller;
 
 import com.domain.*;
+import com.github.pagehelper.PageInfo;
 import com.service.LeaveMessageService;
 import com.service.MenuService;
 import com.service.UserInfoService;
 import com.sun.deploy.net.HttpResponse;
+import javafx.scene.input.Mnemonic;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,16 +108,17 @@ public class MenuController {
 
     //根据userid查询菜谱
     @RequestMapping("/userMenu")
-    public String userMenu(Model model, HttpServletRequest request, HttpServletResponse response){
+    public String userMenu(Model model, HttpServletRequest request,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
         HttpSession session=request.getSession();
         Integer uid=(int)session.getAttribute("userId");
-        List<Menu> menus=menuService.findAllMenuByUserId(uid);
+        List<Menu> menus=menuService.findAllMenuByUserId(uid,page,size);
+        PageInfo<Menu> pageInfo=new PageInfo<>(menus);
 //        for (Menu menu:menus){
 //            System.out.println(menu);
 //            System.out.println(menu.getIngredients());
 //            System.out.println(menu.getSteps());
 //        }
-        model.addAttribute("userMenus",menus);
+        model.addAttribute("pageInfo",pageInfo);
         return "userMenu";
     }
 
@@ -193,19 +196,29 @@ public class MenuController {
 
     //根据名称查找菜谱
     @RequestMapping("/searchMenu")
-    public String searchMenu(@RequestParam("searchMenuName") String searchMenuName,Model model){
-        List<Menu> menus=menuService.searchMenu(searchMenuName);
-        model.addAttribute("menus",menus);
+    public String searchMenu(@RequestParam("searchMenuName") String searchMenuName,@RequestParam("page") Integer page,@RequestParam("size") Integer size,Model model){
+        model.addAttribute("searchMenuName",searchMenuName);
+        List<Menu> menus=menuService.searchMenu(searchMenuName,page,size);
+        PageInfo<Menu> pageInfo=new PageInfo<>(menus);
+        model.addAttribute("pageInfo",pageInfo);
+//        model.addAttribute("menus",menus);
         return "searchMenu";
     }
 
     //根据菜谱查找菜谱
     @RequestMapping("/searchClassification")
-    public String searchClassification(@RequestParam("classification") String classification,Model model){
-        List<Menu> menus=menuService.searchClassification(classification);
-        model.addAttribute("menus",menus);
+    public String searchClassification(@RequestParam("classification") String classification,@RequestParam(name = "page", defaultValue = "1") int page, @RequestParam(name = "size", defaultValue = "6") int size,Model model){
+        List<Menu> menus=menuService.searchClassification(classification,page,size);
+        model.addAttribute("classification",classification);//目前分类
+        //PageInfo是一个分页Bean
+        PageInfo<Menu> pageInfo=new PageInfo<>(menus);
+        model.addAttribute("pageInfo",pageInfo);
         return "classificationMenu";
     }
 
+//    @RequestMapping("/menuModule")
+//    public String menuModule(){
+//        return "menuModule";
+//    }
 
 }

@@ -1,9 +1,20 @@
 package com.domain;
 
+import java.util.List;
+
 public class Collection {
     private Integer complete;
     private Integer userId;
     private Integer menuId;
+    private List<Menu> menu;
+
+    public List<Menu> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(List<Menu> menu) {
+        this.menu = menu;
+    }
 
     public Integer getComplete() {
         return complete;
@@ -35,6 +46,7 @@ public class Collection {
                 "complete=" + complete +
                 ", userId=" + userId +
                 ", menuId=" + menuId +
+                ", menu=" + menu +
                 '}';
     }
 }

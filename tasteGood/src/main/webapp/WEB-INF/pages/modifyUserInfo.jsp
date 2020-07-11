@@ -5,7 +5,7 @@
   Time: 22:26
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -19,7 +19,7 @@
         layui.use('element', function(){
             var element = layui.element;
             element.on('tab(test)', function(data){
-                console.log(data);
+                // console.log(data);
             });
 
             layui.use('upload', function(){
@@ -227,7 +227,7 @@
                                     <div class="layui-upload">
                                         <div class="layui-upload-list">
                                             <div class="layui-col-md7">
-                                                <img class="layui-upload-img" id="showPic" style="width: 200px;height: 200px" src="${pageContext.request.contextPath}/${userInfo.userPhoto}">
+                                                <img class="layui-upload-img" id="showPic" style="width: 200px;height: 200px" src="${pageContext.request.contextPath}/${userInfo.userPhoto}" alt="*">
                                             </div>
                                             <div class="layui-col-md5">
                                                 <button type="button" class="layui-btn" id="uploadPic">上传图片</button>
