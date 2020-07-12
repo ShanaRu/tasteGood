@@ -5,7 +5,7 @@
   Time: 16:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -157,10 +157,11 @@
                     </div>
                     <div class="layui-col-md12" style="min-height: 320px">
                         <a href=""><h3>流行菜谱</h3></a>
-                        <c:forEach items="${menus}" var="menu" varStatus="loop">
+                        <c:forEach items="${menus}" var="menu" varStatus="loop" end="7">
                             <div>
                                 <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${menu.menuId}" style="font-size: 20px">${menu.menuName}</a>
-                                    ${collections[loop.count-1].complete}<i class="layui-icon layui-icon-star"></i>
+<%--                                    ${collections[loop.count-1].complete}<i class="layui-icon layui-icon-star"></i>--%>
+                                    ${menu.totalComplete} 做过
                             </div>
                         </c:forEach>
                     </div>

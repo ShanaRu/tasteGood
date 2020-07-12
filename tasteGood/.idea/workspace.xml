@@ -6,84 +6,53 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fa8a827-0182-4482-97b8-5b420d8f8bf4" name="默认更改列表" comment="tenth">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menuModule.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/0d5c7bc9fc474229b1f65a2a015375cf_1280w_1024h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/1018de385df94c4ca79df3f0447fb9f7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/192ce17ffb6f4db0a49787be68ea3ba3_1686w_1124h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/26b2701eb6c44a78b602f6a0fc6086b1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/2a1e587f7a1449ffa6f86ab5c3eb88b6_1242w_1242h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/314d3c06f72c421e951f25cf64f8be4f_1242w_1242h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/32ce013bc5864f3aa2bb2299d81d0c25_1686w_1124h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/3f80ae8c64ec4166911ed15a10116d44_1124w_1500h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/4318695974d949de84c7067317652d30_1686w_1124h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/4905ea5aae184dc0bb3fe7c3b28f6d26_1124w_1500h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/595fb323c9a244a0b6b20f6ec8c06162_1500w_1124h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/6423e4584c7146d9af7f411afe8665a5_1656w_1242h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/643c75252c3f4e55af73004fb33b0bb3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/68124fc88fd84c6b81ad5998bb442def.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/691e7cf40f5c4983b81892b66d2a387e_1242w_1242h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/6a311ca434934ac9b57963f90097f30c.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/6fd912cb2d7346ce9818258f812783be_1686w_1124h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/6ff3f45625e34b73aaa345c7325ae426_2170w_1242h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/7e72b402ac404acf92d5a6d75084ee53_1686w_1124h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/83c3cde19c6443cba739e1e3eed1191a.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/9bf29bdbaf9b49d2865703454f70ec87.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/a2b34dff5a41419e8d934f1533622851.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/a5146b8d3f4f48bda2a4f126c0403ad1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/b458755abae6445f86a226e1bf35b364_1124w_1500h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/b69c6fca9ecf404eb34542c6d62593fe_1686w_1124h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/b9801f818b8145c2bd32cdefb3e697f9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/c6d08c72322647388bc46e081fe90237_1078w_863h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/d68919c7f21b453f8d2ff90cb5ea2bdd.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/d8cd09b7f49a40b5a8bb5fb72410f279_1656w_1242h.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/picture/fda057d634b8421daabfbdcb24d9c92d.jpg" afterDir="false" />
+    <list default="true" id="0fa8a827-0182-4482-97b8-5b420d8f8bf4" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/domain/FollowTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/myKitchen.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/CollectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/LeaveMessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/LeaveMessageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/UserInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/WorkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/WorkController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dao/CollectionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dao/CollectionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/Collection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/CollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/CollectionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/Impl/CollectionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/Impl/CollectionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/Impl/LeaveMessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/Impl/LeaveMessageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dao/MenuDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dao/MenuDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dao/UserInfoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dao/UserInfoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/Impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/Impl/MenuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/Impl/WorksServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/Impl/WorksServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/LeaveMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/LeaveMessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/Impl/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/Impl/UserInfoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/MenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/WorksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/WorksService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/classificationMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/classificationMenu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/UserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/UserInfoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/homePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/homePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/modifyUserInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/modifyUserInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/modifyMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/modifyMenu.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/navbar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/searchMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/searchMenu.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/showCollections.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/showCollections.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/showLeaveMessage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/showLeaveMessage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/showWorks.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/showWorks.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userMenu.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userWorks.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userWorks.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/applicationContext.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/MenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/UserInfoController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/controller/WorkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/WorkController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dao/MenuDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dao/MenuDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dao/UserInfoDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dao/UserInfoDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/service/Impl/MenuServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/Impl/MenuServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/service/Impl/UserInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/Impl/UserInfoServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/service/Impl/WorksServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/Impl/WorksServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/service/MenuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/MenuService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/service/WorksService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/WorksService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/UserInfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/UserInfoService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/applicationContext.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/controller/MenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/controller/UserInfoController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/controller/WorkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/controller/WorkController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/dao/MenuDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/dao/MenuDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/dao/UserInfoDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/dao/UserInfoDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/domain/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/domain/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/Impl/MenuServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/Impl/MenuServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/Impl/UserInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/Impl/UserInfoServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/Impl/WorksServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/Impl/WorksServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/MenuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/MenuService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/WorksService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/WorksService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/UserInfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/classes/com/service/UserInfoService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/homePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/homePage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/navbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/showMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/showMenu.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/userMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/tasteGood/WEB-INF/pages/userMenu.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,13 +60,27 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jspx File" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -293,7 +276,8 @@
       <workItem from="1594383878337" duration="7038000" />
       <workItem from="1594394080373" duration="692000" />
       <workItem from="1594394826335" duration="3055000" />
-      <workItem from="1594452944135" duration="30496000" />
+      <workItem from="1594452944135" duration="30639000" />
+      <workItem from="1594524698101" duration="39289000" />
     </task>
     <task id="LOCAL-00001" summary="second">
       <created>1593260355547</created>
@@ -344,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594280201646</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="tenth">
+      <created>1594490649786</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1594490649786</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,10 +375,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1593927079618" />
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1594478055130">
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1594579496553">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1594478055130" />
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1594579496553" />
     <state x="355" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1593320700785">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -408,10 +399,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="357" y="204" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1593617541445" />
-    <state x="263" y="0" key="CommitChangelistDialog2" timestamp="1594490189703">
+    <state x="263" y="0" key="CommitChangelistDialog2" timestamp="1594490645997">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="263" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1594490189703" />
+    <state x="263" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1594490645997" />
     <state x="122" y="50" key="DiffContextDialog" timestamp="1593746506757">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -420,54 +411,54 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1594453173948" />
-    <state width="1039" height="165" key="GridCell.Tab.0.bottom" timestamp="1594490059507">
+    <state width="1039" height="258" key="GridCell.Tab.0.bottom" timestamp="1594581459981">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="165" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594490059507" />
-    <state width="1039" height="165" key="GridCell.Tab.0.center" timestamp="1594490059506">
+    <state width="1039" height="258" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594581459981" />
+    <state width="1039" height="258" key="GridCell.Tab.0.center" timestamp="1594581459981">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="165" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1594490059506" />
-    <state width="1039" height="165" key="GridCell.Tab.0.left" timestamp="1594490059506">
+    <state width="1039" height="258" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1594581459981" />
+    <state width="1039" height="258" key="GridCell.Tab.0.left" timestamp="1594581459980">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="165" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1594490059506" />
-    <state width="1039" height="165" key="GridCell.Tab.0.right" timestamp="1594490059507">
+    <state width="1039" height="258" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1594581459980" />
+    <state width="1039" height="258" key="GridCell.Tab.0.right" timestamp="1594581459981">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="165" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1594490059506" />
-    <state width="1039" height="165" key="GridCell.Tab.1.bottom" timestamp="1594490059507">
+    <state width="1039" height="258" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1594581459981" />
+    <state width="1039" height="258" key="GridCell.Tab.1.bottom" timestamp="1594581459981">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="165" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594490059507" />
-    <state width="1039" height="165" key="GridCell.Tab.1.center" timestamp="1594490059507">
+    <state width="1039" height="258" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594581459981" />
+    <state width="1039" height="258" key="GridCell.Tab.1.center" timestamp="1594581459981">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="165" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1594490059507" />
-    <state width="1039" height="165" key="GridCell.Tab.1.left" timestamp="1594490059507">
+    <state width="1039" height="258" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1594581459981" />
+    <state width="1039" height="258" key="GridCell.Tab.1.left" timestamp="1594581459981">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="165" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1594490059507" />
-    <state width="1039" height="165" key="GridCell.Tab.1.right" timestamp="1594490059507">
+    <state width="1039" height="258" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1594581459981" />
+    <state width="1039" height="258" key="GridCell.Tab.1.right" timestamp="1594581459981">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="165" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1594490059507" />
-    <state width="1039" height="165" key="GridCell.Tab.2.bottom" timestamp="1594490059508">
+    <state width="1039" height="258" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1594581459981" />
+    <state width="1039" height="258" key="GridCell.Tab.2.bottom" timestamp="1594581459982">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="165" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594490059508" />
-    <state width="1039" height="165" key="GridCell.Tab.2.center" timestamp="1594490059508">
+    <state width="1039" height="258" key="GridCell.Tab.2.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594581459982" />
+    <state width="1039" height="258" key="GridCell.Tab.2.center" timestamp="1594581459982">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="165" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1594490059508" />
-    <state width="1039" height="165" key="GridCell.Tab.2.left" timestamp="1594490059508">
+    <state width="1039" height="258" key="GridCell.Tab.2.center/0.0.1280.680@0.0.1280.680" timestamp="1594581459982" />
+    <state width="1039" height="258" key="GridCell.Tab.2.left" timestamp="1594581459982">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="165" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1594490059508" />
-    <state width="1039" height="165" key="GridCell.Tab.2.right" timestamp="1594490059508">
+    <state width="1039" height="258" key="GridCell.Tab.2.left/0.0.1280.680@0.0.1280.680" timestamp="1594581459982" />
+    <state width="1039" height="258" key="GridCell.Tab.2.right" timestamp="1594581459982">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1039" height="165" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1594490059508" />
+    <state width="1039" height="258" key="GridCell.Tab.2.right/0.0.1280.680@0.0.1280.680" timestamp="1594581459982" />
     <state width="1039" height="372" key="GridCell.Tab.3.bottom" timestamp="1592906384226">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -492,14 +483,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1593322410193" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1594280204203">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1594490693303">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1594280204203" />
-    <state x="340" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1594452965020">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1594490693303" />
+    <state x="340" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1594524707080">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="340" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1594452965020" />
+    <state x="340" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1594524707080" />
     <state x="241" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1593944677082">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -520,13 +511,13 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="282" y="67" width="700" height="530" key="recent.locations.popup/0.0.1280.680@0.0.1280.680" timestamp="1593946313231" />
-    <state x="297" y="151" key="run.anything.popup" timestamp="1594486948459">
+    <state x="297" y="151" key="run.anything.popup" timestamp="1594572482335">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1594486948459" />
-    <state x="303" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1594275780368">
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1594572482335" />
+    <state x="303" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1594572071224">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1594275780368" />
+    <state x="303" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1594572071224" />
   </component>
 </project>

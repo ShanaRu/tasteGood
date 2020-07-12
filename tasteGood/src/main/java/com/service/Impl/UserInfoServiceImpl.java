@@ -1,6 +1,7 @@
 package com.service.Impl;
 import com.dao.UserInfoDao;
 import com.dao.UserRoleDao;
+import com.domain.FollowTable;
 import com.domain.UserInfo;
 import com.domain.UserRole;
 import com.service.UserInfoService;
@@ -30,6 +31,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public UserInfo findUser(String userName) {
         return userInfoDao.findUser(userName);
+    }
+
+    @Override
+    public UserInfo findUserInfoById(Integer userId) {
+        return userInfoDao.findUserInfoById(userId);
     }
 
     @Override
@@ -65,5 +71,25 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public UserInfo findUserNamePhoto(Integer userId) {
         return userInfoDao.findUserNamePhoto(userId);
+    }
+
+    @Override
+    public void addFollowTable(FollowTable followTable) {
+        userInfoDao.addFollowTable(followTable);
+    }
+
+    @Override
+    public FollowTable findFollowTableIsExit(FollowTable followTable) {
+        return userInfoDao.findFollowTableIsExit(followTable);
+    }
+
+    @Override
+    public Integer countFollow(Integer userId) {
+        return userInfoDao.countFollow(userId);
+    }
+
+    @Override
+    public Integer countFollowed(Integer userId) {
+        return userInfoDao.countFollowed(userId);
     }
 }

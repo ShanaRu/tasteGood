@@ -30,7 +30,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public Integer saveMenu(Menu menu) {
-//        Integer i=menuDao.saveMenu(menu);
+        int i=menuDao.saveMenu(menu);
         return menu.getMenuId();
     }
 
@@ -115,6 +115,16 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public Integer countMenusById(Integer userId) {
         return menuDao.countMenusById(userId);
+    }
+
+    @Override
+    public List<Menu> getMenusByTotalComplete() {
+        return menuDao.getMenusByTotalComplete();
+    }
+
+    @Override
+    public void updateTotalComplete(Integer menuId, Integer totalComplete) {
+        menuDao.updateTotalComplete(menuId,totalComplete);
     }
 }
 

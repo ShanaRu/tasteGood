@@ -118,7 +118,7 @@
                         <i class="layui-icon">&#xe6c6;</i> 赞
                     </button>
                 </div>
-                <div><p style="width: 260px;margin:5px;text-overflow:ellipsis;overflow: hidden;">${work.summary}</p></div>
+                <div><p style="width: 260px;margin:5px;text-overflow:ellipsis;overflow: hidden;white-space: nowrap;">${work.summary}</p></div>
                 <div><i class="layui-icon">&#xe68f;</i> ${work.likes}</div>
             </div>
         </c:forEach>

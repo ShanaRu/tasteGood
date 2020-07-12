@@ -4,6 +4,7 @@ import com.domain.Collection;
 import com.domain.Ingredients;
 import com.domain.Menu;
 import com.domain.Steps;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -61,4 +62,10 @@ public interface MenuService {
 
     //用户收藏数量
     Integer countMenusById(Integer userId);
+
+    //按TotalComplete排行
+    List<Menu> getMenusByTotalComplete();
+
+    //更新完成量
+    void updateTotalComplete(Integer menuId,Integer totalComplete);
 }

@@ -5,12 +5,9 @@ import com.github.pagehelper.PageInfo;
 import com.service.LeaveMessageService;
 import com.service.MenuService;
 import com.service.UserInfoService;
-import com.sun.deploy.net.HttpResponse;
-import javafx.scene.input.Mnemonic;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,6 +60,7 @@ public class MenuController {
         menu.setClassification(classification);
         menu.setUploadTime(uploadTime);
         menu.setMenuName(menuName);
+        menu.setTotalComplete(0);
         HttpSession session=request.getSession();//获取用户id
         Integer uid=(Integer)session.getAttribute("userId");
         menu.setUserId(uid);
@@ -108,10 +105,13 @@ public class MenuController {
 
     //根据userid查询菜谱
     @RequestMapping("/userMenu")
-    public String userMenu(Model model, HttpServletRequest request,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
+    public String userMenu(@RequestParam("userId")Integer userId,Model model, HttpServletRequest request,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
         HttpSession session=request.getSession();
-        Integer uid=(int)session.getAttribute("userId");
-        List<Menu> menus=menuService.findAllMenuByUserId(uid,page,size);
+        Integer myUserId=(int)session.getAttribute("userId");//自己的
+        model.addAttribute("myUserId",myUserId);
+
+        //访问用户的
+        List<Menu> menus=menuService.findAllMenuByUserId(userId,page,size);
         PageInfo<Menu> pageInfo=new PageInfo<>(menus);
 //        for (Menu menu:menus){
 //            System.out.println(menu);
@@ -119,6 +119,9 @@ public class MenuController {
 //            System.out.println(menu.getSteps());
 //        }
         model.addAttribute("pageInfo",pageInfo);
+        //用户信息
+        UserInfo userInfo=userInfoService.findUserById(userId);
+        model.addAttribute("userInfo",userInfo);
         return "userMenu";
     }
 
@@ -162,6 +165,7 @@ public class MenuController {
         Integer menuId=updateMenu.getInt("menuId");
         Integer userId=updateMenu.getInt("userId");
         Integer collection=updateMenu.getInt("collection");
+        Integer totalComplete=updateMenu.getInt("totalComplete");
         JSONArray ingredientsArray=updateMenu.getJSONArray("ingredients");
         JSONArray stepsArray=updateMenu.getJSONArray("steps");
         //先删掉子表数据
@@ -174,6 +178,7 @@ public class MenuController {
         menu.setMenuDetail(menuDetail);
         menu.setClassification(classification);
         menu.setCollection(collection);
+        menu.setTotalComplete(totalComplete);
         menu.setTip(tip);
         menu.setUploadTime(uploadTime);
         menu.setMenuId(menuId);

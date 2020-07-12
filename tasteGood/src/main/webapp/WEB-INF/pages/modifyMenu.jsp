@@ -287,6 +287,7 @@
             example.menuName=document.getElementById("menuName").value;
             example.menuCover=document.getElementById("menuCover").value;
             example.menuDetail=document.getElementById("menuDetail").value;
+            example.totalComplete=document.getElementById("totalComplete").value;
             var isAutoSend = document.getElementsByName('classification');
             for (var i = 0; i < isAutoSend.length; i++) {
                 if (isAutoSend[i].checked == true) {
@@ -339,6 +340,7 @@
                             <input type="text" name="menuId" style="display: none" id="menuId" value="${menu.menuId}"><%--隐藏标签--%>
                             <input type="text" name="userId" style="display: none" id="userId" value="${menu.userId}">
                             <input type="text" name="collection" style="display: none" id="collection" value="${menu.collection}">
+                            <input type="text" name="totalComplete" style="display: none" id="totalComplete" value="${menu.totalComplete}">
                             <label class="layui-form-label">菜谱名称</label>
                             <div class="layui-input-block">
                                 <textarea name="menuName" id="menuName" placeholder="请输入菜谱名称" class="layui-textarea" required  lay-verify="required">${menu.menuName}</textarea>

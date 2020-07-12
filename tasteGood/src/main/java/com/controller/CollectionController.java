@@ -2,9 +2,11 @@ package com.controller;
 
 import com.domain.Collection;
 import com.domain.Menu;
+import com.domain.UserInfo;
 import com.github.pagehelper.PageInfo;
 import com.service.CollectionService;
 import com.service.MenuService;
+import com.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,14 +28,19 @@ public class CollectionController {
     private CollectionService collectionService;
     @Autowired
     private MenuService menuService;
+    @Autowired
+    private UserInfoService userInfoService;
 
     @RequestMapping("/showCollections")
-    public String showCollection(HttpServletRequest request, Model model,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
+    public String showCollection(@RequestParam("userId") Integer userId, HttpServletRequest request, Model model,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
         HttpSession session=request.getSession();//获取用户id
-        Integer uid=(Integer)session.getAttribute("userId");
-        List<Collection> collections=collectionService.findCollectionsByUserId(uid,page,size);//获取收藏表，显示complete
+        Integer myUserId=(Integer)session.getAttribute("userId");//自己的
+        model.addAttribute("myUserId",myUserId);
+        List<Collection> collections=collectionService.findCollectionsByUserId(userId,page,size);//获取收藏表，显示complete
         PageInfo<Collection> pageInfo=new PageInfo<>(collections);
         model.addAttribute("pageInfo",pageInfo);
+        UserInfo userInfo=userInfoService.findUserById(userId);
+        model.addAttribute("userInfo",userInfo);
         return "showCollections";
     }
 
@@ -41,6 +48,8 @@ public class CollectionController {
     @ResponseBody
     public String updateComplete(Collection collection){
         collectionService.updateComplete(collection);
+        Menu menu=menuService.findMenuByMenuId(collection.getMenuId());
+        menuService.updateTotalComplete(collection.getMenuId(),menu.getTotalComplete()+1);
         return "200";
     }
 

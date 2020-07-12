@@ -72,34 +72,45 @@ public class UserInfoController {
     //跳转主页
     @RequestMapping("/homePage")
     public String homPage(Model model,HttpServletRequest request){
+        //主页中的流行作品
         List<Works> works=worksService.getPopularWorks();
         model.addAttribute("works",works);
-        List<Menu> menus=new ArrayList<>();
-        List<Collection> collections=collectionService.getPopularCollection();
-        model.addAttribute("collections",collections);
-        for (Collection collection:collections){
-            menus.add(menuService.findMenuByMenuId(collection.getMenuId()));
-        }
+
+//        List<Menu> menus=new ArrayList<>();
+//        List<Collection> collections=collectionService.getPopularCollection();
+//        model.addAttribute("collections",collections);
+//        for (Collection collection:collections){
+//            menus.add(menuService.findMenuByMenuId(collection.getMenuId()));
+//        }
+//        model.addAttribute("menus",menus);
+        //主页中的菜谱排行榜
+        List<Menu> menus=menuService.getMenusByTotalComplete();
         model.addAttribute("menus",menus);
+
+        //主业的用户信息
         HttpSession session=request.getSession();
         Integer uid=(Integer)session.getAttribute("userId");
         UserInfo userInfo=userInfoService.findUserById(uid);
         model.addAttribute("userInfo",userInfo);
+
         Integer totalWork=worksService.countWorksById(uid);
         if (totalWork==null){
             totalWork=0;
         }
         model.addAttribute("totalWork",totalWork);
+
         Integer totalCollection=collectionService.countCollectionsById(uid);
         if (totalCollection==null){
             totalCollection=0;
         }
         model.addAttribute("totalCollection",totalCollection);
+
         Integer totalMenu=menuService.countMenusById(uid);
         if (totalMenu==null){
             totalMenu=0;
         }
         model.addAttribute("totalMenu",totalMenu);
+
         return "homePage";
     }
 
@@ -134,7 +145,7 @@ public class UserInfoController {
     public String modifyUserInfo(Model model,HttpServletRequest request){
         HttpSession session=request.getSession();
         Integer userId=(Integer)session.getAttribute("userId");
-        UserInfo userInfo=userInfoService.findUserById(userId);
+        UserInfo userInfo=userInfoService.findUserInfoById(userId);
         model.addAttribute("userInfo",userInfo);
         return "modifyUserInfo";
     }
@@ -174,5 +185,102 @@ public class UserInfoController {
         session.removeAttribute("userId");
         session.removeAttribute("userName");
         response.sendRedirect(request.getContextPath()+"/");
+    }
+
+//    //自己访问的
+//    @RequestMapping("/myKitchen")
+//    public String myKitchen(Model model,HttpServletRequest request){
+//        HttpSession session=request.getSession();
+//        Integer userId=(Integer)session.getAttribute("userId");
+//        model.addAttribute("myUserId",userId);//自己的userId
+//        //用户信息
+//        UserInfo userInfo=userInfoService.findUserById(userId);
+//        model.addAttribute("userInfo",userInfo);
+//        //菜谱数量
+//        Integer totalWork=worksService.countWorksById(userId);
+//        if (totalWork==null){
+//            totalWork=0;
+//        }
+//        model.addAttribute("totalWork",totalWork);
+//        //作品数量
+//        Integer totalCollection=collectionService.countCollectionsById(userId);
+//        if (totalCollection==null){
+//            totalCollection=0;
+//        }
+//        model.addAttribute("totalCollection",totalCollection);
+//        //收藏数量
+//        Integer totalMenu=menuService.countMenusById(userId);
+//        if (totalMenu==null){
+//            totalMenu=0;
+//        }
+//        model.addAttribute("totalMenu",totalMenu);
+//        //用户菜谱
+//        List<Menu> userMenus=menuService.findAllMenuByUserId(userId,1,3);
+//        model.addAttribute("userMenus",userMenus);
+//        //用户作品
+//        List<Works> works=worksService.findWorksByUserId(userId,1,3);
+//        model.addAttribute("works",works);
+//        //用户收藏
+//        List<Collection> collections=collectionService.findCollectionsByUserId(userId,1,3);
+//        model.addAttribute("collections",collections);
+//        return "myKitchen";
+//    }
+
+
+    @RequestMapping("/kitchen")
+    public String kitchen(@RequestParam("userId")Integer userId,Model model,HttpServletRequest request){
+        //自己的userId
+        HttpSession session=request.getSession();
+        Integer myUserId=(Integer)session.getAttribute("userId");
+        model.addAttribute("myUserId",myUserId);
+        //访问用户信息
+        UserInfo userInfo=userInfoService.findUserById(userId);
+        model.addAttribute("userInfo",userInfo);
+        //菜谱数量
+        Integer totalWork=worksService.countWorksById(userId);
+        if (totalWork==null){
+            totalWork=0;
+        }
+        model.addAttribute("totalWork",totalWork);
+        //作品数量
+        Integer totalCollection=collectionService.countCollectionsById(userId);
+        if (totalCollection==null){
+            totalCollection=0;
+        }
+        model.addAttribute("totalCollection",totalCollection);
+        //收藏数量
+        Integer totalMenu=menuService.countMenusById(userId);
+        if (totalMenu==null){
+            totalMenu=0;
+        }
+        model.addAttribute("totalMenu",totalMenu);
+        //用户菜谱
+        List<Menu> userMenus=menuService.findAllMenuByUserId(userId,1,3);
+        model.addAttribute("userMenus",userMenus);
+        //用户作品
+        List<Works> works=worksService.findWorksByUserId(userId,1,3);
+        model.addAttribute("works",works);
+        //用户收藏
+        List<Collection> collections=collectionService.findCollectionsByUserId(userId,1,3);
+        model.addAttribute("collections",collections);
+        Integer follow=userInfoService.countFollow(userId);
+        Integer followed=userInfoService.countFollowed(userId);
+        model.addAttribute("follow",follow);
+        model.addAttribute("followed",followed);
+        return "myKitchen";
+    }
+
+    @RequestMapping("/addFollow")
+    @ResponseBody
+    public String addFollow(FollowTable followTable){
+//        System.out.println(followTable);
+        FollowTable isExist=userInfoService.findFollowTableIsExit(followTable);
+//        System.out.println(isExist);
+        if(isExist==null){
+            userInfoService.addFollowTable(followTable);
+            return "200";
+        }else{
+            return "400";
+        }
     }
 }

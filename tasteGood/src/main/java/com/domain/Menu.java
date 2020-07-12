@@ -13,8 +13,17 @@ public class Menu {
     private Integer collection;
     private String classification;
     private Integer userId;
+    private Integer totalComplete;
     private List<Ingredients> Ingredients;
     private List<Steps> Steps;
+
+    public Integer getTotalComplete() {
+        return totalComplete;
+    }
+
+    public void setTotalComplete(Integer totalComplete) {
+        this.totalComplete = totalComplete;
+    }
 
     public List<com.domain.Ingredients> getIngredients() {
         return Ingredients;
@@ -104,8 +113,6 @@ public class Menu {
         this.classification = classification;
     }
 
-
-
     @Override
     public String toString() {
         return "Menu{" +
@@ -118,8 +125,9 @@ public class Menu {
                 ", collection=" + collection +
                 ", classification='" + classification + '\'' +
                 ", userId=" + userId +
+                ", totalComplete=" + totalComplete +
                 ", Ingredients=" + Ingredients +
-                ", Step=" + Steps +
+                ", Steps=" + Steps +
                 '}';
     }
 }

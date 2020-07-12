@@ -21,13 +21,14 @@ public interface MenuDao {
             @Result(property = "userId",column = "userId"),
             @Result(property = "collection",column = "collection"),
             @Result(property = "classification",column = "classification"),
+            @Result(property = "totalComplete",column = "totalComplete"),
             @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
             @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
     })
     List<Menu> findAllMenu();
 
     //保存菜单信息
-    @Insert("Insert into menu(menuName,menuCover,menuDetail,tip,uploadTime,userId,collection,classification) values(#{menuName},#{menuCover},#{menuDetail},#{tip},#{uploadTime},#{userId},#{collection},#{classification})")
+    @Insert("Insert into menu(menuName,menuCover,menuDetail,tip,uploadTime,userId,collection,classification,totalComplete) values(#{menuName},#{menuCover},#{menuDetail},#{tip},#{uploadTime},#{userId},#{collection},#{classification},#{totalComplete})")
     @Options(useGeneratedKeys=true,keyProperty="menuId",keyColumn="menuId")
     int saveMenu(Menu menu);
 
@@ -43,6 +44,7 @@ public interface MenuDao {
             @Result(property = "userId",column = "userId"),
             @Result(property = "collection",column = "collection"),
             @Result(property = "classification",column = "classification"),
+            @Result(property = "totalComplete",column = "totalComplete"),
             @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
             @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
     })
@@ -60,14 +62,15 @@ public interface MenuDao {
             @Result(property = "userId",column = "userId"),
             @Result(property = "collection",column = "collection"),
             @Result(property = "classification",column = "classification"),
+            @Result(property = "totalComplete",column = "totalComplete"),
             @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
             @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
     })
     Menu findMenuByMenuId(int menuId);
 
 
-    //保存菜单信息
-    @Update("Update menu set menuName=#{menuName},menuCover=#{menuCover},menuDetail=#{menuDetail},tip=#{tip},uploadTime=#{uploadTime},collection=#{collection},classification=#{classification} where menuId=#{menuId}")
+    //更新菜单信息
+    @Update("Update menu set menuName=#{menuName},menuCover=#{menuCover},menuDetail=#{menuDetail},tip=#{tip},uploadTime=#{uploadTime},collection=#{collection},classification=#{classification},totalComplete=#{totalComplete} where menuId=#{menuId}")
     void updateMenu(Menu menu);
 
     //删除菜谱
@@ -86,6 +89,7 @@ public interface MenuDao {
             @Result(property = "userId",column = "userId"),
             @Result(property = "collection",column = "collection"),
             @Result(property = "classification",column = "classification"),
+            @Result(property = "totalComplete",column = "totalComplete"),
             @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
             @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
     })
@@ -102,6 +106,7 @@ public interface MenuDao {
             @Result(property = "userId",column = "userId"),
             @Result(property = "collection",column = "collection"),
             @Result(property = "classification",column = "classification"),
+            @Result(property = "totalComplete",column = "totalComplete"),
             @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
             @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
     })
@@ -111,7 +116,7 @@ public interface MenuDao {
     @Select("select collection from menu where menuId=#{menuId}")
     Integer getCollection(Integer menuId);
 
-    //保存菜单信息
+    //更新收藏字段
     @Update("Update menu set collection=#{collection} where menuId=#{menuId}")
     void updateCollection(@Param("menuId") Integer menuId,@Param("collection") Integer collection);
 
@@ -127,12 +132,22 @@ public interface MenuDao {
             @Result(property = "userId",column = "userId"),
             @Result(property = "collection",column = "collection"),
             @Result(property = "classification",column = "classification"),
+            @Result(property = "totalComplete",column = "totalComplete"),
             @Result(column = "menuId",property = "Ingredients",many = @Many(select ="com.dao.IngredientsDao.findIngredientsById")),
             @Result(column = "menuId",property = "Steps",many = @Many(select = "com.dao.StepsDao.findStepsById"))
     })
     List<Menu> getPopularMenus();
 
+    //用户写的菜谱数量
     @Select("select count(*) totalMenu from menu where userId=#{userId} group by userId")
     Integer countMenusById(Integer userId);
+
+    //按totalComplete排行
+    @Select("select * from menu order by totalComplete desc")
+    List<Menu> getMenusByTotalComplete();
+
+    @Update("Update menu set totalComplete=#{totalComplete} where menuId=#{menuId}")
+    void updateTotalComplete(@Param("menuId") Integer menuId,@Param("totalComplete") Integer totalComplete);
+
 
 }

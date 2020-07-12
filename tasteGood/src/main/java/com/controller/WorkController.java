@@ -1,9 +1,11 @@
 package com.controller;
 
 import com.domain.Menu;
+import com.domain.UserInfo;
 import com.domain.Works;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.service.UserInfoService;
 import com.service.WorksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ public class WorkController {
 
     @Autowired
     private WorksService worksService;
+
+    @Autowired
+    private UserInfoService userInfoService;
 
     @RequestMapping("/addWork")
     public String addWork(@RequestParam("menuId")Integer menuId, @RequestParam("menuName")String menuName,Model model){
@@ -48,12 +53,15 @@ public class WorkController {
 
     //根据用户id查询用户作品
     @RequestMapping("/userWorks")
-    public String userWorks(Model model,HttpServletRequest request,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
+    public String userWorks(@RequestParam("userId")Integer userId,Model model,HttpServletRequest request,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
         HttpSession session=request.getSession();
-        Integer uid=(int)session.getAttribute("userId");
-        List<Works> works=worksService.findWorksByUserId(uid,page,size);
+        Integer myUserId=(int)session.getAttribute("userId");//自己的
+        model.addAttribute("myUserId",myUserId);
+        List<Works> works=worksService.findWorksByUserId(userId,page,size);
         PageInfo<Works> pageInfo=new PageInfo<>(works);
         model.addAttribute("pageInfo",pageInfo);
+        UserInfo userInfo=userInfoService.findUserById(userId);
+        model.addAttribute("userInfo",userInfo);
         return "userWorks";
     }
 

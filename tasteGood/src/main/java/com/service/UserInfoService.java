@@ -1,5 +1,6 @@
 package com.service;
 
+import com.domain.FollowTable;
 import com.domain.UserInfo;
 import com.domain.UserRole;
 import org.apache.ibatis.annotations.Param;
@@ -16,7 +17,7 @@ public interface UserInfoService {
     //保存用户信息
     Integer saveUserInfo(UserInfo userInfo);
 
-    //根据userName查找用户信息
+    //根据userName查找用户信息,无密码的
     UserInfo findUser(String userName);
 
     //查找userName是否重复
@@ -24,6 +25,9 @@ public interface UserInfoService {
 
     //根据userId查找用户信息
     UserInfo findUserById(Integer userId);
+
+    //根据userId查找全部用户信息
+    UserInfo findUserInfoById(Integer userId);
 
     //更新用户信息
     void updateUserInfo(String userName,Integer userSex,String userIntroduce,Integer userId);
@@ -39,5 +43,13 @@ public interface UserInfoService {
 
     //根据userId查找用户名字和头像
     UserInfo findUserNamePhoto(Integer userId);
+
+    void addFollowTable(FollowTable followTable);
+
+    FollowTable findFollowTableIsExit(FollowTable followTable);
+
+    Integer countFollow(Integer userId);
+
+    Integer countFollowed(Integer userId);
 
 }
