@@ -149,5 +149,8 @@ public interface MenuDao {
     @Update("Update menu set totalComplete=#{totalComplete} where menuId=#{menuId}")
     void updateTotalComplete(@Param("menuId") Integer menuId,@Param("totalComplete") Integer totalComplete);
 
+    //推荐菜谱
+    @Select("select * from menu order by rand() limit 4")
+    List<Menu> recommendMenu();
 
 }

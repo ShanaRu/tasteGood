@@ -68,4 +68,6 @@ public interface MenuService {
 
     //更新完成量
     void updateTotalComplete(Integer menuId,Integer totalComplete);
+
+    List<Menu> recommendMenu();
 }

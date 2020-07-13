@@ -70,4 +70,16 @@ public interface UserInfoDao {
     //计算被关注者
     @Select("select count(*) from followTable where follow=#{userId}")
     Integer countFollowed(Integer userId);
+
+    //查找关注者
+    @Select("select * from followTable where userId=#{userId}")
+    List<FollowTable> findFollow(Integer userId);
+
+    //查找被关注者
+    @Select("select * from followTable where follow=#{userId}")
+    List<FollowTable> findFollowed(Integer userId);
+
+    //取消关注
+    @Delete("delete from followTable where userId=#{userId} and follow=#{follow}")
+    void deleteFollow(FollowTable followTable);
 }

@@ -73,7 +73,7 @@
                         let username=document.getElementById("user_name").value;
                         let name=document.getElementById("temp").value;
                         let message;
-                        if(username!==name){//名称没有改才进行查重
+                        if(username!=name){//名称没有改才进行查重
                             $.ajax({
                                 url:'${pageContext.request.contextPath}/userInfo/userNameIsExist',
                                 type: "post",
@@ -83,7 +83,7 @@
                                     message=data;
                                 }
                             })
-                            if(message==="1"){
+                            if(message=="1"){
                                 return '用户昵称已存在';  //返回值必须在这里返回 只能返回字符串,不能返回true or false
                             }
                         }
@@ -96,7 +96,7 @@
                         if(!/^[\S]{3,12}$/.test(value)){
                             return '密码必须3到12位，且不能出现空格';
                         }
-                        if(oldPassword===tempPassword){
+                        if(oldPassword==tempPassword){
                             // layer.msg("匹配");
                         }else{
                             // layui.msg("与旧密码不匹配");
@@ -111,7 +111,7 @@
                         if(!/^[\S]{3,12}$/.test(value)){
                             return '密码必须3到12位，且不能出现空格';
                         }
-                        if(newPassword===userPassword){
+                        if(newPassword==userPassword){
                             // layer.msg("匹配");
                         }else{
                             // layui.msg("两次输入不相同");
@@ -177,6 +177,7 @@
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+<%--                                        <button class="layui-btn">保存</button>--%>
                                 </div>
                             </div>
                         </form>

@@ -35,6 +35,8 @@ public class WorkController {
     public String addWork(@RequestParam("menuId")Integer menuId, @RequestParam("menuName")String menuName,Model model){
         model.addAttribute("menuId",menuId);
         model.addAttribute("menuName",menuName);
+        List<Works> works=worksService.recommendWork();
+        model.addAttribute("works",works);
         return "addWork";
     }
 
@@ -54,6 +56,10 @@ public class WorkController {
     //根据用户id查询用户作品
     @RequestMapping("/userWorks")
     public String userWorks(@RequestParam("userId")Integer userId,Model model,HttpServletRequest request,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
+        Integer follow=userInfoService.countFollow(userId);
+        Integer followed=userInfoService.countFollowed(userId);
+        model.addAttribute("follow",follow);
+        model.addAttribute("followed",followed);
         HttpSession session=request.getSession();
         Integer myUserId=(int)session.getAttribute("userId");//自己的
         model.addAttribute("myUserId",myUserId);
@@ -104,6 +110,7 @@ public class WorkController {
     @RequestMapping("/deleteWork")
     @ResponseBody
     public String deleteWork(@RequestParam("workId") Integer workId){
+        System.out.println(workId);
         worksService.deleteWork(workId);
         return "200";
     }

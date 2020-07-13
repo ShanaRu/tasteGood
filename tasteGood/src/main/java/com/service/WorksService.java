@@ -1,5 +1,6 @@
 package com.service;
 
+import com.domain.Menu;
 import com.domain.Works;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,4 +34,6 @@ public interface WorksService {
 
     //用户作品数量
     Integer countWorksById(Integer userId);
+
+    List<Works> recommendWork();
 }

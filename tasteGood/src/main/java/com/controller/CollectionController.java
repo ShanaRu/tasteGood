@@ -33,6 +33,10 @@ public class CollectionController {
 
     @RequestMapping("/showCollections")
     public String showCollection(@RequestParam("userId") Integer userId, HttpServletRequest request, Model model,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
+        Integer follow=userInfoService.countFollow(userId);
+        Integer followed=userInfoService.countFollowed(userId);
+        model.addAttribute("follow",follow);
+        model.addAttribute("followed",followed);
         HttpSession session=request.getSession();//获取用户id
         Integer myUserId=(Integer)session.getAttribute("userId");//自己的
         model.addAttribute("myUserId",myUserId);
@@ -41,6 +45,7 @@ public class CollectionController {
         model.addAttribute("pageInfo",pageInfo);
         UserInfo userInfo=userInfoService.findUserById(userId);
         model.addAttribute("userInfo",userInfo);
+
         return "showCollections";
     }
 

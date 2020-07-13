@@ -44,9 +44,9 @@
             <!-- 头部区域（可配合layui已有的水平导航） -->
             <ul class="layui-nav layui-layout-left layui-bg-green">
                 <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/userInfo/homePage" class="myCss">首页</a></li>
-                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=家常菜&page=1&size=6" class="myCss" >菜谱</a></li>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/menu/searchClassification?classification=家常菜&page=1&size=8" class="myCss" >菜谱</a></li>
             <%--                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/menu/menuModule#classificationMenu=2" class="myCss" >菜谱</a></li>--%>
-                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/work/showWorks?page=1&size=6" class="myCss">作品</a></li>
+                <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/work/showWorks?page=1&size=8" class="myCss">作品</a></li>
                 <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/userInfo/kitchen?userId=<%=session.getAttribute("userId")%>" class="myCss" >我的厨房</a></li>
                 <li class="layui-nav-item">
                     <form action="${pageContext.request.contextPath}/menu/searchMenu" method="post" class="layui-form">
@@ -54,7 +54,7 @@
                             <div class="layui-inline">
                                 <div class="layui-input-inline">
                                     <input style="display: none" name="page" value="1">
-                                    <input style="display: none" name="size" value="6">
+                                    <input style="display: none" name="size" value="8">
                                     <input type="text" name="searchMenuName" placeholder="请输入菜谱名称" autocomplete="off" class="layui-input">
                                 </div>
                                 <div class="layui-input-inline">

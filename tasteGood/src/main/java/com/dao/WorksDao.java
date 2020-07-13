@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.domain.Menu;
 import com.domain.Works;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -35,5 +36,8 @@ public interface WorksDao {
 
     @Select("select count(*) totalWork from works where userId=#{userId} group by userId")
     Integer countWorksById(Integer userId);
+
+    @Select("select * from works order by rand() limit 4")
+    List<Works> recommendWork();
 
 }

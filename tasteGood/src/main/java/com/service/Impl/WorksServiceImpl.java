@@ -1,6 +1,7 @@
 package com.service.Impl;
 
 import com.dao.WorksDao;
+import com.domain.Menu;
 import com.domain.Works;
 import com.github.pagehelper.PageHelper;
 import com.service.WorksService;
@@ -62,5 +63,10 @@ public class WorksServiceImpl implements WorksService {
     @Override
     public Integer countWorksById(Integer userId) {
         return worksDao.countWorksById(userId);
+    }
+
+    @Override
+    public List<Works> recommendWork() {
+        return worksDao.recommendWork();
     }
 }

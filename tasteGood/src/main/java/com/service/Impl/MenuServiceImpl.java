@@ -126,5 +126,10 @@ public class MenuServiceImpl implements MenuService {
     public void updateTotalComplete(Integer menuId, Integer totalComplete) {
         menuDao.updateTotalComplete(menuId,totalComplete);
     }
+
+    @Override
+    public List<Menu> recommendMenu() {
+        return menuDao.recommendMenu();
+    }
 }
 

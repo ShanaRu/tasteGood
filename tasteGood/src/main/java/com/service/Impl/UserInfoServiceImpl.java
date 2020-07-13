@@ -4,6 +4,7 @@ import com.dao.UserRoleDao;
 import com.domain.FollowTable;
 import com.domain.UserInfo;
 import com.domain.UserRole;
+import com.github.pagehelper.PageHelper;
 import com.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -92,4 +93,23 @@ public class UserInfoServiceImpl implements UserInfoService {
     public Integer countFollowed(Integer userId) {
         return userInfoDao.countFollowed(userId);
     }
+
+    @Override
+    public List<FollowTable> findFollow(Integer userId,Integer page,Integer size) {
+        PageHelper.startPage(page,size);
+        return userInfoDao.findFollow(userId);
+    }
+
+    @Override
+    public List<FollowTable> findFollowed(Integer userId,Integer page,Integer size) {
+        PageHelper.startPage(page,size);
+        return userInfoDao.findFollowed(userId);
+    }
+
+    @Override
+    public void deleteFollow(FollowTable followTable) {
+        userInfoDao.deleteFollow(followTable);
+    }
+
+
 }

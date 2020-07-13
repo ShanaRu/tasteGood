@@ -49,7 +49,7 @@
                     type:'post',
                     // async: false,
                     success:function (data) {
-                        if (data === '1'){
+                        if (data == '1'){
                             location.href = "${pageContext.request.contextPath}/userInfo/homePage";//跳转主页
                         }else{
                             layer.msg('登录名或密码错误');
@@ -63,35 +63,45 @@
             });
         });
     </script>
+
+    <style type="text/css">
+        .center {
+            width:400px;
+            height:200px;
+            position:absolute;
+            background: #f3f3f3;
+            left:50%;
+            top:50%;
+            margin: -150px 0 0 -200px;
+            border: 1px solid #f3f3f3;
+        }
+    </style>
 </head>
-<body style="padding: 20px;">
-<%--    <a href="userInfo/findAllUser">测试</a>--%>
-<%--    <h1>登录页面</h1>--%>
-    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-        <legend>登录</legend>
-    </fieldset>
-    <form class="layui-form layui-form-pane" action="userInfo/userSignIn" method="post">
-        <div class="layui-form-item">
-            <label class="layui-form-label">用户昵称</label>
-            <div class="layui-input-inline">
-                <input type="username" name="userName" required  lay-verify="username" placeholder="请输入用户昵称" autocomplete="off" class="layui-input">
+<body style="background-image:url('${pageContext.request.contextPath}/picture/background.png') ;">
+    <div class="center">
+        <form class="layui-form layui-form-pane" action="userInfo/userSignIn" method="post" style="margin-top: 30px;margin-left: 40px">
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户昵称</label>
+                <div class="layui-input-inline">
+                    <input type="username" name="userName" required  lay-verify="username" placeholder="请输入用户昵称" autocomplete="off" class="layui-input">
+                </div>
+                <i class="layui-icon layui-icon-username" style="font-size: 30px; color: #1E9FFF;"></i>
             </div>
-            <i class="layui-icon layui-icon-username" style="font-size: 30px; color: #1E9FFF;"></i>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">用户密码</label>
-            <div class="layui-input-inline">
-                <input type="password" name="userPassword" required lay-verify="password" placeholder="请输入密码" autocomplete="off" class="layui-input" id="user_password">
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="userPassword" required lay-verify="password" placeholder="请输入密码" autocomplete="off" class="layui-input" id="user_password">
+                </div>
+                <i class="layui-icon layui-icon-password" style="font-size: 30px; color: #1E9FFF;"></i>
             </div>
-            <i class="layui-icon layui-icon-password" style="font-size: 30px; color: #1E9FFF;"></i>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="registerForm">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="registerForm">登录</button>
+                    <a href="userInfo/registerForm" class="layui-btn">注册</a>
+                </div>
             </div>
-        </div>
-    </form>
-    <a href="userInfo/registerForm" class="layui-btn">注册</a>
+        </form>
+    </div>
+
 </body>
 </html>

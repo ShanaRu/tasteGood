@@ -70,7 +70,7 @@
                     type:'post',
                     data:'workId='+workId,
                     success:function (data) {
-                        if(data==="200"){
+                        if(data=="200"){
                             layer.msg('点赞成功', {icon: 1,offset:'220px'},);
                             window.setTimeout("window.location.reload();",1500);//延迟2秒跳转
                         }else{
@@ -97,31 +97,47 @@
 <body>
     <%@include file="navbar.jsp"%>
     <div style="margin:20px 100px 20px 100px;min-height: 500px" class="layui-row layui-col-space10">
-        <div class="layui-col-md12">
+        <div class="layui-col-md12" style="margin-bottom: 20px">
             <span class="layui-breadcrumb">
                 <a href="${pageContext.request.contextPath}/userInfo/homePage">首页</a>
-                <a href="${pageContext.request.contextPath}/work/showWorks?page=1&size=6"><cite>作品区</cite></a>
+                <a href="${pageContext.request.contextPath}/work/showWorks?page=1&size=8"><cite>作品区</cite></a>
             </span>
         </div>
         <c:forEach items="${pageInfo.list}" var="work">
-            <div class="layui-col-md4">
-                <div>
-<%--                    <img src="${pageContext.request.contextPath}/${work.workPhoto}" style="height: 280px;width: 278px">--%>
-                    <button style="display: inline-block;line-height:0;cursor: pointer;border: none" onclick="showWorkInfo(${work.workId})">
-                        <img src="${pageContext.request.contextPath}/${work.workPhoto}" style="width: 280px;height: 278px;vertical-align:bottom;" alt="*">
-                    </button>
-                </div>
-                <div style="margin-top: 15px">
-<%--                    <h1>${work.menuName}</h1>--%>
+            <div class="layui-col-md3" style="margin-bottom: 20px">
+                <div style="width: 210px;text-align: center;border: 1px solid #f3f3f3">
                     <button class="layui-btn layui-btn-primary" style="border: none" onclick="showWorkInfo(${work.workId})">${work.menuName}</button>
-                    <button type="button" class="layui-btn layui-btn-radius layui-btn-danger" onclick="addLikes(${work.workId})">
-                        <i class="layui-icon">&#xe6c6;</i> 赞
+                    <button style="display: inline-block;line-height:0;cursor: pointer;border: none" onclick="showWorkInfo(${work.workId})">
+                        <img src="${pageContext.request.contextPath}/${work.workPhoto}" style="width: 210px;height: 170px;vertical-align:bottom;" alt="*">
                     </button>
+                    <p style="width: 190px;margin:15px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">${work.summary}</p>
+                    <p style="margin: 15px">${work.likes} 赞 |
+                        <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" onclick="addLikes(${work.workId})">
+                            <i class="layui-icon">&#xe6c6;</i> 赞
+                        </button>
+                    </p>
                 </div>
-                <div><p style="width: 260px;margin:5px;text-overflow:ellipsis;overflow: hidden;white-space: nowrap;">${work.summary}</p></div>
-                <div><i class="layui-icon">&#xe68f;</i> ${work.likes}</div>
             </div>
         </c:forEach>
+<%--        <c:forEach items="${pageInfo.list}" var="work">--%>
+<%--            <div class="layui-col-md4">--%>
+<%--                <div>--%>
+<%--&lt;%&ndash;                    <img src="${pageContext.request.contextPath}/${work.workPhoto}" style="height: 280px;width: 278px">&ndash;%&gt;--%>
+<%--                    <button style="display: inline-block;line-height:0;cursor: pointer;border: none" onclick="showWorkInfo(${work.workId})">--%>
+<%--                        <img src="${pageContext.request.contextPath}/${work.workPhoto}" style="width: 280px;height: 278px;vertical-align:bottom;" alt="*">--%>
+<%--                    </button>--%>
+<%--                </div>--%>
+<%--                <div style="margin-top: 15px">--%>
+<%--&lt;%&ndash;                    <h1>${work.menuName}</h1>&ndash;%&gt;--%>
+<%--                    <button class="layui-btn layui-btn-primary" style="border: none" onclick="showWorkInfo(${work.workId})">${work.menuName}</button>--%>
+<%--                    <button type="button" class="layui-btn layui-btn-radius layui-btn-danger" onclick="addLikes(${work.workId})">--%>
+<%--                        <i class="layui-icon">&#xe6c6;</i> 赞--%>
+<%--                    </button>--%>
+<%--                </div>--%>
+<%--                <div><p style="width: 260px;margin:5px;text-overflow:ellipsis;overflow: hidden;white-space: nowrap;">${work.summary}</p></div>--%>
+<%--                <div><i class="layui-icon">&#xe68f;</i> ${work.likes}</div>--%>
+<%--            </div>--%>
+<%--        </c:forEach>--%>
         <div style="text-align: center" class="layui-col-md12">
             <%--首页--%>
             <a href="${pageContext.request.contextPath}/work/showWorks?page=1&size=${pageInfo.pageSize}">
@@ -160,9 +176,9 @@
                 每页
                 <select id="changePageSize" onchange="changePageSize()">
                     <option value="">请选择</option>
-                    <option>6</option>
+                    <option>8</option>
                     <option>12</option>
-                    <option>18</option>
+                    <option>16</option>
                 </select>
                 条
             </p>

@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.domain.*;
+import com.github.pagehelper.PageInfo;
 import com.service.CollectionService;
 import com.service.MenuService;
 import com.service.UserInfoService;
@@ -87,6 +88,10 @@ public class UserInfoController {
         List<Menu> menus=menuService.getMenusByTotalComplete();
         model.addAttribute("menus",menus);
 
+        //推荐菜谱
+        List<Menu> recommends=menuService.recommendMenu();
+        model.addAttribute("recommends",recommends);
+
         //主业的用户信息
         HttpSession session=request.getSession();
         Integer uid=(Integer)session.getAttribute("userId");
@@ -152,6 +157,7 @@ public class UserInfoController {
 
     @RequestMapping("/updateUserInfo")
     public void updateUserInfo(UserInfo userInfo,HttpServletRequest request, HttpServletResponse response) throws Exception{
+//        System.out.println("拿到的"+userInfo);
         //这里拿到的userInfo不是完整的userInfo
         String userName=userInfo.getUserName();
         Integer userId=userInfo.getUserId();
@@ -282,5 +288,60 @@ public class UserInfoController {
         }else{
             return "400";
         }
+    }
+
+    @RequestMapping("/showFollow")
+    public String showFollow(@RequestParam("userId")Integer userId,@RequestParam("page") Integer page,@RequestParam("size") Integer size,Model model,HttpServletRequest request){
+        Integer followNum=userInfoService.countFollow(userId);
+        Integer followedNum=userInfoService.countFollowed(userId);
+        model.addAttribute("followNum",followNum);
+        model.addAttribute("followedNum",followedNum);
+        List<FollowTable> follow=userInfoService.findFollow(userId,page,size);
+//        model.addAttribute("follow",follow);
+        List<UserInfo> follows=new ArrayList<>();
+        for (FollowTable f:follow){
+            follows.add(userInfoService.findUserById(f.getFollow()));
+        }
+        PageInfo pageInfo=new PageInfo(follows);
+        model.addAttribute("pageInfo",pageInfo);//分页
+        //自己的userId
+        HttpSession session=request.getSession();
+        Integer myUserId=(Integer)session.getAttribute("userId");
+        model.addAttribute("myUserId",myUserId);
+        //访问用户信息
+        UserInfo userInfo=userInfoService.findUserById(userId);
+        model.addAttribute("userInfo",userInfo);
+        return "showFollow";
+    }
+
+    @RequestMapping("/showFollowed")
+    public String showFollowed(@RequestParam("userId")Integer userId,@RequestParam("page") Integer page,@RequestParam("size") Integer size,Model model,HttpServletRequest request){
+        Integer followNum=userInfoService.countFollow(userId);
+        Integer followedNum=userInfoService.countFollowed(userId);
+        model.addAttribute("followNum",followNum);
+        model.addAttribute("followedNum",followedNum);
+        List<FollowTable> followed=userInfoService.findFollowed(userId,page,size);
+        model.addAttribute("followed",followed);
+        List<UserInfo> followeds=new ArrayList<>();
+        for (FollowTable f:followed){
+            followeds.add(userInfoService.findUserById(f.getUserId()));
+        }
+        PageInfo pageInfo=new PageInfo(followeds);
+        model.addAttribute("pageInfo",pageInfo);//分页
+        //自己的userId
+        HttpSession session=request.getSession();
+        Integer myUserId=(Integer)session.getAttribute("userId");
+        model.addAttribute("myUserId",myUserId);
+        //访问用户信息
+        UserInfo userInfo=userInfoService.findUserById(userId);
+        model.addAttribute("userInfo",userInfo);
+        return "showFollowed";
+    }
+
+    @RequestMapping("/deleteFollow")
+    @ResponseBody
+    public String deleteFollow(FollowTable followTable){
+        userInfoService.deleteFollow(followTable);
+        return "200";
     }
 }

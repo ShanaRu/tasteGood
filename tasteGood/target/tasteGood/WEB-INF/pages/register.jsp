@@ -38,22 +38,22 @@
                     }
                     //上传成功
                     if(res.code == 0){
-                        var demoText = $('#picText');
-                        demoText.html('<span style="color: #4cae4c;">上传成功</span>');
+                        // var demoText = $('#picText');
+                        // demoText.html('<span style="color: #4cae4c;">上传成功</span>');
                         //将后台获取的图片地址传到前台存入隐藏控件中，随着表单一起提交
-                        console.log("图片地址："+res.src);
+                        // console.log("图片地址："+res.src);
                         document.getElementById("userPhoto").value = res.src;
-                        console.log(document.getElementById("userPhoto").value);
+                        // console.log(document.getElementById("userPhoto").value);
                         return layer.msg('上传成功');
                     }
                 },
                 error: function(res, index, upload){
                     //演示失败状态，并实现重传
-                    var demoText = $('#picText');
-                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                    demoText.find('.demo-reload').on('click', function(){
-                        uploadInst.upload();
-                    });
+                    // var demoText = $('#picText');
+                    // demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                    // demoText.find('.demo-reload').on('click', function(){
+                    //     uploadInst.upload();
+                    // });
                     return layer.msg('上传失败');
                 }
             });
@@ -80,7 +80,7 @@
                             // }
                         }
                     })
-                    if(demo==="1"){
+                    if(demo=="1"){
                         return '用户昵称已存在';  //返回值必须在这里返回 只能返回字符串,不能返回true or false
                     }
                 },
@@ -91,7 +91,7 @@
             });
             //监听提交
             form.on('submit(formDemo)', function(data){
-                // if(check===true){
+                // if(check==true){
                 //     return true;
                 // }else{
                 //     return false;
@@ -101,10 +101,23 @@
         });
     </script>
 
+    <style type="text/css">
+        .center {
+            width:400px;
+            height:550px;
+            position:absolute;
+            background: #f3f3f3;
+            left:50%;
+            top:50%;
+            margin: -275px 0 0 -200px;
+            border: 1px solid #f3f3f3;
+        }
+    </style>
+
 </head>
-<body style="padding: 20px;">
-    <div style="width: 600px;height: 700px">
-        <form class="layui-form layui-form-pane" action="${pageContext.request.contextPath}/userInfo/saveUseInfo" method="post">
+<body style="background-image:url('${pageContext.request.contextPath}/picture/background.png') ;">
+    <div class="center">
+        <form class="layui-form layui-form-pane" action="${pageContext.request.contextPath}/userInfo/saveUseInfo" method="post" style="margin: 30px">
             <div class="layui-form-item">
                 <label class="layui-form-label">用户昵称</label>
                 <div class="layui-input-block">
@@ -128,13 +141,13 @@
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <input type="text" value=""  id="userPhoto" name="userPhoto" style="display: none;"><!--隐藏标签-->
-                    <label class="layui-form-label" style="width: 200px;text-align: center">预览图一：</label>
+<%--                    <label class="layui-form-label" style="width: 200px;text-align: center">预览图一：</label>--%>
                     <div class="layui-upload">
                         <div class="layui-upload-list">
-                            <img class="layui-upload-img" id="showPic">
-                            <p id="picText"></p>
+                            <button type="button" class="layui-btn" id="uploadPic">上传头像</button>
+                            <img class="layui-upload-img" id="showPic" style="width: 100px;height: 100px;margin-left: 30px;">
+<%--                            <p id="picText"></p>--%>
                         </div>
-                        <button type="button" class="layui-btn" id="uploadPic">上传图片</button>
                     </div>
                 </div>
             </div>
@@ -146,7 +159,7 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">注册</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>

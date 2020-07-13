@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Shana
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>添加菜谱</title>
@@ -43,7 +45,7 @@
                     }
                     //上传成功
                     if(res.code == 0){
-                        var demoText = $('#picText');
+                        // var demoText = $('#picText');
                         // demoText.html('<span style="color: #4cae4c;">上传成功</span>');
                         //将后台获取的图片地址传到前台存入隐藏控件中，随着表单一起提交
                         // console.log("图片地址："+res.src);
@@ -67,10 +69,10 @@
             var form = layui.form;
             var $=layui.jquery;
             //监听提交
-            // form.on('submit(formMenu)', function(data){
-            //
-            //     return false;
-            // });
+            form.on('submit(formMenu)', function(data){
+
+                return false;
+            });
         });
         function addDosage()
         {
@@ -82,6 +84,7 @@
             input1.setAttribute("name","ingredient");
             input1.setAttribute("placeholder","食材：请输入食材名");
             input1.setAttribute("autocomplete","off");
+            input1.setAttribute("style","margin-bottom:5px;");
             document.getElementById("dosageBox1").appendChild(input1);
 
             var input2=document.createElement("input");
@@ -92,6 +95,7 @@
             input2.setAttribute("name","dosage");
             input2.setAttribute("placeholder","用量：如一克");
             input2.setAttribute("autocomplete","off");
+            input2.setAttribute("style","margin-bottom:5px;");
             // div2.appendChild(input2);
             document.getElementById("dosageBox2").appendChild(input2);
 
@@ -100,7 +104,7 @@
             var tr1=document.getElementById("dosageBox1");
             if(tr1.hasChildNodes()){//是否有子节点
                 var node1=tr1.childNodes;//子节点数量
-                if(node1.length===1){
+                if(node1.length==1){
                     layer.msg('不可再删');
                 }else{
                     var last1=tr1.lastChild;
@@ -111,7 +115,7 @@
             var tr2=document.getElementById("dosageBox2");
             if(tr2.hasChildNodes()){//是否有子节点
                 var node2=tr2.childNodes;//子节点数量
-                if(node2.length===1){
+                if(node2.length==1){
                     // layer.msg('不可再删');
                 }else{
                     var last2=tr2.lastChild;
@@ -179,7 +183,8 @@
 
             var button=document.createElement("input");
             button.setAttribute("type","file");
-            button.setAttribute("class","layui-btn");
+            // button.setAttribute("class","layui-btn");
+            button.setAttribute("style","margin-bottom:10px;margin-top:10px;");
             button.setAttribute("id","uploadStep"+num);
             button.setAttribute("onchange","uploadPhoto("+num+")");
             document.getElementById("stepBox1").appendChild(button);
@@ -191,7 +196,7 @@
             document.getElementById("stepBox2").appendChild(input4);
 
             var img=document.createElement("img");
-            img.setAttribute("style","width: 220px;height: 200px;");
+            img.setAttribute("style","width: 220px;height: 200px;margin-bottom:5px;");
             img.setAttribute("class","layui-upload-img");
             img.setAttribute("id","showStepChar"+num);
             document.getElementById("stepBox2").appendChild(img);
@@ -203,7 +208,7 @@
             if(tr1.hasChildNodes()){//是否有子节点
                 var node1=tr1.childNodes;//子节点数量
                 // console.log(node1.length);
-                if(node1.length===2){
+                if(node1.length==2){
                     layer.msg('不可再删');
                 }else{
                     var last1=tr1.lastChild;
@@ -215,7 +220,7 @@
             var tr3=document.getElementById("stepBox2");
             if(tr3.hasChildNodes()){//是否有子节点
                 var node3=tr3.childNodes;//子节点数量
-                if(node3.length===2){
+                if(node3.length==2){
                     // layer.msg('不可再删');
                 }else{
                     var last3=tr3.lastChild;
@@ -270,32 +275,38 @@
             example.uploadTime=new Date();
             example.ingredients=array1;
             example.steps=array2;
-            $.ajax({
-                url:"${pageContext.request.contextPath}/menu/saveMenu",
-                contentType:"application/json;charset=UTF-8",
-                data:JSON.stringify(example),
-                dataType:"json",
-                type: "post",
-                // async:false,
-                success:function (data) {
-                    if(data=="200"){
-                        location.href = "${pageContext.request.contextPath}/userInfo/homePage";//跳转主页
-                    }else{
+            layui.use('layer',function () {
+                var layer=layui.layer;
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/menu/saveMenu",
+                    contentType:"application/json;charset=UTF-8",
+                    data:JSON.stringify(example),
+                    dataType:"json",
+                    type: "post",
+                    // async:false,
+                    success:function (data) {
+                        if(data=="200"){
+                            <%--location.href = "${pageContext.request.contextPath}/userInfo/homePage";//跳转主页--%>
+                            layer.msg('提交成功', {icon: 1,offset:'220px'},);
+                            window.setTimeout("window.location='${pageContext.request.contextPath}/userInfo/homePage'",1500);
+                        }else{
+                            layer.msg('提交失败');
+                        }
+                    },
+                    error:function (data) {
                         layer.msg('提交失败');
                     }
-                },
-                error:function (data) {
-                    layer.msg('提交失败');
-                }
+                });
             });
+
         }
     </script>
 
 </head>
 <body>
     <%@include file="navbar.jsp"%>
-    <div style="margin:20px 100px 20px 100px;min-height: 500px">
-        <div>
+    <div style="margin:30px 100px 20px 100px;min-height: 500px">
+        <div style="margin-bottom: 20px">
             <span class="layui-breadcrumb">
                 <a href="${pageContext.request.contextPath}/userInfo/homePage">首页</a>
                 <a href="${pageContext.request.contextPath}/menu/addMenu"><cite>添加菜谱</cite></a>
@@ -303,8 +314,8 @@
         </div>
         <div class="layui-row layui-col-space30">
             <div class="layui-col-md9" style="min-height: 480px">
-                <div class="layui-form">
-<%--                <form class="layui-form">--%>
+<%--                <div class="layui-form">--%>
+                <form class="layui-form">
                     <div class="layui-row layui-col-space10">
                         <div class="layui-col-md7">
                             <div class="layui-form-item">
@@ -323,7 +334,7 @@
                         </div>
                         <div class="layui-col-md5">
                             <div class="layui-form-item">
-                                <img class="layui-upload-img " id="showPic" style="width: 320px;height: 300px;">
+                                <img class="layui-upload-img " id="showPic" style="width: 250px;height: 240px;">
                             </div>
                         </div>
                     </div>
@@ -378,15 +389,23 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                                <button class="layui-btn" onclick="commit()">立即提交</button>
+                                <button class="layui-btn" onclick="commit()" lay-submit lay-filter="formMenu">立即提交</button>
                                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
                     </div>
-<%--                </form>--%>
-                </div>
+                </form>
+<%--                </div>--%>
             </div>
             <div class="layui-col-md3" style="min-height: 480px">
-                <p>展示</p>
+                <p style="text-align: center">推荐菜谱</p>
+                <c:forEach items="${menus}" var="menu">
+                    <div style="margin: 20px;text-align: center">
+                        <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${menu.menuId}" style="display: inline-block;line-height:0;">
+                            <img src="${pageContext.request.contextPath}/${menu.menuCover}" style="width: 180px;height: 150px;vertical-align:bottom;" alt="*">
+                        </a>
+                        <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${menu.menuId}"><h5 style="margin-top: 10px">${menu.menuName}</h5></a>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>

@@ -104,7 +104,7 @@
                     type:'post',
                     data:'workId='+workId,
                     success:function (data) {
-                        if(data==="200"){
+                        if(data=="200"){
                             layer.msg('点赞成功', {icon: 1,offset:'220px'},);
                             window.setTimeout("window.location.reload();",1500);//延迟2秒跳转
                         }else{
@@ -126,6 +126,31 @@
             location.href = "${pageContext.request.contextPath}/work/userWorks?userId=${userInfo.userId}&page=1&size="
                 + pageSize;
         }
+
+        function addFollow(userId,follow) {
+            layui.use('layer', function() {
+                var layer = layui.layer;
+                $.ajax({
+                    url:'${pageContext.request.contextPath}/userInfo/addFollow',
+                    datatype:'text',
+                    type:'post',
+                    data:{"userId":userId,"follow":follow},
+                    success:function (data) {
+                        if(data=="200"){
+                            layer.msg('关注成功', {icon: 1,offset:'220px'},);
+                            window.setTimeout("window.location.reload();",1500);//延迟2秒跳转
+                        }else if(data=="400"){
+                            layer.msg('已经关注过了', {icon: 5,offset:'220px'},);
+                        }else {
+                            layer.msg('关注失败', {icon: 5,offset:'220px'},);
+                        }
+                    },
+                    error:function () {
+                        layer.msg('关注失败', {icon: 5,offset:'220px'},);
+                    }
+                });
+            });
+        }
     </script>
 </head>
 <body>
@@ -138,6 +163,18 @@
                     </a>
                 </div>
                 <div style="padding: 15px"><a href="${pageContext.request.contextPath}/userInfo/kitchen?userId=${userInfo.userId}"><h3 style="text-align: center">${userInfo.userName}</h3></a></div>
+                <c:if test="${myUserId eq userInfo.userId}">
+                    <div style="text-align: center;padding: 15px">
+                        <a href="${pageContext.request.contextPath}/userInfo/modifyUserInfo" class="layui-btn layui-btn-primary">修改个人信息</a>
+                    </div>
+                </c:if>
+                <c:if test="${myUserId ne userInfo.userId}">
+                    <div style="text-align: center;padding: 15px">
+                        <button class="layui-btn layui-btn-danger" onclick="addFollow(${myUserId},${userInfo.userId})">关注</button>
+                    </div>
+                </c:if>
+                <p style="text-align: center;padding: 15px;"><a href="${pageContext.request.contextPath}/userInfo/showFollow?userId=${userInfo.userId}&page=1&size=16" class="layui-btn layui-btn-primary">关注 ${follow}</a></p>
+                <p style="text-align: center;padding: 15px;"><a href="${pageContext.request.contextPath}/userInfo/showFollowed?userId=${userInfo.userId}&page=1&size=16" class="layui-btn layui-btn-primary">被关注 ${followed}</a></p>
                 <ul>
                     <li style="text-align: center;padding: 15px;font-size: 20px">
                         <a href="${pageContext.request.contextPath}/menu/userMenu?userId=${userInfo.userId}&page=1&size=6" class="layui-btn layui-btn-primary">菜谱</a>
@@ -166,8 +203,8 @@
                                         <i class="layui-icon">&#xe6c6;</i> 赞
                                     </button>
                                     <c:if test="${userInfo.userId eq myUserId}">
-                                        <a href="${pageContext.request.contextPath}/work/modifyWork?workId=${works.workId}" class="layui-btn layui-btn-primary layui-btn-xs layui-btn-radius">修改</a>
-                                        <button class="layui-btn layui-btn-primary layui-btn-xs layui-btn-radius" onclick="deleteWork(${works.workId})">删除</button>
+                                        <a href="${pageContext.request.contextPath}/work/modifyWork?workId=${work.workId}" class="layui-btn layui-btn-primary layui-btn-xs layui-btn-radius">修改</a>
+                                        <button class="layui-btn layui-btn-primary layui-btn-xs layui-btn-radius" onclick="deleteWork(${work.workId})">删除</button>
                                     </c:if>
                                 </p>
                             </div>

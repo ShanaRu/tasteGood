@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -36,7 +37,9 @@ public class MenuController {
     private UserInfoService userInfoService;
 
     @RequestMapping("/addMenu")
-    public String writeMenu(){
+    public String writeMenu(Model model){
+        List<Menu> menus=menuService.recommendMenu();
+        model.addAttribute("menus",menus);
         return "addMenu";
     }
 
@@ -122,6 +125,10 @@ public class MenuController {
         //用户信息
         UserInfo userInfo=userInfoService.findUserById(userId);
         model.addAttribute("userInfo",userInfo);
+        Integer follow=userInfoService.countFollow(userId);
+        Integer followed=userInfoService.countFollowed(userId);
+        model.addAttribute("follow",follow);
+        model.addAttribute("followed",followed);
         return "userMenu";
     }
 
@@ -130,6 +137,8 @@ public class MenuController {
     public String showMenu(@RequestParam("menuId")Integer menuId,Model model){
         Menu menu=menuService.findMenuByMenuId(menuId);
         model.addAttribute("menu",menu);
+        UserInfo userInfo=userInfoService.findUserById(menu.getUserId());
+        model.addAttribute("userInfo",userInfo);
         List<LeaveMessage> leaveMessages=leaveMessageService.getLeaveMessageByMenuId(menuId);
         model.addAttribute("leaveMessages",leaveMessages);
         List<UserInfo> userInfos=new ArrayList<>();
@@ -137,6 +146,8 @@ public class MenuController {
             userInfos.add(userInfoService.findUserNamePhoto(leaveMessage.getUserId()));
         }
         model.addAttribute("userInfos",userInfos);
+        List<Menu> menus=menuService.recommendMenu();
+        model.addAttribute("menus",menus);
         return "showMenu";
     }
 
@@ -145,7 +156,9 @@ public class MenuController {
     public String modifyMenu(@RequestParam("menuId")Integer menuId,Model model){
         Menu menu=menuService.findMenuByMenuId(menuId);
         model.addAttribute("menu",menu);
-        System.out.println(menu);
+        List<Menu> recommends=menuService.recommendMenu();
+        model.addAttribute("recommends",recommends);
+//        System.out.println(menu);
         return "modifyMenu";
     }
 
@@ -195,6 +208,7 @@ public class MenuController {
     @RequestMapping("/deleteMenu")
     @ResponseBody
     public String deleteMenu(@RequestParam("menuId") Integer menuId){
+        System.out.println(menuId);
         menuService.deleteMenu(menuId);
         return "200";
     }

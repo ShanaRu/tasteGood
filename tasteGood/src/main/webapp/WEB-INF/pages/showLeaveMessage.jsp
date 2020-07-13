@@ -24,7 +24,7 @@
                     type:'post',
                     data:"leaveId="+leaveId,
                     success:function (data) {
-                        if(data==="200"){
+                        if(data=="200"){
                             layer.msg('删除成功', {icon: 1,offset:'220px'},);
                             window.setTimeout("window.location.reload();",1500);//延迟2秒跳转
                         }else {

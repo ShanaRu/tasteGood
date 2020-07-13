@@ -52,4 +52,10 @@ public interface UserInfoService {
 
     Integer countFollowed(Integer userId);
 
+    List<FollowTable> findFollow(Integer userId,Integer page,Integer size);
+
+    List<FollowTable> findFollowed(Integer userId,Integer page,Integer size);
+
+    void deleteFollow(FollowTable followTable);
+
 }
