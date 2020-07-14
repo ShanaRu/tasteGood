@@ -73,15 +73,6 @@
 
             });
         }
-
-        <%--function changePageSize() {--%>
-        <%--    //获取下拉框的值--%>
-        <%--    var pageSize = $("#changePageSize").val();--%>
-
-        <%--    //向服务器发送请求，改变每页显示条数--%>
-        <%--    location.href = "${pageContext.request.contextPath}/userInfo/showFollow?userId=${userInfo.userId}page=1&size="--%>
-        <%--        + pageSize;--%>
-        <%--}--%>
     </script>
 </head>
 <body>

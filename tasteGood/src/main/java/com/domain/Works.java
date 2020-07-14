@@ -1,5 +1,7 @@
 package com.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.Date;
 
 public class Works {
@@ -12,6 +14,7 @@ public class Works {
     private Integer userId;
     private Date workTime;
 
+    @JsonSerialize(using = DateEditor.class)
     public Date getWorkTime() {
         return workTime;
     }

@@ -36,4 +36,6 @@ public interface WorksService {
     Integer countWorksById(Integer userId);
 
     List<Works> recommendWork();
+
+    List<Works> getMenuWorks(Integer menuId);
 }

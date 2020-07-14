@@ -40,4 +40,7 @@ public interface WorksDao {
     @Select("select * from works order by rand() limit 4")
     List<Works> recommendWork();
 
+    @Select("select * from works where menuId=#{menuId} order by rand() limit 4")
+    List<Works> getMenuWorks(Integer menuId);
+
 }

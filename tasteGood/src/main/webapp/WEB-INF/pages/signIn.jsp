@@ -24,11 +24,6 @@
     <script type="text/javascript">
         layui.use('form', function(){
             var  form=layui.form;
-            //监听提交
-            // form.on('submit(formDemo)', function(data){
-            //     layer.msg(JSON.stringify(data.field));
-            //     return false;
-            // });
             //自定义验证规则
             form.verify({
                 username: [

@@ -45,22 +45,11 @@
                         }
                         //上传成功
                         if(res.code == 0){
-                            var demoText = $('#picText');
-                            // demoText.html('<span style="color: #4cae4c;">上传成功</span>');
-                            //将后台获取的图片地址传到前台存入隐藏控件中，随着表单一起提交
-                            // console.log("图片地址："+res.src);
                             document.getElementById("userPhoto").value = res.src;
-                            // console.log(document.getElementById("userPhoto").value);
                             return layer.msg('上传成功');
                         }
                     },
                     error: function(res, index, upload){
-                        //演示失败状态，并实现重传
-                        // var demoText = $('#picText');
-                        // demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                        // demoText.find('.demo-reload').on('click', function(){
-                        //     uploadInst.upload();
-                        // });
                         return layer.msg('上传失败');
                     }
                 });
@@ -135,7 +124,7 @@
 </head>
 <body>
     <%@include file="navbar.jsp"%>
-        <div style="margin:20px 100px 20px 100px;min-height: 500px" class="layui-row layui-col-space10">
+        <div style="margin:30px 100px 20px 100px;min-height: 500px" class="layui-row layui-col-space10">
             <div class="layui-tab" lay-filter="test">
                 <ul class="layui-tab-title">
                     <li class="layui-this">基本信息</li>
@@ -177,7 +166,6 @@
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
-<%--                                        <button class="layui-btn">保存</button>--%>
                                 </div>
                             </div>
                         </form>
@@ -223,7 +211,6 @@
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
                                     <input type="text" value=""  id="userPhoto" name="userPhoto" style="display: none;"><!--隐藏标签-->
-<%--                                    <label class="layui-form-label" style="width: 200px;text-align: center">预览图一：</label>--%>
                                     <input style="display: none" value="${userInfo.userId}" name="userId"><!--隐藏标签-->
                                     <div class="layui-upload">
                                         <div class="layui-upload-list">
@@ -233,7 +220,6 @@
                                             <div class="layui-col-md5">
                                                 <button type="button" class="layui-btn" id="uploadPic">上传图片</button>
                                             </div>
-<%--                                            <p id="picText"></p>--%>
                                         </div>
                                     </div>
                                 </div>

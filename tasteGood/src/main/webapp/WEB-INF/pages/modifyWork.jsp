@@ -36,10 +36,7 @@
                     }
                     //上传成功
                     if(res.code == 0){
-                        var demoText = $('#picText');
-                        console.log("图片地址："+res.src);
                         document.getElementById("workPhoto").value = res.src;
-                        console.log(document.getElementById("workPhoto").value);
                         return layer.msg('上传成功');
                     }
                 },
@@ -49,14 +46,15 @@
             });
         });
     </script>
+    <%@include file="workMethod.jsp"%>
 </head>
 <body>
     <%@include file="navbar.jsp"%>
-    <div style="margin:20px 100px 20px 100px;min-height: 500px">
-        <div>
+    <div style="margin:30px 100px 20px 100px;min-height: 500px">
+        <div style="margin-bottom: 20px">
             <span class="layui-breadcrumb">
                 <a href="${pageContext.request.contextPath}/userInfo/homePage">首页</a>
-                <a href="${pageContext.request.contextPath}/work/saveWork"><cite>修改作品</cite></a>
+                <a href="${pageContext.request.contextPath}/work/modifyWork?workId=${work.workId}"><cite>修改作品</cite></a>
             </span>
         </div>
         <div class="layui-row layui-col-space30">
@@ -75,13 +73,13 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <img class="layui-upload-img " id="showPic" style="width: 660px;height: 400px;" src="${pageContext.request.contextPath}/${work.workPhoto}">
+                            <img class="layui-upload-img " id="showPic" style="width: 600px;height: 400px;" src="${pageContext.request.contextPath}/${work.workPhoto}">
                         </div>
                     </div>
                     <div class="layui-form-item layui-form-text">
                         <label class="layui-form-label">心得描述</label>
                         <div class="layui-input-block">
-                            <textarea name="summary" id="summary" placeholder="请输入心得总结" class="layui-textarea" required lay-verify="required">${work.summary}</textarea>
+                            <textarea name="summary" id="summary" placeholder="请输入心得总结" class="layui-textarea" required lay-verify="required" style="width: 600px">${work.summary}</textarea>
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -93,7 +91,21 @@
                 </form>
             </div>
             <div class="layui-col-md3">
-                <p>展示</p>
+                <p style="text-align: center">推荐作品</p>
+                <c:forEach items="${works}" var="w">
+                    <div style="margin: 20px;text-align: center">
+                        <button style="display: inline-block;line-height:0;cursor: pointer;border: none" onclick="showWorkInfo(${w.workId})">
+                            <img src="${pageContext.request.contextPath}/${w.workPhoto}" style="width: 180px;height: 150px;vertical-align:bottom;" alt="*">
+                        </button>
+                        <h5 style="margin-top: 10px">${w.menuName}</h5>
+                        <p style="text-align: center;margin-top: 5px">
+                                ${w.likes} 赞 |
+                            <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" onclick="addLikes(${w.workId})">
+                                <i class="layui-icon">&#xe6c6;</i> 赞
+                            </button>
+                        </p>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>

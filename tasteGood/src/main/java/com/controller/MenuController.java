@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.service.LeaveMessageService;
 import com.service.MenuService;
 import com.service.UserInfoService;
+import com.service.WorksService;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,9 @@ public class MenuController {
 
     @Autowired
     private UserInfoService userInfoService;
+
+    @Autowired
+    private WorksService worksService;
 
     @RequestMapping("/addMenu")
     public String writeMenu(Model model){
@@ -137,17 +141,19 @@ public class MenuController {
     public String showMenu(@RequestParam("menuId")Integer menuId,Model model){
         Menu menu=menuService.findMenuByMenuId(menuId);
         model.addAttribute("menu",menu);
-        UserInfo userInfo=userInfoService.findUserById(menu.getUserId());
-        model.addAttribute("userInfo",userInfo);
+        UserInfo menuUser=userInfoService.findUserById(menu.getUserId());
+        model.addAttribute("menuUser",menuUser);//菜谱对应的用户信息
         List<LeaveMessage> leaveMessages=leaveMessageService.getLeaveMessageByMenuId(menuId);
         model.addAttribute("leaveMessages",leaveMessages);
         List<UserInfo> userInfos=new ArrayList<>();
         for (LeaveMessage leaveMessage:leaveMessages){
             userInfos.add(userInfoService.findUserNamePhoto(leaveMessage.getUserId()));
-        }
+        }//留言对应的用户信息
         model.addAttribute("userInfos",userInfos);
         List<Menu> menus=menuService.recommendMenu();
         model.addAttribute("menus",menus);
+        List<Works> menuWork=worksService.getMenuWorks(menuId);
+        model.addAttribute("menuWork",menuWork);
         return "showMenu";
     }
 

@@ -69,4 +69,9 @@ public class WorksServiceImpl implements WorksService {
     public List<Works> recommendWork() {
         return worksDao.recommendWork();
     }
+
+    @Override
+    public List<Works> getMenuWorks(Integer menuId) {
+        return worksDao.getMenuWorks(menuId);
+    }
 }

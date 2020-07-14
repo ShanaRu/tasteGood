@@ -74,25 +74,6 @@
                 </div>
             </div>
         </c:forEach>
-<%--        <c:forEach items="${pageInfo.list}" var="menu">--%>
-<%--            <div style="padding: 15px;margin-bottom: 20px" class="layui-col-md6">--%>
-<%--                <div class="layui-col-md6">--%>
-<%--                    <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${menu.menuId}" style="display: inline-block;line-height:0;">--%>
-<%--                        <img src="${pageContext.request.contextPath}/${menu.menuCover}" style="width: 240px;height: 200px;vertical-align:bottom;" alt="*">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="layui-col-md6">--%>
-<%--                    <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${menu.menuId}"><h1>${menu.menuName}</h1></a>--%>
-<%--                        &lt;%&ndash;                    <p>${userMenu.menuDetail}</p>&ndash;%&gt;--%>
-<%--                    <c:forEach items="${menu.ingredients}" var="ingredient">--%>
-<%--                        &lt;%&ndash;                        ${ingredient.dosage}&ndash;%&gt;--%>
-<%--                        <span style="font-size: 14px">${ingredient.ingredient}</span>--%>
-<%--                    </c:forEach>--%>
-<%--                    <span>${menu.collection}收藏</span>--%>
-<%--                    <button type="button" class="layui-btn" onclick="addCollection(${menu.menuId})">收藏</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </c:forEach>--%>
         <div style="text-align: center" class="layui-col-md12">
             <%--首页--%>
             <a href="${pageContext.request.contextPath}/menu/searchMenu?searchMenuName=${searchMenuName}&page=1&size=${pageInfo.pageSize}">

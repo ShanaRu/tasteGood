@@ -38,22 +38,11 @@
                     }
                     //上传成功
                     if(res.code == 0){
-                        // var demoText = $('#picText');
-                        // demoText.html('<span style="color: #4cae4c;">上传成功</span>');
-                        //将后台获取的图片地址传到前台存入隐藏控件中，随着表单一起提交
-                        // console.log("图片地址："+res.src);
                         document.getElementById("userPhoto").value = res.src;
-                        // console.log(document.getElementById("userPhoto").value);
                         return layer.msg('上传成功');
                     }
                 },
                 error: function(res, index, upload){
-                    //演示失败状态，并实现重传
-                    // var demoText = $('#picText');
-                    // demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                    // demoText.find('.demo-reload').on('click', function(){
-                    //     uploadInst.upload();
-                    // });
                     return layer.msg('上传失败');
                 }
             });
@@ -73,11 +62,6 @@
                         async: false,//必须同步才可以先调用检验再进行表单提交
                         success: function(data) {
                             demo=data;
-                            // if(data=="0"){
-                            //     check=true;
-                            // }else if(data=="1") {
-                            //     check=false;
-                            // }
                         }
                     })
                     if(demo=="1"){
@@ -91,11 +75,6 @@
             });
             //监听提交
             form.on('submit(formDemo)', function(data){
-                // if(check==true){
-                //     return true;
-                // }else{
-                //     return false;
-                // }
                 return true;
             });
         });
@@ -141,12 +120,10 @@
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <input type="text" value=""  id="userPhoto" name="userPhoto" style="display: none;"><!--隐藏标签-->
-<%--                    <label class="layui-form-label" style="width: 200px;text-align: center">预览图一：</label>--%>
                     <div class="layui-upload">
                         <div class="layui-upload-list">
                             <button type="button" class="layui-btn" id="uploadPic">上传头像</button>
                             <img class="layui-upload-img" id="showPic" style="width: 100px;height: 100px;margin-left: 30px;">
-<%--                            <p id="picText"></p>--%>
                         </div>
                     </div>
                 </div>

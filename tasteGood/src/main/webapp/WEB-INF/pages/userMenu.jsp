@@ -144,15 +144,6 @@
         </div>
         <div class="layui-col-md10">
             <div class="layui-row layui-col-space30">
-<%--                <fieldset class="layui-elem-field layui-field-title">--%>
-<%--                    <legend>--%>
-<%--                        <p style="">${userInfo.userName}的菜谱 <a href="${pageContext.request.contextPath}/menu/userMenu?page=1&size=6" style="color: #dd3915">(查看全部菜谱)</a></p>--%>
-<%--                    </legend>--%>
-<%--                </fieldset>--%>
-<%--                <c:if test="${totalMenu eq 0}">--%>
-<%--                    <p>还没有菜谱~</p>--%>
-<%--                </c:if>--%>
-<%--                <c:if test="${totalMenu != 0}">--%>
                     <c:forEach items="${pageInfo.list}" var="userMenu">
                         <div class="layui-col-md4">
                             <div style="width: 240px;text-align: center;border: 1px solid #f3f3f3">
@@ -225,80 +216,6 @@
                 </p>
             </div>
         </div>
-<%--        <div class="layui-col-md12">--%>
-<%--            <span class="layui-breadcrumb">--%>
-<%--                <a href="${pageContext.request.contextPath}/userInfo/homePage">首页</a>--%>
-<%--                <a href="${pageContext.request.contextPath}/menu/userMenu?page=1&size=6"><cite>我的菜谱</cite></a>--%>
-<%--            </span>--%>
-<%--        </div>--%>
-<%--        <c:forEach items="${pageInfo.list}" var="userMenu">--%>
-<%--            <div style="padding: 15px;margin-bottom: 20px" class="layui-col-md6">--%>
-<%--                <div class="layui-col-md6">--%>
-<%--                    <a href="${pageContext.request.contextPath}/menu/modifyMenu?menuId=${userMenu.menuId}" style="display: inline-block;line-height:0;">--%>
-<%--                        <img src="${pageContext.request.contextPath}/${userMenu.menuCover}" style="width: 240px;height: 200px;vertical-align:bottom;" alt="*">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="layui-col-md6">--%>
-<%--                    <a href="${pageContext.request.contextPath}/menu/modifyMenu?menuId=${userMenu.menuId}"><h1>${userMenu.menuName}</h1></a>--%>
-<%--&lt;%&ndash;                    <p>${userMenu.menuDetail}</p>&ndash;%&gt;--%>
-<%--                    <c:forEach items="${userMenu.ingredients}" var="ingredient">--%>
-<%--&lt;%&ndash;                        ${ingredient.dosage}&ndash;%&gt;--%>
-<%--                        <span style="font-size: 14px">${ingredient.ingredient}</span>--%>
-<%--                    </c:forEach>--%>
-<%--                    <div>--%>
-<%--                        <span>${userMenu.collection}收藏</span>--%>
-<%--                        <button type="button" class="layui-btn" onclick="addCollection(${userMenu.menuId})">收藏</button>--%>
-<%--                    </div>--%>
-<%--                    <a href="${pageContext.request.contextPath}/menu/modifyMenu?menuId=${userMenu.menuId}" class="layui-btn">修改</a>--%>
-<%--                    <button class="layui-btn" onclick="deleteMenu(${userMenu.menuId})">删除</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </c:forEach>--%>
-<%--        <div style="text-align: center" class="layui-col-md12">--%>
-<%--            &lt;%&ndash;首页&ndash;%&gt;--%>
-<%--            <a href="${pageContext.request.contextPath}/menu/userMenu?page=1&size=${pageInfo.pageSize}">--%>
-<%--                <button class="layui-btn layui-btn-primary layui-btn-sm">首页</button>--%>
-<%--            </a>--%>
-<%--            &lt;%&ndash;上一页&ndash;%&gt;--%>
-<%--            <c:if test="${pageInfo.hasPreviousPage}">--%>
-<%--                <a href="${pageContext.request.contextPath}/menu/userMenu?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">--%>
-<%--                    <button class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon layui-icon-prev"></i></button>--%>
-<%--                </a>--%>
-<%--            </c:if>--%>
-<%--            &lt;%&ndash;中间页 pageInfo.navigatepageNums 所有页码的数组 pageInfo.pageNum 当前页数&ndash;%&gt;--%>
-<%--            <c:forEach items="${pageInfo.navigatepageNums}" var="pageNum">--%>
-<%--                <c:if test="${pageNum == pageInfo.pageNum}">--%>
-<%--                    <a href="${pageContext.request.contextPath}/menu/userMenu?page=${pageNum}&size=${pageInfo.pageSize}">--%>
-<%--                        <button class="layui-btn layui-btn-sm">${pageNum}</button>--%>
-<%--                    </a>--%>
-<%--                </c:if>--%>
-<%--                <c:if test="${pageNum != pageInfo.pageNum}">--%>
-<%--                    <a href="${pageContext.request.contextPath}/menu/userMenu?page=${pageNum}&size=${pageInfo.pageSize}">--%>
-<%--                        <button class="layui-btn layui-btn-primary layui-btn-sm">${pageNum}</button>--%>
-<%--                    </a>--%>
-<%--                </c:if>--%>
-<%--            </c:forEach>--%>
-<%--            &lt;%&ndash;下一页&ndash;%&gt;--%>
-<%--            <c:if test="${pageInfo.hasNextPage}">--%>
-<%--                <a href="${pageContext.request.contextPath}/menu/userMenu?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">--%>
-<%--                    <button class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon layui-icon-next"></i></button>--%>
-<%--                </a>--%>
-<%--            </c:if>--%>
-<%--            &lt;%&ndash;尾页&ndash;%&gt;--%>
-<%--            <a href="${pageContext.request.contextPath}/menu/userMenu?page=${pageInfo.pages}&size=${pageInfo.pageSize}">--%>
-<%--                <button class="layui-btn layui-btn-primary layui-btn-sm">尾页</button>--%>
-<%--            </a>--%>
-<%--            <p style="display: inline-block;font-size: 12px;line-height: 30px">--%>
-<%--                每页--%>
-<%--                <select id="changePageSize" onchange="changePageSize()">--%>
-<%--                    <option value="">请选择</option>--%>
-<%--                    <option>6</option>--%>
-<%--                    <option>10</option>--%>
-<%--                    <option>14</option>--%>
-<%--                </select>--%>
-<%--                条--%>
-<%--            </p>--%>
-<%--        </div>--%>
     </div>
     <%@include file="footer.jsp"%>
 </body>

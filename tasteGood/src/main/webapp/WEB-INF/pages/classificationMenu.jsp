@@ -14,31 +14,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/layui/layui.js"></script>
     <script type="text/javascript">
-        function addCollection(menuId) {
-            layui.use('layer', function() {
-                var layer = layui.layer;
-                $.ajax({
-                    url:'${pageContext.request.contextPath}/collection/addCollection',
-                    datatype:'text',
-                    type:'post',
-                    data:"menuId="+menuId,
-                    success:function (data) {
-                        if(data=="200"){
-                            layer.msg('收藏成功', {icon: 1,offset:'220px'},);
-                            window.setTimeout("window.location.reload();",1500);//延迟2秒跳转
-                        }else if(data=="400"){
-                            layer.msg('已经收藏过了', {icon: 5,offset:'220px'},);
-                        }else {
-                            layer.msg('收藏失败', {icon: 5,offset:'220px'},);
-                        }
-                    },
-                    error:function () {
-                        layer.msg('收藏失败', {icon: 5,offset:'220px'},);
-                    }
-                });
-            });
-        }
-
         function changePageSize() {
             //获取下拉框的值
             var pageSize = $("#changePageSize").val();
@@ -84,25 +59,6 @@
                 </div>
             </div>
         </c:forEach>
-<%--        <c:forEach items="${pageInfo.list}" var="menu">--%>
-<%--            <div style="padding: 15px;margin-bottom: 20px" class="layui-col-md6">--%>
-<%--                <div class="layui-col-md6">--%>
-<%--                    <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${menu.menuId}" style="display: inline-block;line-height:0;">--%>
-<%--                        <img src="${pageContext.request.contextPath}/${menu.menuCover}" style="width: 240px;height: 200px;vertical-align:bottom;" alt="*">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="layui-col-md6">--%>
-<%--                    <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${menu.menuId}"><h1>${menu.menuName}</h1></a>--%>
-<%--                        &lt;%&ndash;                    <p>${userMenu.menuDetail}</p>&ndash;%&gt;--%>
-<%--                    <c:forEach items="${menu.ingredients}" var="ingredient">--%>
-<%--                        &lt;%&ndash;                        ${ingredient.dosage}&ndash;%&gt;--%>
-<%--                        <span style="font-size: 14px">${ingredient.ingredient}</span>--%>
-<%--                    </c:forEach>--%>
-<%--                    <span>${menu.collection}收藏</span>--%>
-<%--                    <button type="button" class="layui-btn" onclick="addCollection(${menu.menuId})">收藏</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </c:forEach>--%>
         <div style="text-align: center" class="layui-col-md12">
             <%--首页--%>
             <a href="${pageContext.request.contextPath}/menu/searchClassification?classification=${classification}&page=1&size=${pageInfo.pageSize}">

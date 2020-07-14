@@ -216,60 +216,6 @@
                 </div>
             </div>
         </div>
-<%--        <div class="layui-col-md12">--%>
-<%--            <span class="layui-breadcrumb">--%>
-<%--                <a href="${pageContext.request.contextPath}/userInfo/homePage">首页</a>--%>
-<%--                <a href="${pageContext.request.contextPath}/collection/showCollections?page=1&size=6"><cite>菜谱收藏</cite></a>--%>
-<%--            </span>--%>
-<%--        </div>--%>
-<%--        <c:forEach items="${pageInfo.list}" var="collection" varStatus="loop">--%>
-<%--            <div style="padding: 15px;margin-bottom: 20px" class="layui-col-md6">--%>
-<%--                <div class="layui-col-md6">--%>
-<%--                    <c:forEach items="${collection.menu}" var="menu1" begin="${menu1[loop.count-1]}" end="${menu1[loop.count-1]}">--%>
-<%--                        <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${menu1.menuId}" style="display: inline-block;line-height:0;">--%>
-<%--                            <img src="${pageContext.request.contextPath}/${menu1.menuCover}" style="width: 240px;height: 200px;vertical-align:bottom;" alt="*">--%>
-<%--                        </a>--%>
-<%--                    </c:forEach>--%>
-<%--                </div>--%>
-<%--                <div class="layui-col-md6">--%>
-<%--                    <c:forEach items="${collection.menu}" var="menu2" begin="${menu2[loop.count-1]}" end="${menu2[loop.count-1]}">--%>
-<%--                        <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${menu2.menuId}"><h1>${menu2.menuName}</h1></a>--%>
-<%--                        <c:forEach items="${menu2.ingredients}" var="ingredient">--%>
-<%--                            <span style="font-size: 14px">${ingredient.ingredient}</span>--%>
-<%--                        </c:forEach>--%>
-<%--                        <p><i class="layui-icon layui-icon-star-fill"></i> ${menu2.collection}</p>--%>
-<%--                    </c:forEach>--%>
-<%--                    <div>--%>
-<%--                        <span>完成次数 ${collection.complete} 次</span>--%>
-<%--                        <button type="button" class="layui-btn" onclick="updateComplete(${collection.complete},${collection.menuId},${collection.userId})">完成打卡</button>--%>
-<%--                    </div>--%>
-<%--                    <button class="layui-btn" onclick="deleteCollection(${collection.menuId},${collection.userId})">删除</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </c:forEach>--%>
-<%--        <c:forEach items="${menus}" var="menu" varStatus="loop">--%>
-<%--            <div style="padding: 15px;margin-bottom: 20px" class="layui-col-md6">--%>
-<%--                <div class="layui-col-md6">--%>
-<%--                    <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${menu.menuId}" style="display: inline-block;line-height:0px;">--%>
-<%--                        <img src="${pageContext.request.contextPath}/${menu.menuCover}" style="width: 240px;height: 200px;vertical-align:bottom;">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="layui-col-md6">--%>
-<%--                    <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${menu.menuId}"><h1>${menu.menuName}</h1></a>--%>
-<%--                    <c:forEach items="${menu.ingredients}" var="ingredient">--%>
-<%--                        <span style="font-size: 14px">${ingredient.ingredient}</span>--%>
-<%--                    </c:forEach>--%>
-<%--                    <p><i class="layui-icon layui-icon-star-fill"></i> ${menu.collection}</p>--%>
-<%--                    <div>--%>
-<%--                        <span>完成次数 ${pageInfo.list[loop.count-1].complete} 次</span>--%>
-<%--                        <button type="button" class="layui-btn" onclick="updateComplete(${pageInfo.list[loop.count-1].complete},${pageInfo.list[loop.count-1].menuId},${pageInfo.list[loop.count-1].userId})">完成打卡</button>--%>
-<%--                    </div>--%>
-<%--                    <button class="layui-btn" onclick="deleteCollection(${pageInfo.list[loop.count-1].menuId},${pageInfo.list[loop.count-1].userId})">删除</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </c:forEach>--%>
-<%--        ${pageInfo.total}   ${pageInfo.pageNum}  ${pageInfo.pages}   ${pageInfo.pageSize}--%>
-
     </div>
     <%@include file="footer.jsp"%>
 </body>

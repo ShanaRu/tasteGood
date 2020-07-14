@@ -76,6 +76,8 @@ public class WorkController {
     public String modifyWork(@RequestParam("workId")Integer workId,Model model){
         Works work=worksService.findWorksByWorkId(workId);
         model.addAttribute("work",work);
+        List<Works> works=worksService.recommendWork();
+        model.addAttribute("works",works);
         return "modifyWork";
     }
 
