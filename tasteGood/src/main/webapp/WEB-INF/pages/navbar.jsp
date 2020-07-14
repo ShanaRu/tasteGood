@@ -67,7 +67,7 @@
             <ul class="layui-nav layui-layout-right layui-bg-green" style="padding-right: 5%">
                 <li class="layui-nav-item">
                     <a href="">
-                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img" alt="*">
+                        <img src="${pageContext.request.contextPath}/picture/logocooker.png" class="layui-nav-img" alt="*" style="width: 50px;height: 50px">
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="${pageContext.request.contextPath}/userInfo/modifyUserInfo" >个人信息</a></dd>
