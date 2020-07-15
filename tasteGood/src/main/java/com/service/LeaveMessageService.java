@@ -12,4 +12,6 @@ public interface LeaveMessageService {
     List<LeaveMessage> getLeaveMessageByUserId(Integer userId,Integer page,Integer size);
 
     void deleteLeaveMessage(Integer leaveId);
+
+    List<LeaveMessage> getAllLeaveMessage(Integer page,Integer size);
 }

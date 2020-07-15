@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
     <title>查看留言</title>
@@ -66,7 +67,7 @@
                 <tbody>
                 <c:forEach items="${pageInfo.list}" var="leaveMessage">
                     <tr>
-                        <td>${leaveMessage.leaveTime}</td>
+                        <td><fmt:formatDate value="${leaveMessage.leaveTime}" pattern="yyyy-MM-dd"/></td>
                         <td><a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${leaveMessage.menuId}">${leaveMessage.menuName}(点击查看详情)</a></td>
                         <td>${leaveMessage.leaveWord}</td>
                         <td><button type="button" onclick="deleteLeave(${leaveMessage.leaveId})" class="layui-btn">删除留言</button></td>

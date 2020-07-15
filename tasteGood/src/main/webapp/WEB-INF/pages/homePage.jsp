@@ -81,11 +81,22 @@
                     <div class="layui-col-md12" style="min-height: 160px" >
                         <div class="layui-carousel" id="test1">
                             <div carousel-item>
-                                <div>条目1</div>
-                                <div>条目2</div>
-                                <div>条目3</div>
-                                <div>条目4</div>
-                                <div>条目5</div>
+                                <div>
+                                    <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${carousel[0].menuId}">
+                                        <img src="${pageContext.request.contextPath}/${carousel[0].menuCover}" style="width: 100%;height: 280px"></a>
+                                </div>
+                                <div>
+                                    <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${carousel[1].menuId}">
+                                    <img src="${pageContext.request.contextPath}/${carousel[1].menuCover}" style="width: 100%;height: 280px"></a>
+                                </div>
+                                <div>
+                                    <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${carousel[2].menuId}">
+                                    <img src="${pageContext.request.contextPath}/${carousel[2].menuCover}" style="width: 100%;height: 280px"></a>
+                                </div>
+                                <div>
+                                    <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${carousel[3].menuId}">
+                                    <img src="${pageContext.request.contextPath}/${carousel[3].menuCover}" style="width: 100%;height: 280px"></a>
+                                </div>
                             </div>
                         </div>
                     </div>

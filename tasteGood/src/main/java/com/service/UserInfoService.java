@@ -58,4 +58,6 @@ public interface UserInfoService {
 
     void deleteFollow(FollowTable followTable);
 
+    Integer findRoleId(Integer userId);
+
 }

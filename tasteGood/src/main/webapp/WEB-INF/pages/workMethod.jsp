@@ -7,31 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <script type="text/javascript">
-    function addCollection(menuId) {
-        layui.use('layer', function() {
-            var layer = layui.layer;
-            $.ajax({
-                url:'${pageContext.request.contextPath}/collection/addCollection',
-                datatype:'text',
-                type:'post',
-                data:"menuId="+menuId,
-                success:function (data) {
-                    if(data=="200"){
-                        layer.msg('收藏成功', {icon: 1,offset:'220px'},);
-                        window.setTimeout("window.location.reload();",1500);//延迟2秒跳转
-                    }else if(data=="400"){
-                        layer.msg('已经收藏过了', {icon: 5,offset:'220px'},);
-                    }else {
-                        layer.msg('收藏失败', {icon: 5,offset:'220px'},);
-                    }
-                },
-                error:function () {
-                    layer.msg('收藏失败', {icon: 5,offset:'220px'},);
-                }
-            });
-        });
-    }
-
     function addLikes(workId) {
         layui.use('layer', function() {
             var layer = layui.layer;

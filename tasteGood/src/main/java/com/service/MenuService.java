@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface MenuService {
     //查询所有菜单信息
-    List<Menu> findAllMenu();
+    List<Menu> findAllMenu(Integer page,Integer size);
 
     //保存所有菜单
     Integer saveMenu(Menu menu);

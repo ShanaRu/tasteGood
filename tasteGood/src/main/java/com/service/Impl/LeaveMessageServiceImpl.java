@@ -34,4 +34,10 @@ public class LeaveMessageServiceImpl implements LeaveMessageService {
     public void deleteLeaveMessage(Integer leaveId) {
         leaveMessageDao.deleteLeaveMessage(leaveId);
     }
+
+    @Override
+    public List<LeaveMessage> getAllLeaveMessage(Integer page,Integer size) {
+        PageHelper.startPage(page,size);
+        return leaveMessageDao.getAllLeaveMessage();
+    }
 }

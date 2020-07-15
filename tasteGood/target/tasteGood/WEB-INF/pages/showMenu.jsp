@@ -15,6 +15,32 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/layui/layui.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        function addCollection(menuId) {
+            layui.use('layer', function() {
+                var layer = layui.layer;
+                $.ajax({
+                    url:'${pageContext.request.contextPath}/collection/addCollection',
+                    datatype:'text',
+                    type:'post',
+                    data:"menuId="+menuId,
+                    success:function (data) {
+                        if(data=="200"){
+                            layer.msg('收藏成功', {icon: 1,offset:'220px'},);
+                            window.setTimeout("window.location.reload();",1500);//延迟2秒跳转
+                        }else if(data=="400"){
+                            layer.msg('已经收藏过了', {icon: 5,offset:'220px'},);
+                        }else {
+                            layer.msg('收藏失败', {icon: 5,offset:'220px'},);
+                        }
+                    },
+                    error:function () {
+                        layer.msg('收藏失败', {icon: 5,offset:'220px'},);
+                    }
+                });
+            });
+        }
+    </script>
     <%@include file="workMethod.jsp"%>
 </head>
 <body>

@@ -21,4 +21,7 @@ public interface LeaveMessageDao {
 
     @Delete("delete from leaveMessage where leaveId=#{leaveId}")
     void deleteLeaveMessage(Integer leaveId);
+
+    @Select("select * from leaveMessage")
+    List<LeaveMessage> getAllLeaveMessage();
 }

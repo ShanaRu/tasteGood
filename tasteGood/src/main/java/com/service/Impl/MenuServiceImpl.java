@@ -24,7 +24,8 @@ public class MenuServiceImpl implements MenuService {
     private StepsDao stepsDao;
 
     @Override
-    public List<Menu> findAllMenu() {
+    public List<Menu> findAllMenu(Integer page, Integer size) {
+        PageHelper.startPage(page,size);
         return menuDao.findAllMenu();
     }
 

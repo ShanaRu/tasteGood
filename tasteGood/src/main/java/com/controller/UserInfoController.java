@@ -2,6 +2,7 @@ package com.controller;
 
 import com.domain.*;
 import com.github.pagehelper.PageInfo;
+import com.mysql.cj.Session;
 import com.service.CollectionService;
 import com.service.MenuService;
 import com.service.UserInfoService;
@@ -73,6 +74,17 @@ public class UserInfoController {
     //跳转主页
     @RequestMapping("/homePage")
     public String homPage(Model model,HttpServletRequest request){
+        //主页的用户信息
+        HttpSession session=request.getSession();
+        Integer uid=(Integer)session.getAttribute("userId");
+        Integer roleId=userInfoService.findRoleId(uid);
+        if(roleId==1){
+            return "redirect:/manager/managerMenu?page=1&size=10";
+        }
+        UserInfo userInfo=userInfoService.findUserById(uid);
+        model.addAttribute("userInfo",userInfo);
+
+
         //主页中的流行作品
         List<Works> works=worksService.getPopularWorks();
         model.addAttribute("works",works);
@@ -92,11 +104,8 @@ public class UserInfoController {
         List<Menu> recommends=menuService.recommendMenu();
         model.addAttribute("recommends",recommends);
 
-        //主业的用户信息
-        HttpSession session=request.getSession();
-        Integer uid=(Integer)session.getAttribute("userId");
-        UserInfo userInfo=userInfoService.findUserById(uid);
-        model.addAttribute("userInfo",userInfo);
+        List<Menu> carousel=menuService.recommendMenu();
+        model.addAttribute("carousel",carousel);
 
         Integer totalWork=worksService.countWorksById(uid);
         if (totalWork==null){

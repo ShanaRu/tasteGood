@@ -111,5 +111,8 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfoDao.deleteFollow(followTable);
     }
 
-
+    @Override
+    public Integer findRoleId(Integer userId) {
+        return userRoleDao.findRoleId(userId);
+    }
 }
