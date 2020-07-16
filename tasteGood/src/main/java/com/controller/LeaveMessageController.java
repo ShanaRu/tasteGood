@@ -25,6 +25,7 @@ public class LeaveMessageController {
     @Autowired
     private LeaveMessageService leaveMessageService;
 
+    //添加留言
     @RequestMapping("/addLeaveMessage")
     @ResponseBody
     public void addLeaveMessage(LeaveMessage leaveMessage, HttpServletRequest request, HttpServletResponse response)throws Exception{
@@ -37,6 +38,7 @@ public class LeaveMessageController {
         response.sendRedirect(request.getContextPath()+"/menu/showMenu?menuId="+leaveMessage.getMenuId());
     }
 
+    //用户留言
     @RequestMapping("/showLeaveMessage")
     public String showLeaveMessage(HttpServletRequest request, Model model, @RequestParam("page") Integer page, @RequestParam("size") Integer size){
         HttpSession session=request.getSession();
@@ -47,6 +49,7 @@ public class LeaveMessageController {
         return "showLeaveMessage";
     }
 
+    //删除留言
     @RequestMapping("/deleteLeaveMessage")
     @ResponseBody
     public String deleteLeaveMessage(Integer leaveId){

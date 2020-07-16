@@ -32,7 +32,7 @@
                 ,done: function(res, index, upload){
                     //如果上传失败
                     if(res.code != 0){
-                        return layer.msg('上传失败');
+                        return layer.msg('上传失败',{icon: 5,offset:'220px'});
                     }
                     //上传成功
                     if(res.code == 0){
@@ -40,12 +40,26 @@
                         console.log("图片地址："+res.src);
                         document.getElementById("workPhoto").value = res.src;
                         console.log(document.getElementById("workPhoto").value);
-                        return layer.msg('上传成功');
+                        return layer.msg('上传成功',{icon: 1,offset:'220px'});
                     }
                 },
                 error: function(res, index, upload){
-                    return layer.msg('上传失败');
+                    return layer.msg('上传失败',{icon: 5,offset:'220px'});
                 }
+            });
+        });
+
+        layui.use('form',function () {
+            var form=layui.form;
+            form.verify({
+                checkSummary:[
+                    /^.{1,140}$/
+                    ,'描述不可超过140长度'
+                ],
+                checkPhoto:[
+                    /^.{1,500}$/
+                    ,'没有图片'
+                ]
             });
         });
     </script>
@@ -69,7 +83,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">作品照片</label>
                         <div class="layui-input-block">
-                            <input type="text" value=""  id="workPhoto" name="workPhoto" style="display: none;"><!--隐藏标签-->
+                            <input type="text" id="workPhoto" name="workPhoto" style="display: none;" lay-verify="checkPhoto|required" required><!--隐藏标签-->
                             <button type="button" class="layui-btn" id="uploadPic">上传作品照片</button>
                         </div>
                     </div>
@@ -81,19 +95,18 @@
                     <div class="layui-form-item layui-form-text">
                         <label class="layui-form-label">心得描述</label>
                         <div class="layui-input-block">
-                            <textarea name="summary" id="summary" placeholder="请输入心得总结" class="layui-textarea" required lay-verify="required" style="width: 600px"></textarea>
+                            <textarea name="summary" id="summary" placeholder="请输入心得总结" class="layui-textarea" required lay-verify="required|checkSummary" style="width: 600px"></textarea>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <button class="layui-btn">立即提交</button>
-                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            <button class="layui-btn" lay-submit>保存</button>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="layui-col-md3">
-                <p style="text-align: center">推荐作品</p>
+                <p style="text-align: center;color: #5FB878;">推荐作品</p>
                 <c:forEach items="${works}" var="work">
                     <div style="margin: 20px;text-align: center">
                         <button style="display: inline-block;line-height:0;cursor: pointer;border: none" onclick="showWorkInfo(${work.workId})">

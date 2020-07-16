@@ -33,11 +33,11 @@
                                 <%--window.setTimeout("window.location='${pageContext.request.contextPath}/menu/userMenu'",2000);//延迟2秒跳转--%>
                                 window.setTimeout("window.location.reload();",1500);//延迟2秒跳转
                             }else{
-                                layer.msg('无法删除1', {icon: 5,offset:'220px'},);
+                                layer.msg('无法删除', {icon: 5,offset:'220px'},);
                             }
                         },
                         error:function () {
-                            layer.msg('无法删除2', {icon: 5,offset:'220px'},);
+                            layer.msg('无法删除', {icon: 5,offset:'220px'},);
                         }
                     });
                     // layer.msg('删除成功', {icon: 1,offset:'220px'},);
@@ -168,7 +168,6 @@
                             </div>
                         </div>
                     </c:forEach>
-<%--                </c:if>--%>
             </div>
             <div style="text-align: center" class="layui-col-md12">
                 <%--首页--%>

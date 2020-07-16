@@ -25,11 +25,9 @@ public class ImagesController {
     public Map<String, Object> upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
         Map<String,Object> map=new HashMap<>();
         if(file.isEmpty()){
-            System.out.println("文件为空");
             map.put("code",500);
             map.put("msg","");
         }
-//        System.out.println("springmvc文件上传...");
         String path = request.getSession().getServletContext().getRealPath("/picture/");
         File files=new File(path);
         if(!files.exists()){
@@ -43,12 +41,10 @@ public class ImagesController {
         filename = uuid+"_"+filename;
         // 完成文件上传
         file.transferTo(new File(path,filename));
-//        System.out.println("图片路径为"+path);
         //换成json返回去
         map.put("code",0);
         map.put("msg","用户头像");
         map.put("src","picture/"+filename);
-//        System.out.println(map);
         return map;
 
     }

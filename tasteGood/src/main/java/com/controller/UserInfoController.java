@@ -25,13 +25,10 @@ public class UserInfoController {
 
     @Autowired
     private UserInfoService userInfoService;
-
     @Autowired
     private MenuService menuService;
-
     @Autowired
     private WorksService worksService;
-
     @Autowired
     private CollectionService collectionService;
 
@@ -45,8 +42,7 @@ public class UserInfoController {
     //用户登录
     @RequestMapping("/userSignIn")
     public @ResponseBody String userSignIn(@RequestParam("userName")String userName, @RequestParam("userPassword")String userPassword, HttpServletRequest request){
-        System.out.println(userPassword);
-        System.out.println(userName);
+        System.out.println("登录名:"+userName);
         UserInfo userInfo=userInfoService.findUser(userName);//根据userName查找用户信息
         if(userInfo==null){//不存在用户
             return "0";
@@ -78,53 +74,37 @@ public class UserInfoController {
         HttpSession session=request.getSession();
         Integer uid=(Integer)session.getAttribute("userId");
         Integer roleId=userInfoService.findRoleId(uid);
-        if(roleId==1){
+        if(roleId==1){//管理员眺管理员页面
             return "redirect:/manager/managerMenu?page=1&size=10";
         }
         UserInfo userInfo=userInfoService.findUserById(uid);
         model.addAttribute("userInfo",userInfo);
-
-
         //主页中的流行作品
         List<Works> works=worksService.getPopularWorks();
         model.addAttribute("works",works);
-
-//        List<Menu> menus=new ArrayList<>();
-//        List<Collection> collections=collectionService.getPopularCollection();
-//        model.addAttribute("collections",collections);
-//        for (Collection collection:collections){
-//            menus.add(menuService.findMenuByMenuId(collection.getMenuId()));
-//        }
-//        model.addAttribute("menus",menus);
         //主页中的菜谱排行榜
         List<Menu> menus=menuService.getMenusByTotalComplete();
         model.addAttribute("menus",menus);
-
         //推荐菜谱
         List<Menu> recommends=menuService.recommendMenu();
         model.addAttribute("recommends",recommends);
-
         List<Menu> carousel=menuService.recommendMenu();
         model.addAttribute("carousel",carousel);
-
         Integer totalWork=worksService.countWorksById(uid);
         if (totalWork==null){
             totalWork=0;
         }
         model.addAttribute("totalWork",totalWork);
-
         Integer totalCollection=collectionService.countCollectionsById(uid);
         if (totalCollection==null){
             totalCollection=0;
         }
         model.addAttribute("totalCollection",totalCollection);
-
         Integer totalMenu=menuService.countMenusById(uid);
         if (totalMenu==null){
             totalMenu=0;
         }
         model.addAttribute("totalMenu",totalMenu);
-
         return "homePage";
     }
 
@@ -132,13 +112,14 @@ public class UserInfoController {
     @RequestMapping("/saveUseInfo")
     public void saveUseInfo(UserInfo userInfo, HttpServletRequest request, HttpServletResponse response) throws Exception{
         //返回新增userId
+        System.out.println(userInfo);
+        System.out.println(userInfo.getUserPhoto());
         Integer userId=userInfoService.saveUserInfo(userInfo);
         UserRole userRole=new UserRole();
         userRole.setRoleId(2);//roleId都是2
         userRole.setUserId(userId);
         userInfoService.addUserRole(userRole);
         response.sendRedirect(request.getContextPath()+"/");//回到登录页面
-
     }
 
     //用户名是否重复
@@ -164,10 +145,9 @@ public class UserInfoController {
         return "modifyUserInfo";
     }
 
+    //更新用户信息
     @RequestMapping("/updateUserInfo")
     public void updateUserInfo(UserInfo userInfo,HttpServletRequest request, HttpServletResponse response) throws Exception{
-//        System.out.println("拿到的"+userInfo);
-        //这里拿到的userInfo不是完整的userInfo
         String userName=userInfo.getUserName();
         Integer userId=userInfo.getUserId();
         Integer userSex=userInfo.getUserSex();
@@ -176,6 +156,7 @@ public class UserInfoController {
         response.sendRedirect(request.getContextPath()+"/userInfo/modifyUserInfo");
     }
 
+    //更新密码
     @RequestMapping("/updateUserPassword")
     public void updateUserPassword(UserInfo userInfo,HttpServletRequest request, HttpServletResponse response) throws Exception{
         //这里拿到的userInfo不是完整的userInfo
@@ -185,6 +166,7 @@ public class UserInfoController {
         response.sendRedirect(request.getContextPath()+"/userInfo/modifyUserInfo");
     }
 
+    //更新头像
     @RequestMapping("/updateUserPhoto")
     public void updateUserPhoto(UserInfo userInfo,HttpServletRequest request, HttpServletResponse response) throws Exception{
         //这里拿到的userInfo不是完整的userInfo
@@ -194,6 +176,7 @@ public class UserInfoController {
         response.sendRedirect(request.getContextPath()+"/userInfo/modifyUserInfo");
     }
 
+    //退出
     @RequestMapping("/exit")
     public void exit(HttpServletRequest request, HttpServletResponse response)throws Exception{
         HttpSession session=request.getSession();
@@ -201,46 +184,6 @@ public class UserInfoController {
         session.removeAttribute("userName");
         response.sendRedirect(request.getContextPath()+"/");
     }
-
-//    //自己访问的
-//    @RequestMapping("/myKitchen")
-//    public String myKitchen(Model model,HttpServletRequest request){
-//        HttpSession session=request.getSession();
-//        Integer userId=(Integer)session.getAttribute("userId");
-//        model.addAttribute("myUserId",userId);//自己的userId
-//        //用户信息
-//        UserInfo userInfo=userInfoService.findUserById(userId);
-//        model.addAttribute("userInfo",userInfo);
-//        //菜谱数量
-//        Integer totalWork=worksService.countWorksById(userId);
-//        if (totalWork==null){
-//            totalWork=0;
-//        }
-//        model.addAttribute("totalWork",totalWork);
-//        //作品数量
-//        Integer totalCollection=collectionService.countCollectionsById(userId);
-//        if (totalCollection==null){
-//            totalCollection=0;
-//        }
-//        model.addAttribute("totalCollection",totalCollection);
-//        //收藏数量
-//        Integer totalMenu=menuService.countMenusById(userId);
-//        if (totalMenu==null){
-//            totalMenu=0;
-//        }
-//        model.addAttribute("totalMenu",totalMenu);
-//        //用户菜谱
-//        List<Menu> userMenus=menuService.findAllMenuByUserId(userId,1,3);
-//        model.addAttribute("userMenus",userMenus);
-//        //用户作品
-//        List<Works> works=worksService.findWorksByUserId(userId,1,3);
-//        model.addAttribute("works",works);
-//        //用户收藏
-//        List<Collection> collections=collectionService.findCollectionsByUserId(userId,1,3);
-//        model.addAttribute("collections",collections);
-//        return "myKitchen";
-//    }
-
 
     @RequestMapping("/kitchen")
     public String kitchen(@RequestParam("userId")Integer userId,Model model,HttpServletRequest request){
@@ -285,12 +228,11 @@ public class UserInfoController {
         return "myKitchen";
     }
 
+    //增加关注
     @RequestMapping("/addFollow")
     @ResponseBody
     public String addFollow(FollowTable followTable){
-//        System.out.println(followTable);
         FollowTable isExist=userInfoService.findFollowTableIsExit(followTable);
-//        System.out.println(isExist);
         if(isExist==null){
             userInfoService.addFollowTable(followTable);
             return "200";
@@ -299,6 +241,7 @@ public class UserInfoController {
         }
     }
 
+    //关注者
     @RequestMapping("/showFollow")
     public String showFollow(@RequestParam("userId")Integer userId,@RequestParam("page") Integer page,@RequestParam("size") Integer size,Model model,HttpServletRequest request){
         Integer followNum=userInfoService.countFollow(userId);
@@ -306,7 +249,6 @@ public class UserInfoController {
         model.addAttribute("followNum",followNum);
         model.addAttribute("followedNum",followedNum);
         List<FollowTable> follow=userInfoService.findFollow(userId,page,size);
-//        model.addAttribute("follow",follow);
         List<UserInfo> follows=new ArrayList<>();
         for (FollowTable f:follow){
             follows.add(userInfoService.findUserById(f.getFollow()));
@@ -323,6 +265,7 @@ public class UserInfoController {
         return "showFollow";
     }
 
+    //跟随者
     @RequestMapping("/showFollowed")
     public String showFollowed(@RequestParam("userId")Integer userId,@RequestParam("page") Integer page,@RequestParam("size") Integer size,Model model,HttpServletRequest request){
         Integer followNum=userInfoService.countFollow(userId);
@@ -347,6 +290,7 @@ public class UserInfoController {
         return "showFollowed";
     }
 
+    //取消关注
     @RequestMapping("/deleteFollow")
     @ResponseBody
     public String deleteFollow(FollowTable followTable){

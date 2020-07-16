@@ -258,10 +258,16 @@
             var array1=new Array();
             for (let i=0;i<dosage1.childNodes.length;i++){
                 var object1=new Object();
+                if(dosage1.childNodes[i].value==""){
+                    return false;
+                }
                 object1.ingredient=dosage1.childNodes[i].value;
                 array1.push(object1);
             }
             for (let i=0;i<dosage2.childNodes.length;i++){
+                if(dosage2.childNodes[i].value==""){
+                    return false;
+                }
                 array1[i].dosage=dosage2.childNodes[i].value;
             }
 
@@ -271,6 +277,9 @@
             for(let i=0;i<step1.childNodes.length;i=i+2){
                 var object2=new Object();
                 if(i%2==0){//双数
+                    if(step1.childNodes[i].value==""){
+                        return false;
+                    }
                     object2.step=step1.childNodes[i].value;
                     array2.push(object2);
                 }
@@ -287,8 +296,14 @@
             example.menuId=document.getElementById("menuId").value;
             example.userId=document.getElementById("userId").value;
             example.collection=document.getElementById("collection").value;
+            if(document.getElementById("menuName").value==""){
+                return false;
+            }
             example.menuName=document.getElementById("menuName").value;
             example.menuCover=document.getElementById("menuCover").value;
+            if(document.getElementById("menuDetail").value==""){
+                return false;
+            }
             example.menuDetail=document.getElementById("menuDetail").value;
             example.totalComplete=document.getElementById("totalComplete").value;
             var isAutoSend = document.getElementsByName('classification');
@@ -296,6 +311,9 @@
                 if (isAutoSend[i].checked == true) {
                     example.classification=isAutoSend[i].value;
                 }
+            }
+            if(document.getElementById("tip").value==""){
+                return false;
             }
             example.tip=document.getElementById("tip").value;
             example.uploadTime=new Date();
@@ -497,7 +515,7 @@
             </div>
         </div>
         <div class="layui-col-md3" style="min-height: 480px">
-            <p style="text-align: center">推荐菜谱</p>
+            <p style="text-align: center;color: #5FB878;">推荐菜谱</p>
             <c:forEach items="${recommends}" var="recommend">
                 <div style="margin: 20px;text-align: center">
                     <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${recommend.menuId}" style="display: inline-block;line-height:0;">

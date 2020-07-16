@@ -75,5 +75,6 @@
             <p style="margin: 20px 0 40px 0;font-size: 16px"><i class="layui-icon layui-icon-note">&ensp;小提示&ensp;</i>&ensp;${menu.tip}</p>
         </div>
     </div>
+    <%@include file="footer.jsp"%>
 </body>
 </html>

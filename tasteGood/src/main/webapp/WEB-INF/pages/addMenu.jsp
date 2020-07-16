@@ -68,10 +68,10 @@
             var form = layui.form;
             var $=layui.jquery;
             //监听提交
-            form.on('submit(formMenu)', function(data){
-
-                return false;
-            });
+            // form.on('submit(formMenu)', function(data){
+            //
+            //     return false;
+            // });
         });
         function addDosage()
         {
@@ -95,7 +95,6 @@
             input2.setAttribute("placeholder","用量：如一克");
             input2.setAttribute("autocomplete","off");
             input2.setAttribute("style","margin-bottom:5px;");
-            // div2.appendChild(input2);
             document.getElementById("dosageBox2").appendChild(input2);
 
         }
@@ -160,6 +159,7 @@
                     //上传成功
                     if(data.code == 0){
                         document.getElementById("stepChar"+number).value = data.src;
+                        console.log(document.getElementById("stepChar"+number).value);
                         return layer.msg('上传成功');
                     }
                 },
@@ -182,7 +182,6 @@
 
             var button=document.createElement("input");
             button.setAttribute("type","file");
-            // button.setAttribute("class","layui-btn");
             button.setAttribute("style","margin-bottom:10px;margin-top:10px;");
             button.setAttribute("id","uploadStep"+num);
             button.setAttribute("onchange","uploadPhoto("+num+")");
@@ -236,10 +235,16 @@
             var array1=new Array();
             for (let i=0;i<dosage1.childNodes.length;i++){
                 var object1=new Object();
+                if(dosage1.childNodes[i].value==""){
+                    return false;
+                }
                 object1.ingredient=dosage1.childNodes[i].value;
                 array1.push(object1);
             }
             for (let i=0;i<dosage2.childNodes.length;i++){
+                if(dosage2.childNodes[i].value==""){
+                    return false;
+                }
                 array1[i].dosage=dosage2.childNodes[i].value;
             }
 
@@ -249,6 +254,9 @@
             for(let i=0;i<step1.childNodes.length;i=i+2){
                 var object2=new Object();
                 if(i%2==0){//双数
+                    if(step1.childNodes[i].value==""){
+                        return false;
+                    }
                     object2.step=step1.childNodes[i].value;
                     array2.push(object2);
                 }
@@ -261,14 +269,23 @@
                 }
             }
             var example=new Object();
+            if(document.getElementById("menuName").value==""){
+                return false;
+            }
             example.menuName=document.getElementById("menuName").value;
             example.menuCover=document.getElementById("menuCover").value;
+            if(document.getElementById("menuDetail").value==""){
+                return false;
+            }
             example.menuDetail=document.getElementById("menuDetail").value;
             var isAutoSend = document.getElementsByName('classification');
             for (var i = 0; i < isAutoSend.length; i++) {
                 if (isAutoSend[i].checked == true) {
                     example.classification=isAutoSend[i].value;
                 }
+            }
+            if(document.getElementById("tip").value==""){
+                return false;
             }
             example.tip=document.getElementById("tip").value;
             example.uploadTime=new Date();
@@ -297,7 +314,6 @@
                     }
                 });
             });
-
         }
     </script>
 
@@ -313,8 +329,8 @@
         </div>
         <div class="layui-row layui-col-space30">
             <div class="layui-col-md9" style="min-height: 480px">
-<%--                <div class="layui-form">--%>
-                <form class="layui-form">
+                <div class="layui-form">
+<%--                <form class="layui-form">--%>
                     <div class="layui-row layui-col-space10">
                         <div class="layui-col-md7">
                             <div class="layui-form-item">
@@ -326,7 +342,7 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">菜谱封面</label>
                                 <div class="layui-input-block">
-                                    <input type="text" value=""  id="menuCover" name="menuCover" style="display: none;"><!--隐藏标签-->
+                                    <input type="text" id="menuCover" name="menuCover" style="display: none;"><!--隐藏标签-->
                                     <button type="button" class="layui-btn" id="uploadPic">上传菜谱封面</button>
                                 </div>
                             </div>
@@ -388,15 +404,16 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                                <button class="layui-btn" onclick="commit()" lay-submit lay-filter="formMenu">立即提交</button>
+                                <button class="layui-btn" onclick="commit()">立即提交</button>
+<%--                            <button class="layui-btn" lay-sumbit lay-filter="formDemo">提交</button>--%>
                                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
                     </div>
-                </form>
-<%--                </div>--%>
+<%--                </form>--%>
+                </div>
             </div>
             <div class="layui-col-md3" style="min-height: 480px">
-                <p style="text-align: center">推荐菜谱</p>
+                <p style="text-align: center;color: #5FB878;">推荐菜谱</p>
                 <c:forEach items="${menus}" var="menu">
                     <div style="margin: 20px;text-align: center">
                         <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${menu.menuId}" style="display: inline-block;line-height:0;">

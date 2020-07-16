@@ -1,5 +1,6 @@
 com\domain\DateToString.class
 com\domain\FollowTable.class
+com\controller\ManagerController.class
 com\domain\LeaveMessage.class
 com\service\CollectionService.class
 com\dao\CollectionDao.class

@@ -25,7 +25,6 @@ public class ManagerController {
     private MenuService menuService;
     @Autowired
     private WorksService worksService;
-
     @Autowired
     private LeaveMessageService leaveMessageService;
 

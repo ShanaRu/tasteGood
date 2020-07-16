@@ -31,6 +31,7 @@ public class CollectionController {
     @Autowired
     private UserInfoService userInfoService;
 
+    //展示用户收藏
     @RequestMapping("/showCollections")
     public String showCollection(@RequestParam("userId") Integer userId, HttpServletRequest request, Model model,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
         Integer follow=userInfoService.countFollow(userId);
@@ -45,10 +46,10 @@ public class CollectionController {
         model.addAttribute("pageInfo",pageInfo);
         UserInfo userInfo=userInfoService.findUserById(userId);
         model.addAttribute("userInfo",userInfo);
-
         return "showCollections";
     }
 
+    //更新打卡量
     @RequestMapping(value = "/updateComplete")
     @ResponseBody
     public String updateComplete(Collection collection){
@@ -58,6 +59,7 @@ public class CollectionController {
         return "200";
     }
 
+    //删除收藏
     @RequestMapping(value = "/deleteCollection")
     @ResponseBody
     public String deleteCollection(Collection collection){
@@ -65,6 +67,7 @@ public class CollectionController {
         return "200";
     }
 
+    //添加收藏
     @RequestMapping(value = "/addCollection")
     @ResponseBody
     public String addCollection(@RequestParam("menuId") Integer menuId,HttpServletRequest request){

@@ -163,8 +163,10 @@
                             </c:forEach>
                             <div style="margin: 15px">
                                 <span>已完成 ${collection.complete} 次</span>
-                                <button type="button" class="layui-btn layui-btn-primary layui-btn-xs layui-btn-radius" onclick="updateComplete(${collection.complete},${collection.menuId},${collection.userId})">完成打卡</button>
-                                <button class="layui-btn layui-btn-primary layui-btn-xs layui-btn-radius" onclick="deleteCollection(${collection.menuId},${collection.userId})">删除</button>
+                                <c:if test="${myUserId eq collection.userId}">
+                                    <button type="button" class="layui-btn layui-btn-primary layui-btn-xs layui-btn-radius" onclick="updateComplete(${collection.complete},${collection.menuId},${collection.userId})">完成打卡</button>
+                                    <button class="layui-btn layui-btn-primary layui-btn-xs layui-btn-radius" onclick="deleteCollection(${collection.menuId},${collection.userId})">删除</button>
+                                </c:if>
                             </div>
                         </div>
                     </div>

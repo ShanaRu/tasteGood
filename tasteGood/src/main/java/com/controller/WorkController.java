@@ -27,10 +27,10 @@ public class WorkController {
 
     @Autowired
     private WorksService worksService;
-
     @Autowired
     private UserInfoService userInfoService;
 
+    //写作品页面
     @RequestMapping("/addWork")
     public String addWork(@RequestParam("menuId")Integer menuId, @RequestParam("menuName")String menuName,Model model){
         model.addAttribute("menuId",menuId);
@@ -40,6 +40,7 @@ public class WorkController {
         return "addWork";
     }
 
+    //保存作品方法
     @RequestMapping("/saveWork")
     @ResponseBody
     public void saveWork(Works works, HttpServletResponse response, HttpServletRequest request) throws Exception{
@@ -50,10 +51,10 @@ public class WorkController {
         Date time=new Date();
         works.setWorkTime(time);
         worksService.saveWorks(works);
-        response.sendRedirect(request.getContextPath()+"/userInfo/homePage");
+        response.sendRedirect(request.getContextPath()+"/menu/showMenu?menuId="+works.getMenuId());
     }
 
-    //根据用户id查询用户作品
+    //查询用户作品
     @RequestMapping("/userWorks")
     public String userWorks(@RequestParam("userId")Integer userId,Model model,HttpServletRequest request,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
         Integer follow=userInfoService.countFollow(userId);
@@ -61,7 +62,7 @@ public class WorkController {
         model.addAttribute("follow",follow);
         model.addAttribute("followed",followed);
         HttpSession session=request.getSession();
-        Integer myUserId=(int)session.getAttribute("userId");//自己的
+        Integer myUserId=(int)session.getAttribute("userId");//自己的userId
         model.addAttribute("myUserId",myUserId);
         List<Works> works=worksService.findWorksByUserId(userId,page,size);
         PageInfo<Works> pageInfo=new PageInfo<>(works);
@@ -89,7 +90,7 @@ public class WorkController {
         Integer workId=works.getWorkId();
         Date workTime=new Date();
         worksService.updateWork(workPhoto,summary,workId,workTime);
-        response.sendRedirect(request.getContextPath()+"/userInfo/homePage");
+        response.sendRedirect(request.getContextPath()+"/work/userWorks?userId="+works.getUserId()+"&page=1&size=6");
     }
 
     //根据workId查询作品

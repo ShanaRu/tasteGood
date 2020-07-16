@@ -49,7 +49,6 @@
         });
         layui.use('form', function(){
             var  form=layui.form;
-            var check =false;
             //自定义验证规则
             form.verify({
                 isExist:function(value){
@@ -71,12 +70,23 @@
                 password: [
                     /^[\S]{6,12}$/
                     ,'密码必须6到12位，且不能出现空格'
-                ]
+                ],
+                // checkUserName:function () {
+                //    ^.{3,6}$
+                // }
+                checkUserName: [
+                    /^.{1,10}$/
+                    ,'昵称必须1到10位，且不能出现空格'
+                ],
+                checkIntroduce:[
+                    /^.{1,140}$/
+                    ,'用户描述不可超过140长度'
+                ],
             });
             //监听提交
-            form.on('submit(formDemo)', function(data){
-                return true;
-            });
+            // form.on('submit(formDemo)', function(data){
+            //     return true;
+            // });
         });
     </script>
 
@@ -100,7 +110,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">用户昵称</label>
                 <div class="layui-input-block">
-                        <input type="text" name="userName" required  lay-verify="required|isExist" placeholder="请输入用户昵称" autocomplete="off"
+                        <input type="text" name="userName" required  lay-verify="required|isExist|checkUserName" placeholder="请输入用户昵称" autocomplete="off"
                                 class="layui-input" id="user_name">
                 </div>
             </div>
@@ -119,7 +129,7 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <input type="text" value=""  id="userPhoto" name="userPhoto" style="display: none;"><!--隐藏标签-->
+                    <input type="text" value="picture/logocooker.png"  id="userPhoto" name="userPhoto" style="display: none;"><!--隐藏标签-->
                     <div class="layui-upload">
                         <div class="layui-upload-list">
                             <button type="button" class="layui-btn" id="uploadPic">上传头像</button>
@@ -131,13 +141,13 @@
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">用户描述</label>
                 <div class="layui-input-block">
-                    <textarea name="userIntroduce" placeholder="请输入内容" class="layui-textarea" required lay-verify="required" lay-verify="required"></textarea>
+                    <textarea name="userIntroduce" placeholder="请输入内容" class="layui-textarea" required lay-verify="required|checkIntroduce" lay-verify="required"></textarea>
                 </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo">注册</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <button class="layui-btn" lay-submit>注册</button>
+                    <a href="${pageContext.request.contextPath}/" class="layui-btn layui-btn-primary">返回</a>
                 </div>
             </div>
         </form>

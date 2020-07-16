@@ -128,7 +128,7 @@
                                 <button style="display: inline-block;line-height:0;cursor: pointer;border: none" onclick="showWorkInfo(${work.workId})">
                                     <img src="${pageContext.request.contextPath}/${work.workPhoto}" style="width: 240px;height: 190px;vertical-align:bottom;" alt="*">
                                 </button>
-                                <p style="width: 220px;margin:15px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">${work.summary}</p>
+<%--                                <p style="width: 190px;margin:15px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">${work.summary}</p>--%>
                                 <p style="margin: 15px">${work.likes} 赞 | <a href="${pageContext.request.contextPath}/userInfo/kitchen?userId=${userInfo.userId}">${userInfo.userName}</a></p>
                                 <p style="margin: 15px">
                                     <button type="button" class="layui-btn layui-btn-radius layui-btn-danger layui-btn-xs" onclick="addLikes(${work.workId})">

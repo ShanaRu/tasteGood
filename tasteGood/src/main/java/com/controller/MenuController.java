@@ -30,16 +30,14 @@ public class MenuController {
 
     @Autowired
     private MenuService menuService;
-
     @Autowired
     private LeaveMessageService leaveMessageService;
-
     @Autowired
     private UserInfoService userInfoService;
-
     @Autowired
     private WorksService worksService;
 
+    //写菜谱页面
     @RequestMapping("/addMenu")
     public String writeMenu(Model model){
         List<Menu> menus=menuService.recommendMenu();
@@ -110,21 +108,15 @@ public class MenuController {
     }
 
 
-    //根据userid查询菜谱
+    //用户菜谱列表
     @RequestMapping("/userMenu")
     public String userMenu(@RequestParam("userId")Integer userId,Model model, HttpServletRequest request,@RequestParam("page") Integer page,@RequestParam("size") Integer size){
         HttpSession session=request.getSession();
         Integer myUserId=(int)session.getAttribute("userId");//自己的
         model.addAttribute("myUserId",myUserId);
-
         //访问用户的
         List<Menu> menus=menuService.findAllMenuByUserId(userId,page,size);
         PageInfo<Menu> pageInfo=new PageInfo<>(menus);
-//        for (Menu menu:menus){
-//            System.out.println(menu);
-//            System.out.println(menu.getIngredients());
-//            System.out.println(menu.getSteps());
-//        }
         model.addAttribute("pageInfo",pageInfo);
         //用户信息
         UserInfo userInfo=userInfoService.findUserById(userId);
@@ -136,7 +128,7 @@ public class MenuController {
         return "userMenu";
     }
 
-    //根据menuId查询菜谱
+    //菜谱详细信息
     @RequestMapping("/showMenu")
     public String showMenu(@RequestParam("menuId")Integer menuId,Model model){
         Menu menu=menuService.findMenuByMenuId(menuId);
@@ -164,7 +156,6 @@ public class MenuController {
         model.addAttribute("menu",menu);
         List<Menu> recommends=menuService.recommendMenu();
         model.addAttribute("recommends",recommends);
-//        System.out.println(menu);
         return "modifyMenu";
     }
 
@@ -201,8 +192,6 @@ public class MenuController {
         menu.setTip(tip);
         menu.setUploadTime(uploadTime);
         menu.setMenuId(menuId);
-//        HttpSession session=request.getSession();//获取用户id
-//        Integer uid=(Integer)session.getAttribute("userId");
         menu.setUserId(userId);
         menuService.updateMenu(menu);//更新菜单
         saveIngredients(menuId,ingredientsArray);
@@ -219,14 +208,13 @@ public class MenuController {
         return "200";
     }
 
-    //根据名称查找菜谱
+    //根据名称模糊查找菜谱
     @RequestMapping("/searchMenu")
     public String searchMenu(@RequestParam("searchMenuName") String searchMenuName,@RequestParam("page") Integer page,@RequestParam("size") Integer size,Model model){
         model.addAttribute("searchMenuName",searchMenuName);
         List<Menu> menus=menuService.searchMenu(searchMenuName,page,size);
         PageInfo<Menu> pageInfo=new PageInfo<>(menus);
         model.addAttribute("pageInfo",pageInfo);
-//        model.addAttribute("menus",menus);
         return "searchMenu";
     }
 
@@ -240,10 +228,4 @@ public class MenuController {
         model.addAttribute("pageInfo",pageInfo);
         return "classificationMenu";
     }
-
-//    @RequestMapping("/menuModule")
-//    public String menuModule(){
-//        return "menuModule";
-//    }
-
 }

@@ -120,6 +120,7 @@
                     <a href="${pageContext.request.contextPath}/userInfo/showFollowed?userId=${userInfo.userId}&page=${pageInfo.pages}&size=${pageInfo.pageSize}">
                         <button class="layui-btn layui-btn-primary layui-btn-sm">尾页</button>
                     </a>
+                </div>
             </div>
         </div>
     </div>

@@ -158,8 +158,8 @@
                         <h4>上传你的作品#&ensp;${menu.menuName}&ensp;#</h4>
                     </a>
                 </div>
-                <c:if test="${menuWork != null}">
-                    <p style="text-align: center;font-size: 18px"><i class="layui-icon layui-icon-praise"></i>&ensp;大家参照这个菜谱做出的作品</p>
+                <c:if test="${not empty menuWork}">
+                    <p style="text-align: center;font-size: 18px;color: #5FB878;"><i class="layui-icon layui-icon-praise"></i>&ensp;大家参照这个菜谱做出的作品</p>
                     <c:forEach items="${menuWork}" var="work">
                         <div style="margin: 20px;text-align: center">
                             <button style="display: inline-block;line-height:0;cursor: pointer;border: none" onclick="showWorkInfo(${work.workId})">
@@ -175,7 +175,7 @@
                         </div>
                     </c:forEach>
                 </c:if>
-                <p style="text-align: center;font-size: 18px"><i class="layui-icon layui-icon-tabs"></i>&ensp;推荐菜谱</p>
+                <p style="text-align: center;font-size: 18px;color: #5FB878;"><i class="layui-icon layui-icon-tabs"></i>&ensp;推荐菜谱</p>
                 <c:forEach items="${menus}" var="recommend">
                     <div style="margin: 20px;text-align: center">
                         <a href="${pageContext.request.contextPath}/menu/showMenu?menuId=${recommend.menuId}" style="display: inline-block;line-height:0;">
