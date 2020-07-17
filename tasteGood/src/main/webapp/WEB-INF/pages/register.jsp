@@ -121,7 +121,7 @@
                 </div>
             </div>
             <div class="layui-form-item" pane>
-                <label class="layui-form-label">单选框</label>
+                <label class="layui-form-label">性别</label>
                 <div class="layui-input-block">
                     <input type="radio" name="userSex" value="1" title="男">
                     <input type="radio" name="userSex" value="2" title="女" checked>

@@ -148,6 +148,7 @@ public class UserInfoController {
     //更新用户信息
     @RequestMapping("/updateUserInfo")
     public void updateUserInfo(UserInfo userInfo,HttpServletRequest request, HttpServletResponse response) throws Exception{
+        System.out.println(userInfo);
         String userName=userInfo.getUserName();
         Integer userId=userInfo.getUserId();
         Integer userSex=userInfo.getUserSex();

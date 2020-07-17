@@ -82,8 +82,8 @@
                         console.log(oldPassword);
                         let tempPassword=document.getElementById("tempPassword").value;
                         console.log(tempPassword);
-                        if(!/^[\S]{3,12}$/.test(value)){
-                            return '密码必须3到12位，且不能出现空格';
+                        if(!/^[\S]{6,12}$/.test(value)){
+                            return '密码必须6到12位，且不能出现空格';
                         }
                         if(oldPassword==tempPassword){
                             // layer.msg("匹配");
@@ -97,8 +97,8 @@
                         console.log(newPassword);
                         let userPassword=document.getElementById("userPassword").value;
                         console.log(userPassword);
-                        if(!/^[\S]{3,12}$/.test(value)){
-                            return '密码必须3到12位，且不能出现空格';
+                        if(!/^[\S]{6,12}$/.test(value)){
+                            return '密码必须6到12位，且不能出现空格';
                         }
                         if(newPassword==userPassword){
                             // layer.msg("匹配");
@@ -108,16 +108,10 @@
                         }
                     },
                     password: [
-                        /^[\S]{3,12}$/
-                        ,'密码必须3到12位，且不能出现空格'
+                        /^[\S]{6,12}$/
+                        ,'密码必须6到12位，且不能出现空格'
                     ]
                 });
-                //监听提交
-                // form.on('submit(formDemo)', function(data){
-                //     layer.msg(JSON.stringify(data.field));
-                //     return true;
-                // });
-
             });
         });
     </script>
@@ -165,7 +159,7 @@
                             </div>
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
-                                    <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+                                    <button class="layui-btn" lay-submit>保存</button>
                                 </div>
                             </div>
                         </form>
