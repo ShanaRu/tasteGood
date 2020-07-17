@@ -38,6 +38,14 @@
                 });
             });
         }
+        function changePageSize() {
+            //获取下拉框的值
+            var pageSize = $("#changePageSize").val();
+
+            //向服务器发送请求，改变每页显示条数
+            location.href = "${pageContext.request.contextPath}/userInfo/showFollowed?userId=${userInfo.userId}&page=1&size="
+                + pageSize;
+        }
     </script>
 </head>
 <body>
@@ -120,6 +128,15 @@
                     <a href="${pageContext.request.contextPath}/userInfo/showFollowed?userId=${userInfo.userId}&page=${pageInfo.pages}&size=${pageInfo.pageSize}">
                         <button class="layui-btn layui-btn-primary layui-btn-sm">尾页</button>
                     </a>
+                        <p style="display: inline-block;font-size: 12px;line-height: 30px">
+                            每页
+                            <select id="changePageSize" onchange="changePageSize()">
+                                <option value="">请选择</option>
+                                <option>16</option>
+                                <option>32</option>
+                            </select>
+                            条
+                        </p>
                 </div>
             </div>
         </div>

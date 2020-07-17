@@ -210,8 +210,8 @@
                         <select id="changePageSize" onchange="changePageSize()">
                             <option value="">请选择</option>
                             <option>6</option>
-                            <option>10</option>
-                            <option>14</option>
+                            <option>12</option>
+                            <option>18</option>
                         </select>
                         条
                     </p>
